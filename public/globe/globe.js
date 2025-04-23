@@ -173,6 +173,13 @@ DAT.Globe = function (container, opts) {
       },
       false
     );
+
+    // Add touch event listeners
+    container.addEventListener("touchstart", onTouchStart, false);
+    container.addEventListener("touchmove", onTouchMove, false);
+    container.addEventListener("touchend", onTouchEnd, false);
+    container.addEventListener("touchmove", onPinchZoom, false);
+    container.addEventListener("touchend", onTouchEndPinch, false);
   }
 
   function addData(data, opts) {
@@ -406,6 +413,57 @@ DAT.Globe = function (container, opts) {
       zoom(event.wheelDeltaY * 0.3);
     }
     return false;
+  }
+
+  function onTouchStart(event) {
+    if (event.touches.length === 1) {
+      event.preventDefault();
+      mouseOnDown.x = -event.touches[0].clientX;
+      mouseOnDown.y = event.touches[0].clientY;
+
+      targetOnDown.x = target.x;
+      targetOnDown.y = target.y;
+
+      container.style.cursor = "move";
+    }
+  }
+
+  function onTouchMove(event) {
+    if (event.touches.length === 1) {
+      event.preventDefault();
+      mouse.x = -event.touches[0].clientX;
+      mouse.y = event.touches[0].clientY;
+
+      var zoomDamp = distance / 1000;
+
+      target.x = targetOnDown.x + (mouse.x - mouseOnDown.x) * 0.005 * zoomDamp;
+      target.y = targetOnDown.y + (mouse.y - mouseOnDown.y) * 0.005 * zoomDamp;
+
+      target.y = target.y > PI_HALF ? PI_HALF : target.y;
+      target.y = target.y < -PI_HALF ? -PI_HALF : target.y;
+    }
+  }
+
+  function onTouchEnd(event) {
+    container.style.cursor = "auto";
+  }
+
+  function onPinchZoom(event) {
+    if (event.touches.length === 2) {
+      const dx = event.touches[0].clientX - event.touches[1].clientX;
+      const dy = event.touches[0].clientY - event.touches[1].clientY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (this._lastPinchDistance) {
+        const delta = distance - this._lastPinchDistance;
+        zoom(delta * 0.1);
+      }
+      this._lastPinchDistance = distance;
+    }
+  }
+
+  function onTouchEndPinch(event) {
+    this._lastPinchDistance = null;
   }
 
   function onDocumentKeyDown(event) {

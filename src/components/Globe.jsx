@@ -13,6 +13,54 @@ const Globe = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Space snow animation using canvas
+    const canvas = document.getElementById("particle-canvas");
+    const ctx = canvas.getContext("2d");
+    const particles = Array(100)
+      .fill()
+      .map(() => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        radius: Math.random() * 2,
+        speedX: Math.random() * 0.5 - 0.25,
+        speedY: Math.random() * 1 + 0.5,
+      }));
+
+    const animateParticles = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((particle) => {
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        // Reset particle position if it goes out of bounds
+        if (particle.y > window.innerHeight) particle.y = 0;
+        if (particle.x > window.innerWidth) particle.x = 0;
+        if (particle.x < 0) particle.x = window.innerWidth;
+      });
+      requestAnimationFrame(animateParticles);
+    };
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    animateParticles();
+
+    // Resize canvas on window resize
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     // Make THREE globally available
     window.THREE = THREE;
 
@@ -46,7 +94,7 @@ const Globe = () => {
           globe.addAnimatedSprite(
             20.593684,
             78.96288,
-            "/spin-swirl.gif",
+            "/swirl.png",
             35,
             "india" // Unique key for India
           );
@@ -94,6 +142,28 @@ const Globe = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const canvas = document.getElementById("particle-canvas");
+      if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      const popup = document.getElementById("location-popup");
+      if (popup) {
+        popup.style.maxWidth = `${window.innerWidth * 0.8}px`;
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const getLocationsByRegion = (region) => {
     if (region == "India") {
       return (
@@ -124,13 +194,24 @@ const Globe = () => {
           Contact Us
         </button>
       </header>
-      <div id="globe-container" className="w-full h-screen" />
+      <div id="globe-container" className="w-full h-screen z-10">
+        <canvas
+          id="particle-canvas"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: 1,
+            pointerEvents: "none",
+          }}
+        />
+      </div>
       <Popup
         isOpen={showPopup?.status}
         onClose={() =>
           setShowPopup((prev) => ({ ...prev, status: false, data: {} }))
         }
-        title="Cities"
+        title={`Cities from ${showPopup?.data?.title}`}
       >
         {getLocationsByRegion(showPopup?.data?.title)}
       </Popup>

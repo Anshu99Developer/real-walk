@@ -7,7 +7,7 @@ export default function Popup({ isOpen, onClose, title, children }) {
       <span className='bg-golden opacity-10 w-full h-full absolute top-0 left-0'></span>
       <div className="shadow-lg w-full max-w-md mx-4 relative ">
         {/* Title */}
-        {title && <h2 className="text-2xl font-bold mb-4 text-center">{title}</h2>}
+        {title && <h2 className="text-2xl font-bold mb-4 text-center capitalize">{title}</h2>}
 
         {/* Content */}
         <div className="text-gray-700">{children}</div>
