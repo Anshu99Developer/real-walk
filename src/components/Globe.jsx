@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import * as THREE from "three";
+import { useNavigate } from "react-router-dom";
 import Popup from "./Popup";
+
+const listedCities = {
+  India: ["Ahmedabad", "Mumbai", "Delhi", "Hyderabad"],
+  Dubai: ["Ahmedabad", "Mumbai", "Hyderabad"],
+};
 
 const Globe = () => {
   const [showPopup, setShowPopup] = useState({ status: false, data: {} });
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Make THREE globally available
@@ -32,14 +39,14 @@ const Globe = () => {
           globe.addAnimatedSprite(
             25.276987,
             55.296249,
-            "/globe/cloud0.jpg",
+            "/spin-swirl.gif",
             35,
             "dubai" // Unique key for Dubai
           );
           globe.addAnimatedSprite(
             20.593684,
             78.96288,
-            "/globe/cloud0.jpg",
+            "/spin-swirl.gif",
             35,
             "india" // Unique key for India
           );
@@ -57,31 +64,25 @@ const Globe = () => {
             // Handle click based on unique key
             const key = clickedObject.userData.key;
             if (key === "dubai") {
-              console.log("Dubai image clicked!");
               setShowPopup((prev) => ({
                 ...prev,
                 status: true,
-                data: { title: "Dubai" },
+                data: { title: "dubai" },
               }));
+              globe.zoomToLocation(25.276987, 55.296249);
             } else if (key === "india") {
-              console.log("India image clicked!");
               setShowPopup((prev) => ({
                 ...prev,
                 status: true,
                 data: { title: "India" },
               }));
+              globe.zoomToLocation(20.593684, 78.96288);
             }
           } else {
             const point = intersected.point;
             const lat = 90 - (Math.acos(point.y / 200) * 180) / Math.PI;
             const lng =
               ((Math.atan2(point.z, point.x) * 180) / Math.PI + 180) % 360;
-
-            if (lat > 5 && lat < 35 && lng > 65 && lng < 90) {
-              alert("India clicked!");
-            } else if (lat > 24.5 && lat < 25.5 && lng > 54.5 && lng < 55.5) {
-              alert("Dubai clicked!");
-            }
           }
         }
       });
@@ -93,25 +94,45 @@ const Globe = () => {
     };
   }, []);
 
+  const getLocationsByRegion = (region) => {
+    if (region == "India") {
+      return (
+        <ul className="border border-offWhite">
+          {listedCities[region]?.map((city) => {
+            return (
+              <li
+                key={city}
+                className="py-2.5 px-5 uppercase transition-all duration-200 ease--out text-white text-center first:border-t-0 border-t border-offWhite cursor-pointer hover:text-raisinBlack hover:bg-golden"
+                onClick={() => {
+                  navigate(`/city/${city}`);
+                }}
+              >
+                {city}
+              </li>
+            );
+          })}
+        </ul>
+      );
+    }
+  };
+
   return (
     <>
+      <header className="flex justify-between items-center p-4 bg-transparent fixed w-full top-0 left-0 z-10">
+        <img src="/main-logo.png" alt="Logo" className="h-10" />
+        <button className="px-4 py-2 bg-transparent hover:bg-golden border border-golden text-white rounded-lg">
+          Contact Us
+        </button>
+      </header>
       <div id="globe-container" className="w-full h-screen" />
       <Popup
         isOpen={showPopup?.status}
         onClose={() =>
           setShowPopup((prev) => ({ ...prev, status: false, data: {} }))
         }
-        title="Custom Popup Title"
+        title="Cities"
       >
-        <p>This is a fully customizable popup component.</p>
-        <button
-          onClick={() =>
-            setShowPopup((prev) => ({ ...prev, status: false, data: {} }))
-          }
-          className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
-        >
-          Close
-        </button>
+        {getLocationsByRegion(showPopup?.data?.title)}
       </Popup>
     </>
   );

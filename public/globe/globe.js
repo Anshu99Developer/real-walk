@@ -102,7 +102,7 @@ DAT.Globe = function (container, opts) {
 
     scene = new THREE.Scene();
 
-    var geometry = new THREE.SphereGeometry(200, 40, 30);
+    var geometry = new THREE.SphereGeometry(200, 40, 50);
 
     shader = Shaders["earth"];
     uniforms = THREE.UniformsUtils.clone(shader.uniforms);
@@ -233,6 +233,18 @@ DAT.Globe = function (container, opts) {
     }
   }
 
+  this.zoomToLocation = (lat, lng) => {
+    const phi = ((90 - lat) * Math.PI) / 180;
+    const theta = ((180 - lng) * Math.PI) / 180;
+
+    const targetX = 1000 * Math.sin(phi) * Math.cos(theta);
+    const targetY = 1000 * Math.cos(phi);
+    const targetZ = 1000 * Math.sin(phi) * Math.sin(theta);
+
+    // Set the target position for the camera
+    this._cameraTarget = { x: targetX, y: targetY, z: targetZ };
+  };
+
   function createPoints() {
     if (this._baseGeometry !== undefined) {
       if (this.is_animated === false) {
@@ -290,40 +302,6 @@ DAT.Globe = function (container, opts) {
       point.updateMatrix();
     }
     subgeo.merge(point.geometry, point.matrix);
-  }
-
-  function addAnimatedSprite(lat, lng, texturePath, scale = 10,key, speed = 0.005) {
-    const spriteMap = new THREE.TextureLoader().load(texturePath);
-    const spriteMaterial = new THREE.SpriteMaterial({
-      map: spriteMap,
-      transparent: true,
-    });
-    const sprite = new THREE.Sprite(spriteMaterial);
-
-    sprite.userData.baseScale = scale;
-    sprite.userData.key = key;
-    sprite.scale.set(scale, scale, 1);
-
-    const radius = 200 + 1;
-    const phi = ((90 - lat) * Math.PI) / 180;
-    const theta = ((180 - lng) * Math.PI) / 180;
-
-    sprite.position.x = radius * Math.sin(phi) * Math.cos(theta);
-    sprite.position.y = radius * Math.cos(phi);
-    sprite.position.z = radius * Math.sin(phi) * Math.sin(theta);
-
-    sprite.lookAt(mesh.position); // ensures facing camera
-
-    scene.add(sprite);
-
-    // Add to global sprite list for animation
-    if (!this._animatedSprites) this._animatedSprites = [];
-    this._animatedSprites.push({
-      sprite,
-      speed,
-      phase: Math.random() * Math.PI * 2,
-      key,
-    });
   }
 
   function getIntersectedObject(mouseX, mouseY, camera, scene) {
@@ -460,6 +438,47 @@ DAT.Globe = function (container, opts) {
     render();
   }
 
+  function addAnimatedSprite(
+    lat,
+    lng,
+    texturePath,
+    scale = 10,
+    key,
+    speed = 0.005
+  ) {
+    const spriteMap = new THREE.TextureLoader().load(texturePath);
+    const spriteMaterial = new THREE.SpriteMaterial({
+      map: spriteMap,
+      transparent: true,
+    });
+    const sprite = new THREE.Sprite(spriteMaterial);
+
+    sprite.userData.baseScale = scale;
+    sprite.userData.key = key;
+    sprite.scale.set(scale, scale, 1);
+
+    const radius = 200 + 1;
+    const phi = ((90 - lat) * Math.PI) / 180;
+    const theta = ((180 - lng) * Math.PI) / 180;
+
+    sprite.position.x = radius * Math.sin(phi) * Math.cos(theta);
+    sprite.position.y = radius * Math.cos(phi);
+    sprite.position.z = radius * Math.sin(phi) * Math.sin(theta);
+
+    sprite.lookAt(mesh.position); // ensures facing camera
+
+    scene.add(sprite);
+
+    // Add to global sprite list for animation
+    if (!this._animatedSprites) this._animatedSprites = [];
+    this._animatedSprites.push({
+      sprite,
+      speed,
+      phase: Math.random() * Math.PI * 2,
+      key,
+    });
+  }
+
   function render() {
     zoom(curZoomSpeed);
 
@@ -471,16 +490,34 @@ DAT.Globe = function (container, opts) {
     camera.position.y = distance * Math.sin(rotation.y);
     camera.position.z = distance * Math.cos(rotation.x) * Math.cos(rotation.y);
 
+    // Smoothly interpolate the camera position
+    if (this._cameraTarget) {
+      camera.position.x += (this._cameraTarget.x - camera.position.x) * 0.1;
+      camera.position.y += (this._cameraTarget.y - camera.position.y) * 0.1;
+      camera.position.z += (this._cameraTarget.z - camera.position.z) * 0.1;
+
+      // Stop updating if the camera is close enough to the target
+      const distanceToTarget = Math.sqrt(
+        Math.pow(this._cameraTarget.x - camera.position.x, 2) +
+          Math.pow(this._cameraTarget.y - camera.position.y, 2) +
+          Math.pow(this._cameraTarget.z - camera.position.z, 2)
+      );
+      if (distanceToTarget < 1) {
+        this._cameraTarget = null; // Stop updating
+      }
+    }
+
     camera.lookAt(mesh.position);
 
     // Animate cloud sprites
     if (this._animatedSprites) {
       const time = Date.now() * 0.001;
       this._animatedSprites.forEach(({ sprite, speed, phase }) => {
+        console.log('sprite',sprite)
         const base = sprite.userData.baseScale;
-        const pulse = 1 + 0.1 * Math.sin(time * 2 + phase);
+        const pulse = 1 + 0.1 * Math.sin(time * 2 + phase); // Pulsing effect
         sprite.scale.set(base * pulse, base * pulse, 1);
-        sprite.rotation += speed;
+        sprite.material.rotation += speed; // Add rotation animation
       });
     }
 
