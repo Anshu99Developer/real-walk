@@ -210,7 +210,6 @@ const Globe = () => {
       );
     }
   };
-
   return (
     <>
       <header className="flex justify-between items-center p-4 bg-transparent fixed w-full top-0 left-0 z-10">
