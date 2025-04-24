@@ -63,8 +63,11 @@ DAT.Globe = function (container, opts) {
       fragmentShader: [
         "varying vec3 vNormal;",
         "void main() {",
-        "float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 12.0 );",
-        "gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;",
+        // "float intensity = pow( 0.8 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 12.0 );",
+        // "gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;",
+        // "gl_FragColor = vec4( 1.0, 0.784, 0.39, 0.2 ) * intensity;", // Updated to #ffc864 with 30% opacity
+        "float intensity = pow( 0.6 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 2.0 );",
+        "gl_FragColor = vec4( 1.0, 0.784, 0.39, 0.2 ) * intensity;", // Updated to #ffc864 with 30% opacity
         "}",
       ].join("\n"),
     },
@@ -102,13 +105,13 @@ DAT.Globe = function (container, opts) {
 
     scene = new THREE.Scene();
 
-    var geometry = new THREE.SphereGeometry(200, 40, 50);
+    var geometry = new THREE.SphereGeometry(190, 40, 50);
 
     shader = Shaders["earth"];
     uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
     uniforms["globeTexture"].value = new THREE.TextureLoader().load(
-      imgDir + "world.jpg"
+      imgDir + "world2.jpg"
     );
 
     material = new THREE.ShaderMaterial({
@@ -134,7 +137,7 @@ DAT.Globe = function (container, opts) {
     });
 
     mesh = new THREE.Mesh(geometry, material);
-    mesh.scale.set(1.1, 1.1, 1.1);
+    mesh.scale.set(1.2, 1.2, 1.2);
     scene.add(mesh);
 
     geometry = new THREE.BoxGeometry(0.75, 0.75, 1);
@@ -146,7 +149,6 @@ DAT.Globe = function (container, opts) {
     renderer.setSize(w, h);
 
     renderer.domElement.style.position = "absolute";
-
     container.appendChild(renderer.domElement);
 
     container.addEventListener("mousedown", onMouseDown, false);
@@ -180,6 +182,33 @@ DAT.Globe = function (container, opts) {
     container.addEventListener("touchend", onTouchEnd, false);
     container.addEventListener("touchmove", onPinchZoom, false);
     container.addEventListener("touchend", onTouchEndPinch, false);
+
+    // // Add aura effect
+    // var auraGeometry = new THREE.SphereGeometry(220, 40, 50); // Slightly larger than the globe
+    // var auraMaterial = new THREE.ShaderMaterial({
+    //   uniforms: {},
+    //   vertexShader: [
+    //     "varying vec3 vNormal;",
+    //     "void main() {",
+    //     "vNormal = normalize( normalMatrix * normal );",
+    //     "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+    //     "}",
+    //   ].join("\n"),
+    //   fragmentShader: [
+    //     "varying vec3 vNormal;",
+    //     "void main() {",
+    //     "float intensity = pow( 0.6 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 6.0 );",
+    //     "gl_FragColor = vec4( 1.0, 0.784, 0.39, 0.4 ) * intensity;", // Updated to #ffc864 with 30% opacity
+    //     "}",
+    //   ].join("\n"),
+    //   side: THREE.BackSide,
+    //   blending: THREE.AdditiveBlending,
+    //   transparent: true,
+    // });
+
+    // var aura = new THREE.Mesh(auraGeometry, auraMaterial);
+    // aura.scale.set(1.2, 1.2, 1.2); // Scale to make it larger than the globe
+    // scene.add(aura);
   }
 
   function addData(data, opts) {
@@ -491,18 +520,13 @@ DAT.Globe = function (container, opts) {
     distanceTarget = distanceTarget < 350 ? 350 : distanceTarget;
   }
 
-  function animate() {
-    requestAnimationFrame(animate);
-    render();
-  }
-
   function addAnimatedSprite(
     lat,
     lng,
     texturePath,
     scale = 10,
     key,
-    speed = 0.005
+    speed = 0.5
   ) {
     const spriteMap = new THREE.TextureLoader().load(texturePath);
     const spriteMaterial = new THREE.SpriteMaterial({
@@ -523,7 +547,8 @@ DAT.Globe = function (container, opts) {
     sprite.position.y = radius * Math.cos(phi);
     sprite.position.z = radius * Math.sin(phi) * Math.sin(theta);
 
-    sprite.lookAt(mesh.position); // ensures facing camera
+    // Remove the line that makes the sprite face the camera
+    // sprite.lookAt(mesh.position);
 
     scene.add(sprite);
 
@@ -571,7 +596,7 @@ DAT.Globe = function (container, opts) {
     if (this._animatedSprites) {
       const time = Date.now() * 0.001;
       this._animatedSprites.forEach(({ sprite, speed, phase }) => {
-        console.log('sprite',sprite)
+        console.log("sprite", sprite);
         const base = sprite.userData.baseScale;
         const pulse = 1 + 0.1 * Math.sin(time * 2 + phase); // Pulsing effect
         sprite.scale.set(base * pulse, base * pulse, 1);
@@ -579,11 +604,34 @@ DAT.Globe = function (container, opts) {
       });
     }
 
+    // Change cursor to pointer when hovering over a sprite
+    const intersected = getIntersectedObject(mouse.x, mouse.y, camera, scene);
+    if (intersected && intersected.object instanceof THREE.Sprite) {
+      container.style.cursor = "pointer";
+    } else {
+      container.style.cursor = "auto";
+    }
+
     renderer.render(scene, camera);
   }
 
   init();
   this.animate = animate;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    // Animate sprites
+    if (this._animatedSprites) {
+      this._animatedSprites.forEach((item, idx) => {
+        // update phase
+        item.phase += item.speed * 0.02;
+        // spin the sprite's texture
+        item.sprite.material.rotation = item.phase;
+      });
+    }
+
+    render(scene, camera);
+  }
 
   this.__defineGetter__("time", function () {
     return this._time || 0;

@@ -4,8 +4,8 @@ export default function Popup({ isOpen, onClose, title, children }) {
   if (!isOpen) return null;
   return (
     <div className="popup-box fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-      <span className='bg-golden opacity-10 w-full h-full absolute top-0 left-0'></span>
-      <div className="shadow-lg w-full max-w-md mx-4 relative ">
+      <span className='bg-golden opacity-30 w-full h-full absolute top-0 left-0'></span>
+      <div className="w-full max-w-md mx-4 relative ">
         {/* Title */}
         {title && <h2 className="text-2xl font-bold mb-4 text-center capitalize">{title}</h2>}
 

@@ -5,7 +5,7 @@ import Popup from "./Popup";
 
 const listedCities = {
   India: ["Ahmedabad", "Mumbai", "Delhi", "Hyderabad"],
-  Dubai: ["Ahmedabad", "Mumbai", "Hyderabad"],
+  Dubai: ["Jumeirah", "Hatta"],
 };
 
 const Globe = () => {
@@ -85,19 +85,20 @@ const Globe = () => {
 
           // Add animated sprites for Dubai and India with unique keys
           globe.addAnimatedSprite(
-            25.276987,
-            55.296249,
-            "/spin-swirl.gif",
-            35,
+            24, // Adjusted latitude for Dubai
+            45, // Adjusted longitude for Dubai
+            "/swirl.png",
+            25,
             "dubai" // Unique key for Dubai
           );
           globe.addAnimatedSprite(
-            20.593684,
-            78.96288,
+            21.5, // Adjusted latitude for India
+            69, // Adjusted longitude for India
             "/swirl.png",
             35,
             "india" // Unique key for India
           );
+          globe.animate();
         });
       // Handle click event
       container.addEventListener("click", (event) => {
@@ -115,7 +116,7 @@ const Globe = () => {
               setShowPopup((prev) => ({
                 ...prev,
                 status: true,
-                data: { title: "dubai" },
+                data: { title: "Dubai" },
               }));
               globe.zoomToLocation(25.276987, 55.296249);
             } else if (key === "india") {
@@ -164,8 +165,32 @@ const Globe = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      // Adjust canvas size
+      const canvas = document.getElementById("particle-canvas");
+      if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      // Adjust globe container for mobile
+      const container = document.getElementById("globe-container");
+      if (container) {
+        container.style.height = window.innerWidth < 768 ? "80vh" : "100vh";
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const getLocationsByRegion = (region) => {
-    if (region == "India") {
+    if (region) {
       return (
         <ul className="border border-offWhite">
           {listedCities[region]?.map((city) => {

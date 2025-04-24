@@ -39,6 +39,24 @@ const cityConfig = {
       west: 78.3,
     },
   },
+  Jumeirah: {
+    center: { lat: 25.215, lng: 55.253 },
+    bounds: {
+      north: 25.24,
+      south: 25.19,
+      east: 55.27,
+      west: 55.23,
+    },
+  },
+  Hatta: {
+    center: { lat: 24.795, lng: 56.116 },
+    bounds: {
+      north: 24.82,
+      south: 24.77,
+      east: 56.15,
+      west: 56.08,
+    },
+  },
 };
 
 const WebGLOverlayMap = () => {
@@ -61,13 +79,19 @@ const WebGLOverlayMap = () => {
           zoom: 17,
           heading: 45,
           tilt: 67.5,
-          mapId: "912811642489b079",
+          mapId: "7c8c7702d4d75ac4",
           restriction: {
             latLngBounds: cityData.bounds,
             strictBounds: true,
           },
           gestureHandling: "greedy",
         });
+
+        if (!map) {
+          console.error(
+            "Failed to load the Google Map. Check your mapId or API key."
+          );
+        }
 
         let scene, camera, renderer, cube;
 
