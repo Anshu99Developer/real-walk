@@ -579,42 +579,27 @@ DAT.Globe = function (container, opts) {
       camera.position.y += (this._cameraTarget.y - camera.position.y) * 0.1;
       camera.position.z += (this._cameraTarget.z - camera.position.z) * 0.1;
 
-      // Stop updating if the camera is close enough to the target
       const distanceToTarget = Math.sqrt(
         Math.pow(this._cameraTarget.x - camera.position.x, 2) +
-          Math.pow(this._cameraTarget.y - camera.position.y, 2) +
-          Math.pow(this._cameraTarget.z - camera.position.z, 2)
+        Math.pow(this._cameraTarget.y - camera.position.y, 2) +
+        Math.pow(this._cameraTarget.z - camera.position.z, 2)
       );
       if (distanceToTarget < 1) {
-        this._cameraTarget = null; // Stop updating
+        this._cameraTarget = null;
       }
     }
 
     camera.lookAt(mesh.position);
 
-    // Animate cloud sprites
+    // Update the position of sprites/images to move with the globe
     if (this._animatedSprites) {
-      const time = Date.now() * 0.001;
-      this._animatedSprites.forEach(({ sprite, speed, phase }) => {
-        console.log("sprite", sprite);
-        const base = sprite.userData.baseScale;
-        const pulse = 1 + 0.1 * Math.sin(time * 2 + phase); // Pulsing effect
-        sprite.scale.set(base * pulse, base * pulse, 1);
-        sprite.material.rotation += speed; // Add rotation animation
+      this._animatedSprites.forEach(({ sprite }) => {
+        sprite.position.applyQuaternion(mesh.quaternion); // Apply globe's rotation to the sprite
       });
-    }
-
-    // Change cursor to pointer when hovering over a sprite
-    const intersected = getIntersectedObject(mouse.x, mouse.y, camera, scene);
-    if (intersected && intersected.object instanceof THREE.Sprite) {
-      container.style.cursor = "pointer";
-    } else {
-      container.style.cursor = "auto";
     }
 
     renderer.render(scene, camera);
   }
-
   init();
   this.animate = animate;
 

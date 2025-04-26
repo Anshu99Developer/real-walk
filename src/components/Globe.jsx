@@ -101,7 +101,7 @@ const Globe = () => {
           globe.animate();
         });
       // Handle click event
-      container.addEventListener("click", (event) => {
+      container.addEventListener("pointerdown", (event) => {
         const intersected = globe.getIntersectedObject(
           event.clientX,
           event.clientY
@@ -110,7 +110,6 @@ const Globe = () => {
         if (intersected) {
           const clickedObject = intersected.object;
           if (clickedObject.userData && clickedObject.userData.key) {
-            // Handle click based on unique key
             const key = clickedObject.userData.key;
             if (key === "dubai") {
               setShowPopup((prev) => ({
@@ -127,11 +126,6 @@ const Globe = () => {
               }));
               globe.zoomToLocation(20.593684, 78.96288);
             }
-          } else {
-            const point = intersected.point;
-            const lat = 90 - (Math.acos(point.y / 200) * 180) / Math.PI;
-            const lng =
-              ((Math.atan2(point.z, point.x) * 180) / Math.PI + 180) % 360;
           }
         }
       });
