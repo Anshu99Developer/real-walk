@@ -275,7 +275,7 @@ const WebGLOverlayMap = () => {
 
       {/* Info Dialog Box */}
       <div className="absolute top-4 left-4 bg-raisinBlack p-4 rounded-lg shadow-lg w-72">
-        <h2 className="text-lg font-bold pb-2 border-b border-borderColor">
+        <h2 className="text-lg font-bold pb-2 border-b border-borderColor text-white">
           {currentBuilding.name}
         </h2>
         <p className="text-sm text-white pt-2">
