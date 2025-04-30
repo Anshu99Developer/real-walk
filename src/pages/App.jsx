@@ -5,7 +5,8 @@ import {
 } from "react-router-dom";
 import Globe from "../components/Globe";
 import MyGoogleMap from "../components/MyGoogleMap";
-import Developer from "./Developer";
+import Home from "./Home";
+import MenuLayout from "../components/MenuLayout";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Globe />} />
           <Route path="/city/:city" element={<MyGoogleMap />} />
-          <Route path="/:developer" element={<Developer />} />
+          {/* <Route path="/:developer" element={<Developer />} /> */}
+          <Route path="/:developer" element={<MenuLayout> <Home /></MenuLayout>} />
         </Routes>
       </Router>
     </div>
