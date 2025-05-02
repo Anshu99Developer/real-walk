@@ -3,7 +3,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    height: 100vh;
+    height: 100dvh;
     background-color: #263f6b;
     display: block;
     align-items: center;
@@ -13,7 +13,7 @@
 
 .leftSideBar_container_grid {
     display: grid;
-    height: 100vh;
+    height: 100dvh;
 }
 
 .nav_button {
@@ -32,7 +32,7 @@
 }
 
 .nav_button img {
-    max-height: calc(100vh / 7);
+    max-height: calc(100dvh / 7);
     max-width: 35px;
 }
 
@@ -42,29 +42,31 @@
         position: absolute;
         top: 50%;
         z-index: 1;
-        right: 2%;
+        right: 0;
         transform: translateY(-50%);
+        max-width: 120px;
+        width: 100%;
     }
 
     .sideBar_container_grid {
-        box-shadow: 1px 0px 13px 7px #1bccf8c9;
-        border-top-left-radius: .5rem;
-        border-top-right-radius: .5rem;
-        border-bottom-left-radius: .5rem;
-        border-bottom-right-radius: .5rem;
-        max-height: 85vh;
+        box-shadow: 1px 0px 13px 7px #ffc864;
+        max-height: 100dvh;
         overflow-y: auto;
     }
-}
 
-.sidebar_container .sideBar_container_grid .btn_container:first-child {
-    border-top-left-radius: .5rem;
-    border-top-right-radius: .5rem;
-}
+    .sideBar_container_grid::-webkit-scrollbar {
+        height: 2px;
+        width: 5px;
+        background-color: #333;
+    }
 
-.sidebar_container .sideBar_container_grid .btn_container:last-child {
-    border-bottom-left-radius: .5rem;
-    border-bottom-right-radius: .5rem;
+    .sideBar_container_grid::-webkit-scrollbar-thumb {
+        background: rgba(255, 200, 100, 1);
+        border-radius: 5px;
+    }
+    .btn_container:not(:first-child){
+        border-top: 1px solid #333;
+    }
 }
 
 .btn_container {
@@ -73,11 +75,13 @@
     padding-bottom: 1rem;
     padding-left: .25rem;
     padding-right: .25rem;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
     flex-direction: column;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+.btn_container:hover{
+    background-color: rgba(255, 200, 100, 0.3);
 }
 
 .sidebar_btn {
@@ -173,10 +177,9 @@
 /* Mobile: Sidebar at the Bottom in Horizontal Layout */
 @media screen and (max-width: 767px) {
     .sidebar_container {
-        bottom: 1%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 95%;
+        bottom: 0;
+        left: 0;
+        width: 100%;
         position: absolute;
         z-index: 9;
     }
@@ -190,7 +193,6 @@
         background: rgba(0, 0, 0, 0.25);
         padding: 10px;
         justify-self: center;
-        border-radius: 8px;
         max-width: 100%;
         overflow-x: scroll;
         scroll-behavior: smooth;
@@ -200,34 +202,6 @@
         flex: 0 0 auto;
         /* Ensures each button stays in row */
     }
-
-    .sideBar_container_grid .btn_container {
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
-
-    .sidebar_container .sideBar_container_grid .btn_container:first-child {
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-    }
-
-    .sidebar_container .sideBar_container_grid .btn_container:last-child {
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-    }
-
-    .sidebar_container .sideBar_container_grid .btn_container:first-child {
-        border-top-left-radius: .5rem;
-        border-top-right-radius: 0rem;
-    }
-
-
 
     .sideBar_container_grid::-webkit-scrollbar {
         height: 5px;

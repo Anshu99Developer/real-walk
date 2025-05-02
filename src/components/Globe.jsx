@@ -171,7 +171,7 @@ const Globe = () => {
       // Adjust globe container for mobile
       const container = document.getElementById("globe-container");
       if (container) {
-        container.style.height = window.innerWidth < 768 ? "80vh" : "100vh";
+        container.style.height = window.innerWidth < 768 ? "100dvh" : "100dvh";
       }
     };
 

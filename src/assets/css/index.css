@@ -32,7 +32,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-position: 100%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -53,10 +53,12 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  outline: none;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -69,5 +71,22 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* Tour 360 styles */
+.tour-iframe {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+@media screen and (max-width: 767px) {
+  .developer-container {
+    height: calc(100% - 90px) !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  .developer-container {
+    max-width: calc(100% - 120px);
   }
 }

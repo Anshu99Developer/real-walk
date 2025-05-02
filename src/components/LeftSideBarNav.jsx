@@ -86,7 +86,7 @@ const LeftSideBarNav = () => {
                     <div className={`btn_container ${activePath === item.path ? 'active' : ''}`} key={item.path} id={item?.id}>
                         <button key={item.path}
                             type='button'
-                            className={`sidebar_btn ${activePath === item.path ? 'active' : ''}`}
+                            className={`sidebar_btn outline-none focus:outline-none ${activePath === item.path ? 'active' : ''}`}
                             onClick={(e) => { handleMenuClick(item?.id, item.path); }}
                         >
                             <span>

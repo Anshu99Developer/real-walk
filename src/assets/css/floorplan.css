@@ -1,0 +1,125 @@
+.floorplan_container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.floor_plan_button-conainer {
+    background-color: #263f6b;
+}
+
+.left_side_container {
+    width: calc(100% - 250px);
+    border-radius: 15px;
+    /* height: 85vh; */
+    display: grid;
+    align-items: center;
+}
+
+.floor_plan_label {
+    font-size: 20px !important;
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0) 0px 0px 3px;
+    text-align: left;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border: 0;
+    cursor: default;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffffff40;
+    display: block;
+    text-align: center;
+}
+
+.right_side_container {
+    background-color: #263f6b;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    width: 250px;
+    height: auto;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.right_side_container button {
+    width: 80%;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    background-color: #263f6b;
+}
+
+.right_side_container button.active {
+    color: #263f6b;
+    background-color: white;
+    /* color: #ffffff;
+    background-color: #26586b98; */
+}
+
+/* 
+.right_side_container button:hover {
+    color: #ffffff;
+    background-color: #26586b98;
+} */
+
+
+@media screen and (max-width: 767px) {
+    .left_side_container {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        margin-left: 0px;
+        align-items: unset;
+    }
+
+    .right_side_container {
+        position: absolute;
+        bottom: 80px;
+        z-index: 99;
+        width: 100%;
+        margin-right: 0;
+        height: unset;
+        padding: 0;
+    }
+
+    .floor_plan_label {
+        display: none;
+    }
+
+    .floor_plan_button-conainer {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        gap: 10px;
+        /* Adds space between buttons */
+        padding: 10px;
+    }
+
+    .right_side_container button {
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        /* Prevent text from wrapping */
+        flex-shrink: 0;
+        /* Prevent buttons from shrinking */
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #727272;
+    }
+
+    .grey-bg {
+        background-color: #fff;
+    }
+}

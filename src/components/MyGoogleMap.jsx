@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as THREE from "three";
-import { MuteAudioIcon, UnMuteAudioIcon } from "../assets/css/Icons";
+import { MuteAudioIcon, UnMuteAudioIcon } from "../assets/Icons";
 import ambientSound from "/ambient.mp3";
 import clickSound from "/click-sound.mp3";
 
@@ -257,13 +257,13 @@ const WebGLOverlayMap = () => {
 
   return (
     <>
-      <div ref={mapRef} style={{ width: "100%", height: "100vh" }} />
+      <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />
 
       {/* Audio Button */}
       <div className="bg-raisinBlack absolute top-0 right-0 border-2 border-raisinBlack">
         <button
           onClick={toggleAudio}
-          className="p-3 focus:outline-none outline-none transition-all rounded-none hover:bg-white text-white hover:text-raisinBlack"
+          className="p-3 focus:outline-none outline-none transition-all rounded-none hover:bg-white text-text-raisinBlack hover:text-raisinBlack"
         >
           {isPlaying ? (
             <MuteAudioIcon width={25} height={25} />

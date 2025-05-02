@@ -1,0 +1,83 @@
+/* 🔵 Floor Buttons: Default (Desktop) */
+.view-points{
+    width: 100%;
+    height: 100vh; /* or whatever height you need */
+    position: relative;
+    /* overflow: hidden; */
+}
+.floor_buttons {
+    position: absolute;
+    bottom: 53px;
+    right: 170px;
+    background-color: #324c724d;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* 🔵 List Reset */
+.floor_buttons ul {
+    list-style: none;
+    padding-left: unset;
+    margin-bottom: unset;
+}
+.floor_buttons ul li{
+    width: calc(50% - 4px);
+}
+
+/* 🔵 Buttons */
+.floor_buttons button {
+    padding: 8px 12px;
+    width: 100%;
+    border: 0;
+    margin-top: 5px;
+    background-color: #324c724d;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔵 Active Button */
+.floor_buttons button.active {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: hsl(216, 39%, 32%);
+    font-weight: 500;
+}
+
+/* 📱 Mobile View: Moves to Bottom-Center & Horizontal Layout */
+@media screen and (max-width: 767px) {
+    .floor_buttons {
+        width: 100%;
+        background-color: rgba(50, 76, 114, 0.5);
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        position: absolute;
+        bottom: 85px;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .floor_buttons ul {
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .floor_buttons button {
+        width: auto;
+        padding: 8px 10px;
+        font-size: 14px;
+        margin-top: 0;
+    }
+}
+
+/* 🔲 Small Mobile Screens (<480px): Adjust Button Size */
+@media screen and (max-width: 480px) {
+    .floor_buttons {
+        padding: 8px;
+    }
+
+    .floor_buttons button {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+}
