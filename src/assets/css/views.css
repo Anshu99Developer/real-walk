@@ -6,7 +6,7 @@
     /* overflow: hidden; */
 }
 .view-points canvas:first-child{
-    display: none !important;
+    /* display: none !important; */
 }
 .floor_buttons {
     position: absolute;
