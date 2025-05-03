@@ -25,7 +25,7 @@ const FloorPlans = ({ data }) => {
             alt="floor_plan_image"
             src={imageSrc}
             style={{ maxWidth: "100%" }}
-            className={`zoomable-image ${isZoomed ? "zoomed" : ""}`}
+            className={`zoomable-image md:h-[100dvh] max-md:h-full object-contain ${isZoomed ? "zoomed" : ""}`}
             onClick={() => setIsZoomed(!isZoomed)}
           />
         </div>

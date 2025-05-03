@@ -77,16 +77,32 @@ button:focus-visible {
 /* Tour 360 styles */
 .tour-iframe {
   width: 100dvw;
-  height: 100dvh;
 }
 
 @media screen and (max-width: 767px) {
   .developer-container {
     height: calc(100% - 90px) !important;
   }
+
+  .tour-iframe {
+    height: calc(100dvh - 90px) !important;
+  }
 }
 @media screen and (min-width: 768px) {
   .developer-container {
     max-width: calc(100% - 120px);
   }
+  .tour-iframe {
+    height: 100dvh;
+  }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.animate-fadeInOut {
+  animation: fadeInOut 5s ease-in-out forwards;
 }

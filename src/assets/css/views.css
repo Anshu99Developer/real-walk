@@ -5,11 +5,14 @@
     position: relative;
     /* overflow: hidden; */
 }
+.view-points canvas:first-child{
+    display: none !important;
+}
 .floor_buttons {
     position: absolute;
     bottom: 53px;
     right: 170px;
-    background-color: #324c724d;
+    background-color: rgba(255, 200, 100, 0.4);
     padding: 10px;
     border-radius: 8px;
 }

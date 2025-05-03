@@ -2,7 +2,7 @@ import LeftSideBarNav from "./LeftSideBarNav"
 
 const MenuLayout = ({ children }) => {
     return (
-        <div>
+        <div className="h-[100dvh]">
             <LeftSideBarNav />
             {children}
         </div>

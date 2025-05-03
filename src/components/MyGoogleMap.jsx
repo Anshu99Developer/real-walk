@@ -63,7 +63,7 @@ const WebGLOverlayMap = () => {
   const city = cityConfig[cityParam] ? cityParam : "Ahmedabad";
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentBuilding = residentialLocations[currentIndex];
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -263,7 +263,7 @@ const WebGLOverlayMap = () => {
       <div className="bg-raisinBlack absolute top-0 right-0 border-2 border-raisinBlack">
         <button
           onClick={toggleAudio}
-          className="p-3 focus:outline-none outline-none transition-all rounded-none hover:bg-white text-text-raisinBlack hover:text-raisinBlack"
+          className="p-3 focus:outline-none outline-none transition-all rounded-none lg:hover:bg-white text-text-raisinBlack lg:hover:text-raisinBlack"
         >
           {isPlaying ? (
             <MuteAudioIcon width={25} height={25} />
@@ -274,11 +274,11 @@ const WebGLOverlayMap = () => {
       </div>
 
       {/* Info Dialog Box */}
-      <div className="absolute top-4 left-4 bg-raisinBlack p-4 rounded-lg shadow-lg w-72">
+      <div className="absolute top-4 left-4 bg-raisinBlack p-4 rounded-lg shadow-lg lg:w-72 w-[250px]">
         <h2 className="text-lg font-bold pb-2 border-b border-borderColor text-white">
           {currentBuilding.name}
         </h2>
-        <p className="text-sm text-white pt-2">
+        <p className="lg:text-sm text-xs text-white pt-2">
           {currentBuilding.address && (
             <>
               <strong>Address:</strong> {currentBuilding.address} <br />
@@ -302,7 +302,7 @@ const WebGLOverlayMap = () => {
           )}
         </p>
         <Link
-          className="text-sm bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:bg-raisinBlack hover:border-golden hover:text-golden block mt-4 text-center"
+          className="lg:text-sm text-xs bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:bg-raisinBlack hover:border-golden hover:text-golden block mt-4 text-center"
           to={`/${currentBuilding?.id}`}
         >
           Checkout view

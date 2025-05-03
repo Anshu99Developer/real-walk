@@ -44,19 +44,19 @@ const Views = () => {
                 ref={panoramaRef}
             />
             <div className="floor_buttons">
-                <ul className="flex gap-2 flex-wrap">
+                <ul className="flex gap-2 flex-wrap w-full">
                     <li>
-                        <button onClick={() => handleSetHdri('/hdri/tirupati/15.jpg', 0)} className={`text-xs ${currentImage === 0 ? 'active' : ''}`}>
+                        <button onClick={() => handleSetHdri('/hdri/tirupati/15.jpg', 0)} className={`text-xs !w-full ${currentImage === 0 ? 'active' : ''}`}>
                             15th Floor
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => handleSetHdri('/hdri/tirupati/25.jpg', 1)} className={`text-xs ${currentImage === 1 ? 'active' : ''}`}>
+                        <button onClick={() => handleSetHdri('/hdri/tirupati/25.jpg', 1)} className={`text-xs !w-full ${currentImage === 1 ? 'active' : ''}`}>
                             25th Floor
                         </button>
                     </li>
                     <li>
-                        <button onClick={() => handleSetHdri('/hdri/tirupati/35.jpg', 2)} className={`text-xs ${currentImage === 2 ? 'active' : ''}`}>
+                        <button onClick={() => handleSetHdri('/hdri/tirupati/35.jpg', 2)} className={`text-xs !w-full ${currentImage === 2 ? 'active' : ''}`}>
                             35th Floor
                         </button>
                     </li>

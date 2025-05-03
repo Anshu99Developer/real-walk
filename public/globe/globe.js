@@ -105,7 +105,7 @@ DAT.Globe = function (container, opts) {
 
     scene = new THREE.Scene();
 
-    var geometry = new THREE.SphereGeometry(190, 40, 50);
+    var geometry = window.innerWidth < 768 ? new THREE.SphereGeometry(150, 40, 50) : new THREE.SphereGeometry(190, 40, 50);
 
     shader = Shaders["earth"];
     uniforms = THREE.UniformsUtils.clone(shader.uniforms);
@@ -536,7 +536,7 @@ DAT.Globe = function (container, opts) {
     sprite.userData.key = key;
     sprite.scale.set(scale, scale, 1);
 
-    const radius = 200 + 1;
+    const radius =  window.innerWidth < 768 ? 170 + 1 : 200 + 1;
     const phi = ((90 - lat) * Math.PI) / 180;
     const theta = ((180 - lng) * Math.PI) / 180;
 
