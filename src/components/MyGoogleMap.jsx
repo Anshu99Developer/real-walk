@@ -79,7 +79,7 @@ const WebGLOverlayMap = () => {
           },
           zoom: 19,
           heading: 0,
-          tilt: 45,
+          tilt: 55,
           mapId: "93282db3a162e6da",
           disableDefaultUI: true,
         });
@@ -220,11 +220,11 @@ const WebGLOverlayMap = () => {
       map.moveCamera({
         zoom: 19,
         heading: 0,
-        tilt: 45,
+        tilt: 55,
       });
 
       setTimeout(() => {
-        map.moveCamera({ tilt: 45, zoom: 19 });
+        map.moveCamera({ tilt: 55, zoom: 19 });
         overlay.requestRedraw();
       }, 1000);
     }
