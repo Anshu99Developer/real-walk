@@ -4,7 +4,7 @@
 }
 
 .floor_plan_button-conainer {
-    background-color: #263f6b;
+    background-color: #ffc864;
 }
 
 .left_side_container {
@@ -32,7 +32,7 @@
 }
 
 .right_side_container {
-    background-color: #263f6b;
+    background-color: #ffc864;
     display: grid;
     align-items: center;
     text-align: center;
@@ -53,11 +53,11 @@
     font-size: 14px;
     font-weight: 500;
     color: white;
-    background-color: #263f6b;
+    background-color: #ffc864;
 }
 
 .right_side_container button.active {
-    color: #263f6b;
+    color: #ffc864;
     background-color: white;
     /* color: #ffffff;
     background-color: #26586b98; */
