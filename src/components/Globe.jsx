@@ -161,7 +161,7 @@ const Globe = () => {
     <>
       <header className="flex justify-between items-center p-4 bg-transparent fixed w-full top-0 left-0 z-10 animate-fadeIn">
         <img src="/main-logo.png" alt="Logo" className="h-10" />
-        <button className="px-4 py-2 bg-transparent hover:bg-golden border border-golden text-white rounded-lg">
+        <button className="px-4 py-2 bg-transparent hover:bg-golden border border-golden text-white rounded-lg transition-all">
           Contact Us
         </button>
       </header>
