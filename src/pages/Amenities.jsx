@@ -51,7 +51,7 @@ const Amenities = ({ data }) => {
       </div>
 
       <div className="floor_buttons amenities_buttons max-md:flex-col">
-        <label className="block pb-2 text-center mb-3 border-b border-raisinBlack">
+        <label className="lg:text-base text-sm font-semibold block pb-2 text-center mb-3 border-b border-raisinBlack">
           Amenities
         </label>
         <ul className="flex flex-wrap gap-2 flex-row">

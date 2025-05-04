@@ -41,7 +41,7 @@ const Views = () => {
     <div className="developer-container relative">
       <div className="view-points" ref={panoramaRef} />
       <div className="floor_buttons max-md:flex-col">
-        <label className="block pb-2 text-center mb-3 border-b border-raisinBlack">Drone View</label>
+        <label className="lg:text-base text-sm font-semibold block pb-2 text-center mb-3 border-b border-raisinBlack">Drone View</label>
         <ul className="flex gap-2 flex-wrap w-full">
           <li>
             <button

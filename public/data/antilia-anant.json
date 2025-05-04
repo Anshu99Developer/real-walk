@@ -134,6 +134,12 @@
   "highlight": {
     "video": "https://cdn.shopify.com/videos/c/o/v/a61ee3d6710a416abe160a71edadc319.mp4"
   },
+  "droneViews":[
+    {
+      "title":"15th Floor",
+      "image":""
+    }
+  ],
   "amenities": [
     {
       "title": "Sky Garden",

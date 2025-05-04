@@ -12,7 +12,7 @@
     position: absolute;
     bottom: 200px;
     right: 170px;
-    background-color: rgba(255, 200, 100, 0.4);
+    background-color: rgba(255, 200, 100, 0.7);
     padding: 10px;
     border-radius: 8px;
 }
@@ -50,7 +50,7 @@
 @media screen and (max-width: 767px) {
     .floor_buttons {
         width: 100%;
-        background-color: rgba(255, 200, 100, 0.4);
+        background-color: rgba(255, 200, 100, 0.7);
         display: flex;
         justify-content: center;
         padding: 10px;

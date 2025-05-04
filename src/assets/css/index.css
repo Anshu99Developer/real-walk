@@ -85,7 +85,8 @@ button:focus-visible {
 
 @media screen and (max-width: 767px) {
   .developer-container {
-    height: calc(100% - 90px) !important;
+    width: 100dvw;
+    height: calc(100% - 78px) !important;
   }
 
   .tour-iframe {

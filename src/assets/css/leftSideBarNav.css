@@ -1,238 +1,241 @@
 .leftSideBar_container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    height: 100dvh;
-    background-color: #263f6b;
-    display: block;
-    align-items: center;
-    text-align: center;
-    z-index: 9999;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100dvh;
+  background-color: #263f6b;
+  display: block;
+  align-items: center;
+  text-align: center;
+  z-index: 9999;
 }
 
 .leftSideBar_container_grid {
-    display: grid;
-    height: 100dvh;
+  display: grid;
+  height: 100dvh;
 }
 
 .nav_button {
-    background-color: #263f6b;
-    border: none;
-    outline: none;
-    display: block;
-    margin-left: 10px;
-    margin-right: 10px;
+  background-color: #263f6b;
+  border: none;
+  outline: none;
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .nav_button.active {
-    border: none;
-    outline: none;
-    background-color: #516589;
+  border: none;
+  outline: none;
+  background-color: #516589;
 }
 
 .nav_button img {
-    max-height: calc(100dvh / 7);
-    max-width: 35px;
+  max-height: calc(100dvh / 7);
+  max-width: 35px;
 }
 
 /* new */
 @media screen and (min-width: 768px) {
-    .sidebar_container {
-        position: absolute;
-        top: 50%;
-        z-index: 1;
-        right: 0;
-        transform: translateY(-50%);
-        max-width: 120px;
-        width: 100%;
-    }
+  .sidebar_container {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    right: 0;
+    transform: translateY(-50%);
+    max-width: 120px;
+    width: 100%;
+  }
 
-    .sideBar_container_grid {
-        box-shadow: 1px 0px 13px 7px #ffc864;
-        max-height: 100dvh;
-        overflow-y: auto;
-    }
+  .sideBar_container_grid {
+    box-shadow: 1px 0px 13px 7px #ffc864;
+    max-height: 100dvh;
+    overflow-y: auto;
+  }
 
-    .sideBar_container_grid::-webkit-scrollbar {
-        height: 2px;
-        width: 5px;
-        background-color: #333;
-    }
+  .sideBar_container_grid::-webkit-scrollbar {
+    height: 2px;
+    width: 5px;
+    background-color: #333;
+  }
 
-    .sideBar_container_grid::-webkit-scrollbar-thumb {
-        background: rgba(255, 200, 100, 1);
-        border-radius: 5px;
-    }
-    .btn_container:not(:first-child){
-        border-top: 1px solid #333;
-    }
+  .sideBar_container_grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 200, 100, 1);
+    border-radius: 5px;
+  }
+  .btn_container:not(:first-child) {
+    border-top: 1px solid #333;
+  }
 }
 
 .btn_container {
-    gap: .25rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: .25rem;
-    padding-right: .25rem;
-    flex-direction: column;
-    display: flex;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease-in-out;
+  gap: 0.25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  flex-direction: column;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
 }
-.btn_container:hover{
-    background-color: rgba(255, 200, 100, 0.3);
+.btn_container:hover {
+  background-color: rgba(255, 200, 100, 0.3);
 }
 
 .sidebar_btn {
-    padding-left: .5rem;
-    padding-right: .5rem;
-    gap: .25rem;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: none;
-    background-color: transparent;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  gap: 0.25rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+  background-color: transparent;
 }
 
 .btn_icon {
-    width: 33px;
-    height: 33px;
+  width: 33px;
+  height: 33px;
 }
 
 .btn_text {
-    font-size: 16px;
-    line-height: 1.25rem;
-    color: #ffffff;
-    font-weight: 400;
-    text-transform: capitalize;
-    text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin-bottom: 0;
+  font-size: 16px;
+  line-height: 1.25rem;
+  color: #ffffff;
+  font-weight: 400;
+  text-transform: capitalize;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 0;
 }
 
 .btn_container.active {
-    background-color: #ffffff9e;
+  background-color: rgba(255, 200, 100, 0.5);
 }
 
 .sidebar_btn.active .btn_text {
-    color: #000000;
+  color: #fff;
 }
 
 .hover_icon {
-    display: none;
+  display: none;
 }
 
 .btn_container.active .btn_icon {
-    display: none;
+  display: none;
 }
 
 .btn_container.active .hover_icon {
-    display: block;
+  display: block;
 }
 
 @media (max-width: 1440px) {
-    .btn_container {
-        gap: 4px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 4px;
-        padding-right: 4px;
-    }
+  .btn_container {
+    gap: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
 
-    .btn_icon {
-        width: 28px;
-        height: 28px;
-    }
+  .btn_icon {
+    width: 28px;
+    height: 28px;
+  }
 
-    .btn_text {
-        font-size: 15px;
-    }
+  .btn_text {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 1200px) {
-    .btn_container {
-        gap: 4px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 4px;
-        padding-right: 4px;
-    }
+  .btn_container {
+    gap: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
 
-    .btn_icon {
-        width: 22px;
-        height: 22px;
-    }
+  .btn_icon {
+    width: 22px;
+    height: 22px;
+  }
 
-    .btn_text {
-        font-size: 13px;
-    }
+  .btn_text {
+    font-size: 13px;
+  }
 }
 
-@media (max-width: 991px) {}
+@media (max-width: 991px) {
+}
 
 /* Mobile: Sidebar at the Bottom in Horizontal Layout */
 @media screen and (max-width: 767px) {
-    .sidebar_container {
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        position: absolute;
-        z-index: 9;
-    }
+  .sidebar_container {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    z-index: 9;
+  }
 
-    .sideBar_container_grid {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        /* Makes it scrollable */
-        white-space: nowrap;
-        background: rgba(0, 0, 0, 0.25);
-        padding: 10px;
-        justify-self: center;
-        max-width: 100%;
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-    }
+  .sideBar_container_grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    /* Makes it scrollable */
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 10px;
+    justify-self: center;
+    max-width: 100%;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
 
-    .btn_container {
-        flex: 0 0 auto;
-        /* Ensures each button stays in row */
-    }
+  .btn_container {
+    flex: 0 0 auto;
+    /* Ensures each button stays in row */
+  }
 
-    .sideBar_container_grid::-webkit-scrollbar {
-        height: 5px;
-    }
+  .sideBar_container_grid::-webkit-scrollbar {
+    height: 5px;
+  }
 
-    .sideBar_container_grid::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 5px;
-    }
+  .sideBar_container_grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+  }
 }
 
-@media (max-width: 575px) {}
+@media (max-width: 575px) {
+}
 
 /* 🔵 Small Mobile Screens (<480px) */
 @media screen and (max-width: 767px) {
-    .sideBar_container_grid {
-        padding: 0px;
-    }
+  .sideBar_container_grid {
+    padding: 0px;
+  }
 
-    .btn_text {
-        font-size: 10px;
-        text-transform: uppercase;
-        /* Smaller font for tiny screens */
-    }
+  .btn_text {
+    font-size: 10px;
+    text-transform: uppercase;
+    /* Smaller font for tiny screens */
+  }
 
-    .sidebar_btn {
-        gap: 4px;
-    }
+  .sidebar_btn {
+    gap: 4px;
+  }
 
-    .btn_container {
-        padding-top: 4px;
-        padding-bottom: 4px;
-    }
+  .btn_container {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    min-width: 80px;
+  }
 }

@@ -46,15 +46,6 @@ function DeveloperRoutes() {
     }
   }, [param.developer]);
 
-  // Trigger route transition loader
-  useEffect(() => {
-    if (!loading) {
-      setRouteLoading(true);
-      const timer = setTimeout(() => setRouteLoading(false), 300); // short delay
-      return () => clearTimeout(timer);
-    }
-  }, [location.pathname]);
-
   if (loading || !developerData) {
     return <Loader />;
   }
