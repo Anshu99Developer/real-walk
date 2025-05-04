@@ -5,6 +5,7 @@ const Home = ({ data }) => {
   const images = data?.images || [];
   const frameCount = images.length;
   const [frameIndex, setFrameIndex] = useState(0);
+  const [showTutorial, setShowTutorial] = useState(true);
 
   const isDragging = useRef(false);
   const lastX = useRef(0);
@@ -18,10 +19,17 @@ const Home = ({ data }) => {
       img.src = src;
     });
 
+    // Hide tutorial after 5s
+    const timer = setTimeout(() => setShowTutorial(false), 5000);
     return () => {
+      clearTimeout(timer);
       cancelAnimationFrame(animationFrame.current);
     };
   }, [images]);
+
+  const hideTutorial = () => {
+    if (showTutorial) setShowTutorial(false);
+  };
 
   const updateFrame = () => {
     const sensitivity = 10; // Increase for smoother motion
@@ -39,6 +47,7 @@ const Home = ({ data }) => {
   const handleStart = (x) => {
     isDragging.current = true;
     lastX.current = x;
+    hideTutorial();
     animationFrame.current = requestAnimationFrame(updateFrame);
   };
 
@@ -65,6 +74,11 @@ const Home = ({ data }) => {
       onTouchMove={(e) => handleMove(e.touches[0].clientX)}
       onTouchEnd={handleEnd}
     >
+      {showTutorial && (
+        <div className="absolute w-max max-w-[90%] top-10 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-60 text-white text-base px-5 py-3 rounded-xl z-50 pointer-events-none animate-fadeInOut">
+          <p className="text-sm">Swipe or drag left/right to explore 360 view</p>
+        </div>
+      )}
       {images.length > 0 && (
         <img
           src={images[frameIndex]}
