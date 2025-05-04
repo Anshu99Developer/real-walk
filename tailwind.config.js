@@ -10,6 +10,9 @@ export default {
         raisinBlack: "#222222",
         offWhite: "#ffffff40",
       },
+      boxShadow: {
+        goldenShadow: "0px 0px 12px 10px rgba(255,200,100,0.3)",
+      },
     },
   },
   plugins: [],
