@@ -6,46 +6,61 @@ const DayNight = ({ data }) => {
   const frameCount = 60;
   const [frameIndex, setFrameIndex] = useState(0);
   const [showTutorial, setShowTutorial] = useState(true);
+
   const isDragging = useRef(false);
   const lastX = useRef(0);
+  const deltaX = useRef(0);
+  const animationFrame = useRef(null);
 
   useEffect(() => {
-    // Preload all frames
+    // Preload images
     images.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
 
-    // Auto-hide tutorial after 5 seconds
+    // Hide tutorial after 5s
     const timer = setTimeout(() => setShowTutorial(false), 5000);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(animationFrame.current);
+    };
   }, []);
 
   const hideTutorial = () => {
     if (showTutorial) setShowTutorial(false);
   };
 
-  const handleStart = (x) => {
-    isDragging.current = true;
-    lastX.current = x;
-    hideTutorial();
-  };
-
-  const handleMove = (x) => {
-    if (!isDragging.current) return;
-
-    const dx = x - lastX.current;
-    const sensitivity = 2;
+  const updateFrame = () => {
+    const sensitivity = 8; // Higher = smoother
+    const dx = deltaX.current;
 
     if (Math.abs(dx) >= sensitivity) {
       const direction = dx > 0 ? -1 : 1;
       setFrameIndex((prev) => (prev + direction + frameCount) % frameCount);
-      lastX.current = x;
+      deltaX.current = 0;
     }
+
+    animationFrame.current = requestAnimationFrame(updateFrame);
+  };
+
+  const handleStart = (x) => {
+    isDragging.current = true;
+    lastX.current = x;
+    hideTutorial();
+    animationFrame.current = requestAnimationFrame(updateFrame);
+  };
+
+  const handleMove = (x) => {
+    if (!isDragging.current) return;
+    deltaX.current += x - lastX.current;
+    lastX.current = x;
   };
 
   const handleEnd = () => {
     isDragging.current = false;
+    deltaX.current = 0;
+    cancelAnimationFrame(animationFrame.current);
   };
 
   return (
@@ -64,12 +79,14 @@ const DayNight = ({ data }) => {
           <p>Swipe or drag left/right to explore day & night</p>
         </div>
       )}
-      <img
-        src={images[frameIndex]}
-        alt={`Frame ${frameIndex}`}
-        className="day_night_images rotate_view"
-        draggable={false}
-      />
+      {images.length > 0 && (
+        <img
+          src={images[frameIndex]}
+          alt={`Frame ${frameIndex}`}
+          className="day_night_images rotate_view"
+          draggable={false}
+        />
+      )}
     </div>
   );
 };

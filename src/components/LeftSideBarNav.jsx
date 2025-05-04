@@ -80,7 +80,7 @@ const LeftSideBarNav = () => {
     };
 
     return (
-        <div className='sidebar_container z-[99]'>
+        <div className='sidebar_container bg-raisinBlack z-[99]'>
             <div className='sideBar_container_grid' ref={menuRef}>
                 {menuItems.map((item) => (
                     <div className={`btn_container ${activePath === item.path ? 'active' : ''}`} key={item.path} id={item?.id}>

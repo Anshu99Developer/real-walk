@@ -11,9 +11,6 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^2.20.6",
-    "@tsparticles/engine": "^3.8.1",
-    "@tsparticles/react": "^3.0.0",
-    "@tsparticles/slim": "^3.8.1",
     "@tweenjs/tween.js": "^25.0.0",
     "clsx": "^2.1.1",
     "motion": "^12.8.0",

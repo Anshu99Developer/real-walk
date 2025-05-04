@@ -3,6 +3,7 @@ import {
   Route,
   BrowserRouter as Router,
   Routes,
+  useLocation,
   useParams,
 } from "react-router-dom";
 import Globe from "../components/Globe";
@@ -16,18 +17,26 @@ import Views from "./Views";
 import Amenities from "./Amenities";
 import FloorPlans from "./FloorPlans";
 import Inventory from "./Inventory";
+import Loader from "../components/ui/Loader";
+import Location from "./Location";
 
 function DeveloperRoutes() {
-  const [developerData, setDeveloperData] = useState({});
+  const [developerData, setDeveloperData] = useState(null);
+  const [loading, setLoading] = useState(true); // loader state
+  const [routeLoading, setRouteLoading] = useState(false);
+  const location = useLocation(); // detect route changes
   const param = useParams();
 
   const getData = async (developer) => {
     try {
+      setLoading(true);
       const response = await fetch(`/data/${developer}.json`);
       const data = await response.json();
       setDeveloperData(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false); // end loading
     }
   };
 
@@ -36,6 +45,19 @@ function DeveloperRoutes() {
       getData(param.developer);
     }
   }, [param.developer]);
+
+  // Trigger route transition loader
+  useEffect(() => {
+    if (!loading) {
+      setRouteLoading(true);
+      const timer = setTimeout(() => setRouteLoading(false), 300); // short delay
+      return () => clearTimeout(timer);
+    }
+  }, [location.pathname]);
+
+  if (loading || !developerData) {
+    return <Loader />;
+  }
 
   return (
     <Routes>
@@ -88,6 +110,14 @@ function DeveloperRoutes() {
         }
       />
       <Route
+        path="/location"
+        element={
+          <MenuLayout>
+            <Location data={developerData?.location} />
+          </MenuLayout>
+        }
+      />
+      <Route
         path="/floorplans"
         element={
           <MenuLayout>
@@ -95,20 +125,29 @@ function DeveloperRoutes() {
           </MenuLayout>
         }
       />
-      <Route path="/inventory" element={<MenuLayout><Inventory /></MenuLayout>} />
+      <Route
+        path="/inventory"
+        element={
+          <MenuLayout>
+            <Inventory />
+          </MenuLayout>
+        }
+      />
     </Routes>
   );
 }
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Globe />} />
-        <Route path="/city/:city" element={<MyGoogleMap />} />
-        <Route path="/:developer/*" element={<DeveloperRoutes />} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Globe />} />
+          <Route path="/city/:city" element={<MyGoogleMap />} />
+          <Route path="/:developer/*" element={<DeveloperRoutes />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 

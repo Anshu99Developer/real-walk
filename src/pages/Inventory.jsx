@@ -40,8 +40,6 @@ const Inventory = () => {
     });
   };
 
-  console.log(svgOffsetY);
-
   return (
     <div className="full-container developer-container bg-white">
       <div className="relative w-screen h-screen overflow-hidden home_page_image_container">
@@ -49,27 +47,89 @@ const Inventory = () => {
           <img src={buildingV2} alt="building" className="building_image" />
           <div>
             <svg
-              width="257" // or any desired pixel/CSS size
-              height="180"
-              viewBox="7 -413 257 180"
-              // viewBox="0 0 512 620"
+              width="300"
+              height={37 * 180}
+              viewBox="0 -420 300 1500"
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
               className="building_svg"
               style={{ transform: `translate(-50%, ${svgOffsetY}px)` }}
             >
-              <path
-                onClick={() => {
-                  setShowPlan(true);
-                  setIsTypicalPlan(false);
-                }}
-                style={{
-                  opacity: 0.5,
-                  fill: "rgb(255 204 36)",
-                  strokeWidth: 3,
-                }}
-                d="M 264,-258 L 132,-413 L 7,-298 v 28 L 132,-380 L 262,-233 Z"
-              />
+              <g>
+                {Array.from({ length: 32 }).map((_, index) => {
+                  const yOffset = index * 40; // Stack directly under previous
+                  return (
+                    <path
+                      key={index}
+                      onClick={() => {
+                        setShowPlan(true);
+                        setIsTypicalPlan(false);
+                      }}
+                      style={{
+                        opacity: 0.5,
+                        fill: "rgb(255 204 36)",
+                        strokeWidth: 1,
+                      }}
+                      // transform={`translate(0, ${yOffset})`}
+                      // d="M 264.03883,-258.48769 132.86966,-413.99331 7.7411631,-298.18362 v 28.82299 L 132.86966,-380.62572 262.88824,-233.7292 Z"
+                      d={`M 264.03883,${-258.48769 + yOffset} 132.86966,${-413.99331 + yOffset} 7.7411631,${-298.18362 + yOffset} v 28.82299 L 132.86966,${-380.62572 + yOffset} 262.88824,${-233.7292 + yOffset} Z`}
+                      // d={'M 264.03883,125.42876 132.86966,30.17553 7.7411631,102.41663 v 27.38473 L 132.86966,57.50243 262.88824,148.46134 Z'}
+                    />
+                  );
+                })}
+                {/* <path
+                  key={0}
+                  onClick={() => {
+                    setShowPlan(true);
+                    setIsTypicalPlan(false);
+                  }}
+                  style={{
+                    opacity: 0.5,
+                    fill: "rgb(255 204 36)",
+                    strokeWidth: 1,
+                  }}
+                  d="M 264.03883,-258.48769 132.86966,-413.99331 7.7411631,-298.18362 v 28.82299 L 132.86966,-380.62572 262.88824,-233.7292 Z"
+                />
+                <path
+                  key={0}
+                  onClick={() => {
+                    setShowPlan(true);
+                    setIsTypicalPlan(false);
+                  }}
+                  style={{
+                    opacity: 0.5,
+                    fill: "rgb(255 204 36)",
+                    strokeWidth: 1,
+                  }}
+                  d="M 264.03883,-228.48769 132.86966,-383.99331 7.7411631,-278.18362 v 28.82299 L 132.86966,-360.62572 262.88824,-213.7292 Z"
+                />
+                <path
+                  key={1}
+                  onClick={() => {
+                    setShowPlan(true);
+                    setIsTypicalPlan(false);
+                  }}
+                  style={{
+                    opacity: 0.5,
+                    fill: "rgb(255 204 36)",
+                    strokeWidth: 1,
+                  }}
+                  d="M 264.03883,125.42876 132.86966,30.17553 7.7411631,102.41663 v 27.38473 L 132.86966,57.50243 262.88824,148.46134 Z"
+                />
+                <path
+                  key={1}
+                  onClick={() => {
+                    setShowPlan(true);
+                    setIsTypicalPlan(false);
+                  }}
+                  style={{
+                    opacity: 0.5,
+                    fill: "rgb(255 204 36)",
+                    strokeWidth: 1,
+                  }}
+                  d="M 264.03883,125.42876 132.86966,30.17553 7.7411631,102.41663 v 27.38473 L 132.86966,57.50243 262.88824,148.46134 Z"
+                /> */}
+              </g>
             </svg>
           </div>
         </div>

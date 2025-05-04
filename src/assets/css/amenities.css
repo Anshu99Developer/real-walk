@@ -60,7 +60,6 @@
 
 .floor_buttons {
   position: absolute;
-  bottom: 80px;
   width: 200px;
   right: 15px;
   /* left: 50%;
@@ -81,6 +80,9 @@
 .floor_buttons .active {
   background: blue;
   color: rgba(255, 253, 253, 0.5);
+}
+.amenities_buttons {
+  bottom: 70px;
 }
 
 @media screen and (max-width: 767px) {

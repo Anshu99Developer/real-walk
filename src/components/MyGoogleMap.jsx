@@ -23,7 +23,6 @@ const residentialLocations = [
     address: "123 Main Street, Ahmedabad",
     description: "Luxury residential tower with modern amenities.",
     area: "5000 sq.ft",
-    price: "$1.5M",
     nearby: ["Riverfront", "Metro Station"],
   },
   {
@@ -34,7 +33,6 @@ const residentialLocations = [
     address: "456 Park Avenue, Ahmedabad",
     description: "Affordable housing project surrounded by greenery.",
     area: "1200 sq.ft",
-    price: "$250k",
     nearby: ["Shopping Mall", "City Park"],
   },
 ];
@@ -256,7 +254,7 @@ const WebGLOverlayMap = () => {
   };
 
   return (
-    <>
+    <div className="fixed top-0 left-0 w-full h-full">
       <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />
 
       {/* Audio Button */}
@@ -327,7 +325,7 @@ const WebGLOverlayMap = () => {
           Next
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
