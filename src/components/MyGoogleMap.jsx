@@ -276,7 +276,7 @@ const WebGLOverlayMap = () => {
 
         {/* Info Dialog Box */}
         <div className="absolute top-4 left-4 bg-raisinBlack p-4 rounded-lg shadow-lg lg:w-72 w-[250px]">
-          <h2 className="text-lg font-bold pb-2 border-b border-borderColor text-white">
+          <h2 className="lg:text-lg text-base font-bold pb-2 border-b border-borderColor text-white">
             {currentBuilding.name}
           </h2>
           <p className="lg:text-sm text-xs text-white pt-2">
@@ -313,7 +313,7 @@ const WebGLOverlayMap = () => {
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-row items-center">
           <Link
-            className="bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:scale-105"
+            className="lg:text-base text-sm bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:scale-105"
             to="/"
           >
             Back to world
@@ -326,7 +326,7 @@ const WebGLOverlayMap = () => {
                 (prev) => (prev + 1) % residentialLocations.length
               )
             }
-            className="bg-raisinBlack text-white border-2 border-transparent px-4 py-2 rounded-lg font-semibold shadow-md transition-all hover:bg-white hover:text-raisinBlack hover:border-raisinBlack hover:scale-105 outline-none focus:outline-none"
+            className="lg:text-base text-sm bg-raisinBlack text-white border-2 border-transparent px-4 py-2 rounded-lg font-semibold shadow-md transition-all hover:bg-white hover:text-raisinBlack hover:border-raisinBlack hover:scale-105 outline-none focus:outline-none"
           >
             Next
           </button>
