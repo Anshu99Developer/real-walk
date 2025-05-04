@@ -62,6 +62,7 @@ const WebGLOverlayMap = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentBuilding = residentialLocations[currentIndex];
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -159,9 +160,10 @@ const WebGLOverlayMap = () => {
         };
 
         overlay.setMap(map);
+        setIsLoading(false);
         clearInterval(interval);
       }
-    }, 10);
+    }, 100);
 
     return () => clearInterval(interval);
   }, []);
@@ -254,78 +256,83 @@ const WebGLOverlayMap = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full">
-      <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />
+    <>
+      <div className="fixed top-0 left-0 w-full h-full">
+        <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />
 
-      {/* Audio Button */}
-      <div className="bg-raisinBlack absolute top-0 right-0 border-2 border-raisinBlack">
-        <button
-          onClick={toggleAudio}
-          className="p-3 focus:outline-none outline-none transition-all rounded-none lg:hover:bg-white text-text-raisinBlack lg:hover:text-raisinBlack"
-        >
-          {isPlaying ? (
-            <MuteAudioIcon width={25} height={25} />
-          ) : (
-            <UnMuteAudioIcon width={25} height={25} />
-          )}
-        </button>
-      </div>
+        {/* Audio Button */}
+        <div className="bg-raisinBlack absolute top-0 right-0 border-2 border-raisinBlack">
+          <button
+            onClick={toggleAudio}
+            className="p-3 focus:outline-none outline-none transition-all rounded-none lg:hover:bg-white text-text-raisinBlack lg:hover:text-raisinBlack"
+          >
+            {isPlaying ? (
+              <MuteAudioIcon width={25} height={25} />
+            ) : (
+              <UnMuteAudioIcon width={25} height={25} />
+            )}
+          </button>
+        </div>
 
-      {/* Info Dialog Box */}
-      <div className="absolute top-4 left-4 bg-raisinBlack p-4 rounded-lg shadow-lg lg:w-72 w-[250px]">
-        <h2 className="text-lg font-bold pb-2 border-b border-borderColor text-white">
-          {currentBuilding.name}
-        </h2>
-        <p className="lg:text-sm text-xs text-white pt-2">
-          {currentBuilding.address && (
-            <>
-              <strong>Address:</strong> {currentBuilding.address} <br />
-            </>
-          )}
-          {currentBuilding.area && (
-            <>
-              <strong>Area:</strong> {currentBuilding.area} <br />
-            </>
-          )}
-          {currentBuilding.description && (
-            <>
-              <strong>Description:</strong> {currentBuilding.description} <br />
-            </>
-          )}
-          {currentBuilding.nearby && (
-            <>
-              <strong>Nearby:</strong> {currentBuilding.nearby.join(", ")}{" "}
-              <br />
-            </>
-          )}
-        </p>
-        <Link
-          className="lg:text-sm text-xs bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:bg-raisinBlack hover:border-golden hover:text-golden block mt-4 text-center"
-          to={`/${currentBuilding?.id}`}
-        >
-          Checkout view
-        </Link>
-      </div>
+        {/* Info Dialog Box */}
+        <div className="absolute top-4 left-4 bg-raisinBlack p-4 rounded-lg shadow-lg lg:w-72 w-[250px]">
+          <h2 className="text-lg font-bold pb-2 border-b border-borderColor text-white">
+            {currentBuilding.name}
+          </h2>
+          <p className="lg:text-sm text-xs text-white pt-2">
+            {currentBuilding.address && (
+              <>
+                <strong>Address:</strong> {currentBuilding.address} <br />
+              </>
+            )}
+            {currentBuilding.area && (
+              <>
+                <strong>Area:</strong> {currentBuilding.area} <br />
+              </>
+            )}
+            {currentBuilding.description && (
+              <>
+                <strong>Description:</strong> {currentBuilding.description}{" "}
+                <br />
+              </>
+            )}
+            {currentBuilding.nearby && (
+              <>
+                <strong>Nearby:</strong> {currentBuilding.nearby.join(", ")}{" "}
+                <br />
+              </>
+            )}
+          </p>
+          <Link
+            className="lg:text-sm text-xs bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:bg-raisinBlack hover:border-golden hover:text-golden block mt-4 text-center"
+            to={`/${currentBuilding?.id}`}
+          >
+            Checkout view
+          </Link>
+        </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-row items-center">
-        <Link
-          className="bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:scale-105"
-          to="/"
-        >
-          Back to world
-        </Link>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-row items-center">
+          <Link
+            className="bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:scale-105"
+            to="/"
+          >
+            Back to world
+          </Link>
+        </div>
+        <div className="absolute bottom-10 right-5 flex flex-row items-center">
+          <button
+            onClick={() =>
+              setCurrentIndex(
+                (prev) => (prev + 1) % residentialLocations.length
+              )
+            }
+            className="bg-raisinBlack text-white border-2 border-transparent px-4 py-2 rounded-lg font-semibold shadow-md transition-all hover:bg-white hover:text-raisinBlack hover:border-raisinBlack hover:scale-105 outline-none focus:outline-none"
+          >
+            Next
+          </button>
+        </div>
       </div>
-      <div className="absolute bottom-10 right-5 flex flex-row items-center">
-        <button
-          onClick={() =>
-            setCurrentIndex((prev) => (prev + 1) % residentialLocations.length)
-          }
-          className="bg-raisinBlack text-white border-2 border-transparent px-4 py-2 rounded-lg font-semibold shadow-md transition-all hover:bg-white hover:text-raisinBlack hover:border-raisinBlack hover:scale-105 outline-none focus:outline-none"
-        >
-          Next
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 
