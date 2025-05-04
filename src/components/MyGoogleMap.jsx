@@ -161,7 +161,7 @@ const WebGLOverlayMap = () => {
         overlay.setMap(map);
         clearInterval(interval);
       }
-    }, 100);
+    }, 10);
 
     return () => clearInterval(interval);
   }, []);

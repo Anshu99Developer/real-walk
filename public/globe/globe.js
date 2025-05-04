@@ -105,13 +105,16 @@ DAT.Globe = function (container, opts) {
 
     scene = new THREE.Scene();
 
-    var geometry = window.innerWidth < 768 ? new THREE.SphereGeometry(150, 40, 50) : new THREE.SphereGeometry(190, 40, 50);
+    var geometry =
+      window.innerWidth < 768
+        ? new THREE.SphereGeometry(150, 40, 50)
+        : new THREE.SphereGeometry(190, 40, 50);
 
     shader = Shaders["earth"];
     uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
     uniforms["globeTexture"].value = new THREE.TextureLoader().load(
-      imgDir + "world2.jpg"
+      imgDir + "world3.jpg"
     );
 
     material = new THREE.ShaderMaterial({
@@ -145,7 +148,7 @@ DAT.Globe = function (container, opts) {
 
     point = new THREE.Mesh(geometry);
 
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true  });
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setClearColor(0x000000, 0); // transparent background
     renderer.setSize(w, h);
 
@@ -183,33 +186,6 @@ DAT.Globe = function (container, opts) {
     container.addEventListener("touchend", onTouchEnd, false);
     container.addEventListener("touchmove", onPinchZoom, false);
     container.addEventListener("touchend", onTouchEndPinch, false);
-
-    // // Add aura effect
-    // var auraGeometry = new THREE.SphereGeometry(220, 40, 50); // Slightly larger than the globe
-    // var auraMaterial = new THREE.ShaderMaterial({
-    //   uniforms: {},
-    //   vertexShader: [
-    //     "varying vec3 vNormal;",
-    //     "void main() {",
-    //     "vNormal = normalize( normalMatrix * normal );",
-    //     "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
-    //     "}",
-    //   ].join("\n"),
-    //   fragmentShader: [
-    //     "varying vec3 vNormal;",
-    //     "void main() {",
-    //     "float intensity = pow( 0.6 - dot( vNormal, vec3( 0, 0, 1.0 ) ), 6.0 );",
-    //     "gl_FragColor = vec4( 1.0, 0.784, 0.39, 0.4 ) * intensity;", // Updated to #ffc864 with 30% opacity
-    //     "}",
-    //   ].join("\n"),
-    //   side: THREE.BackSide,
-    //   blending: THREE.AdditiveBlending,
-    //   transparent: true,
-    // });
-
-    // var aura = new THREE.Mesh(auraGeometry, auraMaterial);
-    // aura.scale.set(1.2, 1.2, 1.2); // Scale to make it larger than the globe
-    // scene.add(aura);
   }
 
   function addData(data, opts) {
@@ -320,22 +296,22 @@ DAT.Globe = function (container, opts) {
     var phi = ((90 - lat) * Math.PI) / 180;
     var theta = ((180 - lng) * Math.PI) / 180;
 
-    point.position.x = 200 * Math.sin(phi) * Math.cos(theta);
-    point.position.y = 200 * Math.cos(phi);
-    point.position.z = 200 * Math.sin(phi) * Math.sin(theta);
+    var x = 150 * Math.sin(phi) * Math.cos(theta);
+    var y = 150 * Math.cos(phi);
+    var z = 150 * Math.sin(phi) * Math.sin(theta);
 
-    point.lookAt(mesh.position);
+    var dir = new THREE.Vector3(x, y, z).normalize();
+    var end = new THREE.Vector3().copy(dir).multiplyScalar(200 + size); // line extends out
 
-    point.scale.z = Math.max(size, 0.1); // avoid non-invertible matrix
-    point.updateMatrix();
+    var geometry = new THREE.Geometry();
+    geometry.vertices.push(new THREE.Vector3(x, y, z)); // from surface
+    geometry.vertices.push(end); // to extended end
 
-    for (var i = 0; i < point.geometry.faces.length; i++) {
-      point.geometry.faces[i].color = color;
-    }
-    if (point.matrixAutoUpdate) {
-      point.updateMatrix();
-    }
-    subgeo.merge(point.geometry, point.matrix);
+    var line = new THREE.Line(
+      geometry,
+      new THREE.LineBasicMaterial({ color: color })
+    );
+    scene.add(line);
   }
 
   function getIntersectedObject(mouseX, mouseY, camera, scene) {
@@ -405,7 +381,7 @@ DAT.Globe = function (container, opts) {
     targetOnDown.x = target.x;
     targetOnDown.y = target.y;
 
-    container.style.cursor = "move";
+    container.style.cursor = "grabbing";
   }
 
   function onMouseMove(event) {
@@ -425,7 +401,7 @@ DAT.Globe = function (container, opts) {
     container.removeEventListener("mousemove", onMouseMove, false);
     container.removeEventListener("mouseup", onMouseUp, false);
     container.removeEventListener("mouseout", onMouseOut, false);
-    container.style.cursor = "auto";
+    container.style.cursor = "grab";
   }
 
   function onMouseOut(event) {
@@ -451,7 +427,7 @@ DAT.Globe = function (container, opts) {
       targetOnDown.x = target.x;
       targetOnDown.y = target.y;
 
-      container.style.cursor = "move";
+      container.style.cursor = "grabbing";
     }
   }
 
@@ -472,7 +448,7 @@ DAT.Globe = function (container, opts) {
   }
 
   function onTouchEnd(event) {
-    container.style.cursor = "auto";
+    container.style.cursor = "grab";
   }
 
   function onPinchZoom(event) {
@@ -537,7 +513,7 @@ DAT.Globe = function (container, opts) {
     sprite.userData.key = key;
     sprite.scale.set(scale, scale, 1);
 
-    const radius =  window.innerWidth < 768 ? 170 + 1 : 200 + 1;
+    const radius = window.innerWidth < 768 ? 170 + 1 : 200 + 1;
     const phi = ((90 - lat) * Math.PI) / 180;
     const theta = ((180 - lng) * Math.PI) / 180;
 
@@ -579,8 +555,8 @@ DAT.Globe = function (container, opts) {
 
       const distanceToTarget = Math.sqrt(
         Math.pow(this._cameraTarget.x - camera.position.x, 2) +
-        Math.pow(this._cameraTarget.y - camera.position.y, 2) +
-        Math.pow(this._cameraTarget.z - camera.position.z, 2)
+          Math.pow(this._cameraTarget.y - camera.position.y, 2) +
+          Math.pow(this._cameraTarget.z - camera.position.z, 2)
       );
       if (distanceToTarget < 1) {
         this._cameraTarget = null;

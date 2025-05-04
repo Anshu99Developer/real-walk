@@ -15,7 +15,7 @@ const Globe = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 4000);
+    const timer = setTimeout(() => setLoading(false), 100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -32,11 +32,12 @@ const Globe = () => {
       const container = document.getElementById("globe-container");
       const globe = new window.DAT.Globe(container);
 
-      fetch("/globe/population909500.json")
+      fetch("/globe/coordinates.json")
         .then((response) => response.json())
         .then((data) => {
           data.forEach((series) => {
-            globe.addData(series[1], {
+            const flattened = series[1].flat(); // 🔥 Flatten to [lat, lon, mag, ...]
+            globe.addData(flattened, {
               format: "magnitude",
               name: series[0],
             });
@@ -44,22 +45,22 @@ const Globe = () => {
           globe.createPoints();
           globe.animate();
 
-          // Add animated sprites for Dubai and India with unique keys
           globe.addAnimatedSprite(
             24, // Adjusted latitude for Dubai
             45, // Adjusted longitude for Dubai
-            "/swirl.png",
+            "",
             25,
             "dubai" // Unique key for Dubai
           );
           globe.addAnimatedSprite(
             21.5, // Adjusted latitude for India
             69, // Adjusted longitude for India
-            "/swirl.png",
+            "",
             35,
             "india" // Unique key for India
           );
           globe.animate();
+          
         });
       // Handle click event
       container.addEventListener("pointerdown", (event) => {
@@ -67,7 +68,6 @@ const Globe = () => {
           event.clientX,
           event.clientY
         );
-
         if (intersected) {
           const clickedObject = intersected.object;
           if (clickedObject.userData && clickedObject.userData.key) {
@@ -122,13 +122,6 @@ const Globe = () => {
         container.style.height = window.innerWidth < 768 ? "100dvh" : "100dvh";
       }
     };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
   }, []);
 
   const getLocationsByRegion = (region) => {
@@ -159,11 +152,13 @@ const Globe = () => {
 
   return (
     <>
-      <header className="flex justify-between items-center p-4 bg-transparent fixed w-full top-0 left-0 z-10 animate-fadeIn">
-        <img src="/main-logo.png" alt="Logo" className="h-10" />
-        <button className="px-4 py-2 bg-transparent hover:bg-golden border border-golden text-white rounded-lg transition-all">
-          Contact Us
-        </button>
+      <header className="p-4 bg-transparent fixed w-full top-0 left-0 z-10 animate-fadeIn">
+        <div className="flex justify-between items-center max-w-5xl mx-auto">
+          <img src="/main-logo.png" alt="Logo" className="h-10" />
+          <button className="px-4 py-2 bg-transparent hover:bg-golden border border-golden text-white rounded-lg transition-all">
+            Contact Us
+          </button>
+        </div>
       </header>
       <div
         id="globe-container"
