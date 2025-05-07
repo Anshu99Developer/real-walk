@@ -75,7 +75,7 @@ const DayNight = ({ data }) => {
       onTouchEnd={handleEnd}
     >
       {showTutorial && (
-        <div className="absolute w-max max-w-[90%] top-10 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-60 text-white text-base px-5 py-3 rounded-xl z-50 pointer-events-none animate-fadeInOut">
+        <div className="absolute w-max max-w-[90%] bottom-12 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-60 text-white text-base px-5 py-3 rounded-xl z-50 pointer-events-none animate-fadeInOut">
           <p className="text-sm">Swipe or drag left/right to explore day & night</p>
         </div>
       )}

@@ -60,7 +60,6 @@ const Globe = () => {
             "india" // Unique key for India
           );
           globe.animate();
-          
         });
       // Handle click event
       container.addEventListener("pointerdown", (event) => {
@@ -119,7 +118,7 @@ const Globe = () => {
       // Adjust globe container for mobile
       const container = document.getElementById("globe-container");
       if (container) {
-        container.style.height = window.innerWidth < 768 ? "100dvh" : "100dvh";
+        container.style.height = "100dvh";
       }
     };
   }, []);
