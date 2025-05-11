@@ -120,7 +120,7 @@ function DeveloperRoutes() {
         path="/inventory"
         element={
           <MenuLayout>
-            <Inventory />
+            <Inventory data={developerData?.inventory} />
           </MenuLayout>
         }
       />

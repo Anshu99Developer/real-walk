@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         golden: "#ffc864",
+        lightGolden: "#ffc86480",
         dustyGray: "#C8C8C8",
         borderColor: "#333",
         raisinBlack: "#222222",

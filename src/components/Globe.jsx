@@ -36,31 +36,18 @@ const Globe = () => {
         .then((response) => response.json())
         .then((data) => {
           data.forEach((series) => {
-            const flattened = series[1].flat(); // 🔥 Flatten to [lat, lon, mag, ...]
+            const flattened = series.coordinates.flat(); // Flatten to [lat, lon, mag, ...]
             globe.addData(flattened, {
               format: "magnitude",
-              name: series[0],
+              name: series.country,
+              animated: true,
+              countryName: series.country, // Pass country name
             });
           });
           globe.createPoints();
           globe.animate();
-
-          globe.addAnimatedSprite(
-            24, // Adjusted latitude for Dubai
-            45, // Adjusted longitude for Dubai
-            "",
-            25,
-            "dubai" // Unique key for Dubai
-          );
-          globe.addAnimatedSprite(
-            21.5, // Adjusted latitude for India
-            69, // Adjusted longitude for India
-            "",
-            35,
-            "india" // Unique key for India
-          );
-          globe.animate();
         });
+
       // Handle click event
       container.addEventListener("pointerdown", (event) => {
         const intersected = globe.getIntersectedObject(
@@ -69,21 +56,16 @@ const Globe = () => {
         );
         if (intersected) {
           const clickedObject = intersected.object;
-          if (clickedObject.userData && clickedObject.userData.key) {
-            const key = clickedObject.userData.key;
-            if (key === "dubai") {
-              setShowPopup((prev) => ({
-                ...prev,
-                status: true,
-                data: { title: "Dubai" },
-              }));
+          if (clickedObject.userData && clickedObject.userData.country) {
+            const country = clickedObject.userData.country;
+            setShowPopup((prev) => ({
+              ...prev,
+              status: true,
+              data: { title: country },
+            }));
+            if (country === "Dubai") {
               globe.zoomToLocation(25.276987, 55.296249);
-            } else if (key === "india") {
-              setShowPopup((prev) => ({
-                ...prev,
-                status: true,
-                data: { title: "India" },
-              }));
+            } else if (country === "India") {
               globe.zoomToLocation(20.593684, 78.96288);
             }
           }
@@ -131,7 +113,7 @@ const Globe = () => {
             return (
               <li
                 key={city}
-                className="py-2.5 px-5 uppercase transition-all duration-200 ease--out text-white text-center first:border-t-0 border-t border-offWhite cursor-pointer hover:text-raisinBlack hover:bg-golden"
+                className="py-2.5 px-5 uppercase transition-all duration-200 ease--out text-raisinBlack text-center first:border-t-0 border-t border-offWhite cursor-pointer hover:text-raisinBlack hover:bg-golden"
                 onClick={() => {
                   navigate(`/city/${city}`);
                 }}

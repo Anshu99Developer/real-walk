@@ -19,8 +19,15 @@ DAT.Globe = function (container, opts) {
   var colorFn =
     opts.colorFn ||
     function (x) {
-      var c = new THREE.Color();
-      c.setHSL(0.6 - x * 0.5, 1.0, 0.5);
+      const baseHue = 24 / 360; // THREE.js expects hue in [0,1]
+      const baseSaturation = 0.61;
+      const baseLightness = 0.58;
+
+      const saturation = baseSaturation; // or tweak like: baseSaturation - x * 0.2
+      const lightness = Math.max(0, Math.min(1, baseLightness - x * 0.3));
+
+      const c = new THREE.Color();
+      c.setHSL(baseHue, saturation, lightness);
       return c;
     };
   var imgDir = opts.imgDir || "/globe/";
@@ -45,9 +52,8 @@ DAT.Globe = function (container, opts) {
         "varying vec2 vUv;",
         "void main() {",
         "vec3 diffuse = texture(globeTexture, vUv).rgb;",
-        "float intensity = 1.05 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) );",
-        "vec3 atmosphere = vec3( 1.0, 1.0, 1.0 ) * pow( intensity, 3.0 );",
-        "gl_FragColor = vec4( diffuse + atmosphere, 1.0 );",
+        // Remove the atmosphere effect
+        "gl_FragColor = vec4(diffuse, 1.0);",
         "}",
       ].join("\n"),
     },
@@ -84,7 +90,7 @@ DAT.Globe = function (container, opts) {
   var mouse = { x: 0, y: 0 },
     mouseOnDown = { x: 0, y: 0 };
   var rotation = { x: 0, y: 0 },
-    target = { x: (Math.PI * 3) / 2, y: Math.PI / 6.0 },
+    target = { x: (Math.PI * 3.7) / 2, y: Math.PI / 9.0 },
     targetOnDown = { x: 0, y: 0 };
 
   var distance = 100000,
@@ -100,21 +106,24 @@ DAT.Globe = function (container, opts) {
     w = container.offsetWidth || window.innerWidth;
     h = container.offsetHeight || window.innerHeight;
 
-    camera = new THREE.PerspectiveCamera(40, w / h, 1, 10000);
+    camera =
+      window.innerWidth < 992
+        ? new THREE.PerspectiveCamera(60, w / h, 1, 10000)
+        : new THREE.PerspectiveCamera(40, w / h, 1, 10000);
     camera.position.z = distance;
 
     scene = new THREE.Scene();
 
     var geometry =
       window.innerWidth < 992
-        ? new THREE.SphereGeometry(150, 40, 50)
-        : new THREE.SphereGeometry(190, 40, 50);
+        ? new THREE.SphereGeometry(230, 40, 50)
+        : new THREE.SphereGeometry(230, 40, 50);
 
     shader = Shaders["earth"];
     uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
     uniforms["globeTexture"].value = new THREE.TextureLoader().load(
-      imgDir + "world3.jpg"
+      imgDir + "A3.png"
     );
 
     material = new THREE.ShaderMaterial({
@@ -186,6 +195,19 @@ DAT.Globe = function (container, opts) {
     container.addEventListener("touchend", onTouchEnd, false);
     container.addEventListener("touchmove", onPinchZoom, false);
     container.addEventListener("touchend", onTouchEndPinch, false);
+
+    // Add click event to detect country
+    container.addEventListener("click", (event) => {
+      const intersected = getIntersectedObject(
+        event.clientX,
+        event.clientY,
+        camera,
+        scene
+      );
+      if (intersected && intersected.object.userData.country) {
+        console.log("Clicked on:", intersected.object.userData.country);
+      }
+    });
   }
 
   function addData(data, opts) {
@@ -214,10 +236,9 @@ DAT.Globe = function (container, opts) {
         for (i = 0; i < data.length; i += step) {
           lat = data[i];
           lng = data[i + 1];
-          //        size = data[i + 2];
           color = colorFnWrapper(data, i);
           size = 0;
-          addPoint(lat, lng, size, color, this._baseGeometry);
+          addPoint(lat, lng, size, color, this._baseGeometry, opts.countryName);
         }
       }
       if (this._morphTargetId === undefined) {
@@ -234,7 +255,7 @@ DAT.Globe = function (container, opts) {
       color = colorFnWrapper(data, i);
       size = data[i + 2];
       size = size * 200;
-      addPoint(lat, lng, size, color, subgeo);
+      addPoint(lat, lng, size, color, subgeo, opts.countryName);
     }
     if (opts.animated) {
       this._baseGeometry.morphTargets.push({
@@ -246,7 +267,7 @@ DAT.Globe = function (container, opts) {
     }
   }
 
-  this.zoomToLocation = (lat, lng) => {
+  this.zoomToLocation = (lat, lng, callback) => {
     const phi = ((90 - lat) * Math.PI) / 180;
     const theta = ((180 - lng) * Math.PI) / 180;
 
@@ -254,8 +275,8 @@ DAT.Globe = function (container, opts) {
     const targetY = 1000 * Math.cos(phi);
     const targetZ = 1000 * Math.sin(phi) * Math.sin(theta);
 
-    // Set the target position for the camera
     this._cameraTarget = { x: targetX, y: targetY, z: targetZ };
+    this._onZoomComplete = callback; // Store the callback
   };
 
   function createPoints() {
@@ -292,7 +313,7 @@ DAT.Globe = function (container, opts) {
     }
   }
 
-  function addPoint(lat, lng, size, color, subgeo) {
+  function addPoint(lat, lng, size, color, subgeo, countryName) {
     var phi = ((90 - lat) * Math.PI) / 180;
     var theta = ((180 - lng) * Math.PI) / 180;
 
@@ -301,7 +322,7 @@ DAT.Globe = function (container, opts) {
     var z = 150 * Math.sin(phi) * Math.sin(theta);
 
     var dir = new THREE.Vector3(x, y, z).normalize();
-    var end = new THREE.Vector3().copy(dir).multiplyScalar(200 + size); // line extends out
+    var end = new THREE.Vector3().copy(dir).multiplyScalar(220 + size); // line extends out
 
     var geometry = new THREE.Geometry();
     geometry.vertices.push(new THREE.Vector3(x, y, z)); // from surface
@@ -311,6 +332,10 @@ DAT.Globe = function (container, opts) {
       geometry,
       new THREE.LineBasicMaterial({ color: color })
     );
+
+    // Add userData with country name
+    line.userData = { country: countryName, lat, lng }; // Add lat/lng to userData
+
     scene.add(line);
   }
 
@@ -558,8 +583,13 @@ DAT.Globe = function (container, opts) {
           Math.pow(this._cameraTarget.y - camera.position.y, 2) +
           Math.pow(this._cameraTarget.z - camera.position.z, 2)
       );
+
       if (distanceToTarget < 1) {
         this._cameraTarget = null;
+        if (this._onZoomComplete) {
+          this._onZoomComplete(); // Execute the callback
+          this._onZoomComplete = null; // Clear the callback
+        }
       }
     }
 

@@ -37,10 +37,34 @@ const residentialLocations = [
   },
 ];
 
+const blackMapStyle = [
+  { elementType: "geometry", stylers: [{ color: "#212121" }] },
+  { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
+  { elementType: "labels.text.fill", stylers: [{ color: "#757575" }] },
+  { elementType: "labels.text.stroke", stylers: [{ color: "#212121" }] },
+  { featureType: "administrative", elementType: "geometry", stylers: [{ color: "#757575" }] },
+  { featureType: "administrative.country", elementType: "labels.text.fill", stylers: [{ color: "#9e9e9e" }] },
+  { featureType: "administrative.land_parcel", stylers: [{ visibility: "off" }] },
+  { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#bdbdbd" }] },
+  { featureType: "poi", elementType: "labels.text.fill", stylers: [{ color: "#757575" }] },
+  { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#181818" }] },
+  { featureType: "poi.park", elementType: "labels.text.fill", stylers: [{ color: "#616161" }] },
+  { featureType: "poi.park", elementType: "labels.text.stroke", stylers: [{ color: "#1b1b1b" }] },
+  { featureType: "road", elementType: "geometry.fill", stylers: [{ color: "#2c2c2c" }] },
+  { featureType: "road", elementType: "labels.text.fill", stylers: [{ color: "#8a8a8a" }] },
+  { featureType: "road.arterial", elementType: "geometry", stylers: [{ color: "#373737" }] },
+  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#3c3c3c" }] },
+  { featureType: "road.highway.controlled_access", elementType: "geometry", stylers: [{ color: "#4e4e4e" }] },
+  { featureType: "road.local", elementType: "labels.text.fill", stylers: [{ color: "#616161" }] },
+  { featureType: "transit", elementType: "labels.text.fill", stylers: [{ color: "#757575" }] },
+  { featureType: "water", elementType: "geometry", stylers: [{ color: "#000000" }] },
+  { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#3d3d3d" }] },
+];
+
 const WebGLOverlayMap = () => {
   const mapRef = useRef(null);
   const googleMap = useRef(null);
-  const markerRef = useRef(null); // 👈 Add marker ref
+  const markerRef = useRef(null);
   const overlayRef = useRef(null);
   const cameraRef = useRef(null);
   const sceneRef = useRef(null);
@@ -78,9 +102,10 @@ const WebGLOverlayMap = () => {
           },
           zoom: 19,
           heading: 0,
-          tilt: 55,
+          tilt: 45,
           mapId: "93282db3a162e6da",
           disableDefaultUI: true,
+          styles: blackMapStyle, // Apply the black map style here
         });
 
         googleMap.current = map;
@@ -90,6 +115,15 @@ const WebGLOverlayMap = () => {
           position: { lat: currentBuilding.lat, lng: currentBuilding.lng },
           map: map,
           title: currentBuilding.name,
+          icon: {
+            path: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z",
+            fillColor: "#ffc864",
+            fillOpacity: 1,
+            scale: 1.3,
+            strokeWeight: 10,
+            strokeColor: "#222222",
+            anchor: new google.maps.Point(12, 24),
+          },
         });
         markerRef.current = marker;
 
@@ -220,11 +254,11 @@ const WebGLOverlayMap = () => {
       map.moveCamera({
         zoom: 19,
         heading: 0,
-        tilt: 55,
+        tilt: 45,
       });
 
       setTimeout(() => {
-        map.moveCamera({ tilt: 55, zoom: 19 });
+        map.moveCamera({ tilt: 45, zoom: 19 });
         overlay.requestRedraw();
       }, 1000);
     }
@@ -241,6 +275,24 @@ const WebGLOverlayMap = () => {
     window.addEventListener("mousemove", onMouseMove);
     return () => window.removeEventListener("mousemove", onMouseMove);
   }, []);
+
+  useEffect(() => {
+    const map = googleMap.current;
+
+    if (map) {
+      const handleZoomChanged = () => {
+        const zoom = map.getZoom();
+        const tilt = zoom > 15 ? 45 : Math.max(0, (zoom - 10) * 11); // Reduce tilt as zoom decreases
+        map.moveCamera({ tilt });
+      };
+
+      map.addListener("zoom_changed", handleZoomChanged);
+
+      return () => {
+        map.removeListener("zoom_changed", handleZoomChanged);
+      };
+    }
+  }, [googleMap]);
 
   const toggleAudio = () => {
     if (audioRef.current) {

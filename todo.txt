@@ -1,0 +1,17 @@
+1. Small the size of line in globe - done
+2. Highlight the country when click
+3. Map - Tilt on zoom in map
+4. Map - remove other labels from map - done
+5. Remove the yellow from inventory and the add floor label - done
+
+
+
+
+11-05-2025
+
+-> Add iframe in Inventory floors.
+-> Highlight the india & dubai.
+-> Add more pins to india.
+-> Add Cloud animation.
+-> Change bg color of button.
+
