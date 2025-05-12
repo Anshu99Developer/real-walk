@@ -162,11 +162,11 @@ const Inventory = ({ data }) => {
                 alt="Floor Plan"
                 className="max-w-full max-h-[80vh]"
               />
-              <img
+              {/* <img
                 src={isTypicalPlan?.image}
                 alt="Floor Plan"
                 className="max-w-full max-h-[80vh]"
-              />
+              /> */}
             </div>
           )}
         </CustomModal>
