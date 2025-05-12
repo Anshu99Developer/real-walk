@@ -7,7 +7,7 @@ export default function Popup({ isOpen, onClose, title, children }) {
       <span className='bg-golden opacity-90 w-full h-full absolute top-0 left-0'></span>
       <div className="w-full max-w-md mx-4 relative ">
         {/* Title */}
-        {title && <h2 className="text-2xl font-bold mb-4 text-center capitalize text-white">{title}</h2>}
+        {title && <h2 className="text-2xl font-bold mb-4 text-center uppercase text-raisinBlack">{title}</h2>}
 
         {/* Content */}
         <div className="text-gray-700">{children}</div>
@@ -16,7 +16,7 @@ export default function Popup({ isOpen, onClose, title, children }) {
         <div className="mt-6 text-center">
           <button
             onClick={onClose}
-            className="lg:text-base text-sm bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg hover:bg-transparent hover:border-golden font-semibold hover:text-golden transition-all"
+            className="lg:text-base text-sm bg-raisinBlack text-golden border border-raisinBlack px-4 py-2 rounded-lg hover:bg-transparent font-semibold hover:text-raisinBlack transition-all"
           >
             Back to the World
           </button>

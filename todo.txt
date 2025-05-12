@@ -10,8 +10,8 @@
 11-05-2025
 
 -> Add iframe in Inventory floors.
--> Highlight the india & dubai.
--> Add more pins to india.
+-> Highlight the india & dubai. - Done
+-> Add more pins to india. - Done
 -> Add Cloud animation.
--> Change bg color of button.
+-> Change bg color of button. - Done
 

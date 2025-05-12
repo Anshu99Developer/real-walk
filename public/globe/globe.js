@@ -90,7 +90,7 @@ DAT.Globe = function (container, opts) {
   var mouse = { x: 0, y: 0 },
     mouseOnDown = { x: 0, y: 0 };
   var rotation = { x: 0, y: 0 },
-    target = { x: (Math.PI * 3.7) / 2, y: Math.PI / 9.0 },
+    target = { x: (Math.PI * 3.4) / 2, y: Math.PI / -10.0 },
     targetOnDown = { x: 0, y: 0 };
 
   var distance = 100000,
@@ -123,7 +123,7 @@ DAT.Globe = function (container, opts) {
     uniforms = THREE.UniformsUtils.clone(shader.uniforms);
 
     uniforms["globeTexture"].value = new THREE.TextureLoader().load(
-      imgDir + "A3.png"
+      imgDir + "C2.png"
     );
 
     material = new THREE.ShaderMaterial({

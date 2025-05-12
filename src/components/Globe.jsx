@@ -108,12 +108,12 @@ const Globe = () => {
   const getLocationsByRegion = (region) => {
     if (region) {
       return (
-        <ul className="border border-offWhite">
+        <ul className="border border-raisinBlack">
           {listedCities[region]?.map((city) => {
             return (
               <li
                 key={city}
-                className="py-2.5 px-5 uppercase transition-all duration-200 ease--out text-raisinBlack text-center first:border-t-0 border-t border-offWhite cursor-pointer hover:text-raisinBlack hover:bg-golden"
+                className="py-2.5 px-5 uppercase transition-all duration-200 ease--out text-raisinBlack text-center first:border-t-0 border-t border-raisinBlack cursor-pointer hover:text-golden hover:bg-raisinBlack"
                 onClick={() => {
                   navigate(`/city/${city}`);
                 }}
