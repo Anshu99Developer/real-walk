@@ -5,8 +5,19 @@ import backIcon from "../assets/images/back_icon.png";
 const Inventory = ({ data }) => {
   const [selectedWing, setSelectedWing] = useState(data[0]);
   const [wingMedia, setWingMedia] = useState(data[0].buildingImage);
+  const [openFlat, setOpenFlat] = useState("");
   const [isTypicalPlan, setIsTypicalPlan] = useState({
-    image: "",
+    data: {
+      image: "",
+      overlay: "",
+      links: {
+        left1: "",
+        left2: "",
+        center1: "",
+        right1: "",
+        right2: "",
+      },
+    },
     status: false,
   });
   const [showIframe, setShowIframe] = useState(false);
@@ -67,10 +78,10 @@ const Inventory = ({ data }) => {
   }, [activePathIndex]); // Trigger on activePathIndex change
 
   const CustomModal = ({ children, onClose }) => (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-      <div className="relative bg-white rounded-xl shadow-lg max-w-4xl w-full max-h-[90vh] overflow-auto p-4">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-70">
+      <div className="relative bg-white rounded-xl shadow-lg w-full max-h-[90vh] overflow-auto p-4  max-w-[90%] mx-auto">
         <button
-          className="absolute top-2 left-2 bg-dustyGray"
+          className="absolute top-2 left-2 bg-dustyGray z-10"
           onClick={onClose}
         >
           <img src={backIcon} alt="back icon" className="w-6 h-6" />
@@ -79,11 +90,57 @@ const Inventory = ({ data }) => {
       </div>
     </div>
   );
-  
+
+  const handleFloorClick = (path) => {
+    setIsTypicalPlan({
+      data: { image: path?.image, overlay: path?.overlay, links: path?.links },
+      status: true,
+    });
+    fetch(path?.overlay)
+      .then((res) => res.text())
+      .then((svg) => {
+        document.getElementById("svg-container").innerHTML = svg;
+      });
+  };
+
+  const handleOpenIframe = (link) => {
+    setOpenFlat(link);
+    setShowIframe(true);
+  };
+
+  useEffect(() => {
+    if (!isTypicalPlan?.status) return;
+
+    const svgContainer = document.getElementById("svg-container");
+    if (!svgContainer) return;
+
+    const observer = new MutationObserver(() => {
+      const pathElement = svgContainer.querySelector("#left1");
+      if (pathElement) {
+        const handleClick = () =>
+          handleOpenIframe(isTypicalPlan?.data?.links?.left1);
+        pathElement.addEventListener("click", handleClick);
+        observer.disconnect(); // Stop observing once found
+
+        // Cleanup
+        return () => {
+          pathElement.removeEventListener("click", handleClick);
+        };
+      }
+    });
+
+    observer.observe(svgContainer, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
+  }, [isTypicalPlan?.status]);
+
   return (
     <div className="full-container developer-container bg-white">
       <div className="relative w-screen !h-full overflow-hidden home_page_image_container">
-        <div className="relative inline-block md:max-w-[650px] max-w-[calc(100%-45px)]" ref={scrollRef}>
+        <div
+          className="relative inline-block md:max-w-[650px] max-w-[calc(100%-45px)]"
+          ref={scrollRef}
+        >
           <img
             src={wingMedia}
             alt="building"
@@ -100,11 +157,10 @@ const Inventory = ({ data }) => {
                 {selectedWing?.floorList.map((path, index) => (
                   <path
                     key={index}
+                    id={`path-${index}`} // Add unique id to each path
+                    onClick={() => handleFloorClick(path)}
                     d={path?.d}
                     opacity={0.5}
-                    onClick={() => {
-                      setIsTypicalPlan({ image: path?.image, status: true });
-                    }}
                     fill={index === activePathIndex ? "green" : "transparent"}
                     style={
                       index === activePathIndex ? { cursor: "pointer" } : {}
@@ -143,30 +199,29 @@ const Inventory = ({ data }) => {
             if (showIframe) {
               setShowIframe(false);
             } else {
-              setIsTypicalPlan({ image: "", status: false });
+              setIsTypicalPlan({ data: {}, status: false });
             }
           }}
         >
           {showIframe ? (
             <iframe
-              // src={openFlat}
+              src={openFlat}
               height="100%"
               width="100%"
               className="flats_iframe"
               title="Flat Plan"
             />
           ) : (
-            <div className="flex justify-center">
+            <div className="flex justify-center relative">
               <img
-                src={isTypicalPlan?.image}
+                src={isTypicalPlan?.data?.image}
                 alt="Floor Plan"
-                className="max-w-full max-h-[80vh]"
+                className="max-w-full max-h-[80dvh]"
               />
-              {/* <img
-                src={isTypicalPlan?.image}
-                alt="Floor Plan"
-                className="max-w-full max-h-[80vh]"
-              /> */}
+              <div
+                id="svg-container"
+                className="inventory_floor_plan_svg max-h-[80dvh]"
+              ></div>
             </div>
           )}
         </CustomModal>

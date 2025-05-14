@@ -204,14 +204,22 @@
     {
       "title": "A Wing",
       "totalFloor": 37,
-      "buildingImage":"https://cdn.shopify.com/s/files/1/0749/3573/0392/files/buildingV2.jpg?v=1746945761",
+      "buildingImage": "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/buildingV2.jpg?v=1746945761",
       "floorList": [
         {
           "opacity": 0.5,
           "fill": "#FFCC24",
           "d": "m1531.11 843.71-408.02-480.82L771 687.44l.14-77.34 351.26-325.09 408.6 489.9z",
           "image": "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/floor_plan_Typical_Plan.png",
-          "floor": 37
+          "floor": 37,
+          "overlay": "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_1bhk_05/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_2bhk_04/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_2bhk_03/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_1bhk_01/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_2bhk_02/index.html"
+          }
         },
         {
           "opacity": 0.5,
@@ -470,14 +478,22 @@
     {
       "title": "B Wing",
       "totalFloor": 37,
-      "buildingImage":"https://cdn.shopify.com/s/files/1/0749/3573/0392/files/buildingV2.jpg?v=1746945761",
+      "buildingImage": "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/buildingV2.jpg?v=1746945761",
       "floorList": [
         {
           "opacity": 0.5,
           "fill": "#FFCC24",
           "d": "m1531.11 843.71-408.02-480.82L771 687.44l.14-77.34 351.26-325.09 408.6 489.9z",
           "image": "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/floor_plan_Typical_Plan.png",
-          "floor": 37
+          "floor": 37,
+          "overlay": "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_1bhk_05/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_2bhk_04/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_2bhk_03/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_1bhk_01/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_2bhk_02/index.html"
+          }
         },
         {
           "opacity": 0.5,
