@@ -6,6 +6,7 @@ const Inventory = ({ data }) => {
   const [selectedWing, setSelectedWing] = useState(data[0]);
   const [wingMedia, setWingMedia] = useState(data[0].buildingImage);
   const [openFlat, setOpenFlat] = useState("");
+  const [overlaySVG, setOverlaySVG] = useState("");
   const [isTypicalPlan, setIsTypicalPlan] = useState({
     data: {
       image: "",
@@ -99,7 +100,7 @@ const Inventory = ({ data }) => {
     fetch(path?.overlay)
       .then((res) => res.text())
       .then((svg) => {
-        document.getElementById("svg-container").innerHTML = svg;
+        setOverlaySVG(svg);
       });
   };
 
@@ -109,30 +110,35 @@ const Inventory = ({ data }) => {
   };
 
   useEffect(() => {
-    if (!isTypicalPlan?.status) return;
+    if (!isTypicalPlan?.status || showIframe === true) return;
 
     const svgContainer = document.getElementById("svg-container");
     if (!svgContainer) return;
 
-    const observer = new MutationObserver(() => {
-      const pathElement = svgContainer.querySelector("#left1");
-      if (pathElement) {
-        const handleClick = () =>
-          handleOpenIframe(isTypicalPlan?.data?.links?.left1);
-        pathElement.addEventListener("click", handleClick);
-        observer.disconnect(); // Stop observing once found
+    const pathIds = Object.keys(isTypicalPlan?.data?.links || {});
+    const eventHandlers = {};
 
-        // Cleanup
-        return () => {
-          pathElement.removeEventListener("click", handleClick);
-        };
+    pathIds.forEach((id) => {
+      const pathElement = svgContainer.querySelector(`#${id}`);
+      if (pathElement && !eventHandlers[id]) {
+        const handleClick = () =>
+          handleOpenIframe(isTypicalPlan?.data?.links?.[id]);
+        pathElement.style.cursor = "pointer";
+        pathElement.addEventListener("click", handleClick);
+        eventHandlers[id] = handleClick;
       }
     });
 
-    observer.observe(svgContainer, { childList: true, subtree: true });
-
-    return () => observer.disconnect();
-  }, [isTypicalPlan?.status]);
+    return () => {
+      // Cleanup on component unmount or rerender
+      pathIds.forEach((id) => {
+        const el = svgContainer.querySelector(`#${id}`);
+        if (el && eventHandlers[id]) {
+          el.removeEventListener("click", eventHandlers[id]);
+        }
+      });
+    };
+  }, [overlaySVG, showIframe]);
 
   return (
     <div className="full-container developer-container bg-white">
@@ -221,6 +227,7 @@ const Inventory = ({ data }) => {
               <div
                 id="svg-container"
                 className="inventory_floor_plan_svg max-h-[80dvh]"
+                dangerouslySetInnerHTML={{ __html: overlaySVG }}
               ></div>
             </div>
           )}
