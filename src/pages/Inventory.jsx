@@ -24,6 +24,7 @@ const Inventory = ({ data }) => {
   const [showIframe, setShowIframe] = useState(false);
   const [activePathIndex, setActivePathIndex] = useState(0);
   const scrollRef = useRef(null);
+  const floorScrollRef = useRef();
   const floorLabelRefs = useRef([]); // Add refs for floor labels
 
   useEffect(() => {
@@ -140,62 +141,97 @@ const Inventory = ({ data }) => {
     };
   }, [overlaySVG, showIframe]);
 
+  const scrollTimeout = useRef(null);
+
+  const handleScrollPicker = () => {
+    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
+    scrollTimeout.current = setTimeout(() => {
+      const container = floorScrollRef.current;
+      const itemHeight = floorLabelRefs.current[0]?.offsetHeight || 0;
+
+      const containerCenter = container.scrollTop + container.offsetHeight / 2;
+
+      let closestIndex = 0;
+      let minDiff = Infinity;
+
+      floorLabelRefs.current.forEach((el, index) => {
+        const elCenter = el.offsetTop + itemHeight / 2;
+        const diff = Math.abs(containerCenter - elCenter);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIndex = index;
+        }
+      });
+
+      // Scroll smoothly to snap
+      floorLabelRefs.current[closestIndex]?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+
+      setActivePathIndex(closestIndex);
+    }, 100); // debounce to detect scroll stop
+  };
+
   return (
     <div className="full-container developer-container bg-white">
       <div className="relative w-screen !h-full overflow-hidden home_page_image_container">
-        <div
-          className="relative inline-block md:max-w-[650px] max-w-[calc(100%-45px)]"
-          ref={scrollRef}
-        >
-          <img
-            src={wingMedia}
-            alt="building"
-            className="building_image block h-auto"
-          />
-          <div className="absolute left-0 top-0 w-full md:h-full z-10">
-            {selectedWing?.floorList?.length > 0 && (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 2086.5 3750"
-                xmlSpace="preserve"
-                className="max-lg:h-full max-lg:w-full"
-              >
-                {selectedWing?.floorList.map((path, index) => (
-                  <path
-                    key={index}
-                    id={`path-${index}`} // Add unique id to each path
-                    onClick={() => handleFloorClick(path)}
-                    d={path?.d}
-                    opacity={0.5}
-                    fill={index === activePathIndex ? "green" : "transparent"}
-                    style={
-                      index === activePathIndex ? { cursor: "pointer" } : {}
-                    }
-                  />
-                ))}
-              </svg>
-            )}
+        <div className="relative">
+          <div
+            className="relative inline-block md:max-w-[650px] max-w-[calc(100%-45px)]"
+            ref={scrollRef}
+          >
+            <img
+              src={wingMedia}
+              alt="building"
+              className="building_image block h-auto"
+            />
+            <div className="absolute left-0 top-0 w-full md:h-full z-10">
+              {selectedWing?.floorList?.length > 0 && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 2086.5 3750"
+                  xmlSpace="preserve"
+                  className="h-full w-full"
+                >
+                  {selectedWing?.floorList.map((path, index) => (
+                    <path
+                      key={index}
+                      id={`path-${index}`} // Add unique id to each path
+                      onClick={() => handleFloorClick(path)}
+                      d={path?.d}
+                      opacity={0.5}
+                      fill={index === activePathIndex ? "green" : "transparent"}
+                      style={
+                        index === activePathIndex ? { cursor: "pointer" } : {}
+                      }
+                    />
+                  ))}
+                </svg>
+              )}
+            </div>
           </div>
-        </div>
-        <div className="floor-label h-full overflow-y-auto md:max-h-[100dvh] max-h-[100dvh-78px]">
-          {selectedWing?.floorList?.length > 0 &&
-            selectedWing?.floorList.map((path, index) => {
-              return (
+          <div
+            className="floor-label-picker"
+            ref={floorScrollRef}
+            onScroll={handleScrollPicker}
+          >
+            <div className="floor-label-list">
+              {selectedWing?.floorList?.map((path, index) => (
                 <div
-                  ref={(el) => (floorLabelRefs.current[index] = el)} // Assign ref to each floor label
-                  className={`w-10 h-10 flex justify-center items-center ${
-                    index === activePathIndex
-                      ? "bg-[#ffc86480] text-raisinBlack"
-                      : "bg-raisinBlack text-white"
+                  ref={(el) => (floorLabelRefs.current[index] = el)}
+                  className={`floor-label-item ${
+                    index === activePathIndex ? "active" : ""
                   }`}
+                  onClick={() => setActivePathIndex(index)}
                   key={index}
-                  onClick={() => setActivePathIndex(index)} // Synchronize with activePathIndex
-                  style={{ cursor: "pointer" }} // Add pointer cursor for better UX
                 >
                   {path?.floor}
                 </div>
-              );
-            })}
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

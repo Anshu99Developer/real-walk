@@ -46,6 +46,7 @@
     transform: translateY(-50%);
     max-width: 120px;
     width: 100%;
+    height:auto;
   }
 
   .sideBar_container_grid {

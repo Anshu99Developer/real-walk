@@ -208,6 +208,27 @@ DAT.Globe = function (container, opts) {
         console.log("Clicked on:", intersected.object.userData.country);
       }
     });
+
+    // Add video texture over the globe -----
+    // const video = document.createElement("video");
+    // video.src = imgDir + "clouds-ani.mp4"; // Path to the video file
+    // video.loop = true;
+    // video.muted = true;
+    // video.play();
+
+    // const videoTexture = new THREE.VideoTexture(video);
+    // const videoMaterial = new THREE.MeshBasicMaterial({
+    //   map: videoTexture,
+    //   transparent: true,
+    // });
+
+    // const videoSphereGeometry =
+    //   window.innerWidth < 992
+    //     ? new THREE.SphereGeometry(235, 40, 50) // Slightly larger radius
+    //     : new THREE.SphereGeometry(235, 40, 50); // Slightly larger radius
+
+    // const videoSphere = new THREE.Mesh(videoSphereGeometry, videoMaterial);
+    // scene.add(videoSphere);
   }
 
   function addData(data, opts) {

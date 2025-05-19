@@ -1,11 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./assets/css/index.css";
+import ParallaxBackground from "./components/ParallaxBackground";
 import App from "./pages/App";
-import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-      <App />
+    <ParallaxBackground />
+    <App />
   </StrictMode>
 );

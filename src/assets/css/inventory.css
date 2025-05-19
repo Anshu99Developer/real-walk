@@ -56,7 +56,7 @@
   width: 43px;
 }
 
-.inventory_floor_plan_svg{
+.inventory_floor_plan_svg {
   position: absolute;
   top: 0;
   left: 0;
@@ -65,12 +65,12 @@
   max-width: 100%;
   max-height: 80dvh;
 }
-.inventory_floor_plan_svg svg{
+.inventory_floor_plan_svg svg {
   width: 100%;
-  height:100%;
+  height: 100%;
   max-height: 80dvh;
 }
-.inventory_floor_plan_svg svg image{
+.inventory_floor_plan_svg svg image {
   visibility: hidden;
 }
 .inventory_floor_plan_svg svg a {
@@ -80,7 +80,7 @@
 .flats_iframe {
   height: 80dvh;
 }
-
+/* 
 .floor-label::-webkit-scrollbar {
   height: 5px;
   width: 5px;
@@ -90,11 +90,75 @@
 .floor-label::-webkit-scrollbar-thumb {
   background: #ffc864;
   border-radius: 5px;
+} */
+
+.floor-label-picker {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 160px; /* Display 5 items (1 active + 2 above & below) */
+  width: 50px;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  background-color: #000;
+  cursor: pointer;
 }
+
+.floor-label-picker::-webkit-scrollbar {
+  display: none;
+}
+
+.floor-label-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 0; /* buffer top and bottom for center alignment */
+}
+
+.floor-label-item {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  text-align: center;
+  scroll-snap-align: center;
+  transition: all 0.3s ease;
+  color: #aaa;
+  opacity: 0.3;
+  width: 100%;
+}
+
+.floor-label-item.active {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  opacity: 1;
+  background-color: #222222;
+  border-radius: 6px;
+  padding: 0 10px;
+}
+
+
+
 
 .inventory_buttons {
   bottom: 10px;
   width: 100px;
+}
+.inventory_buttons ul{
+  padding-right: 5px;
+}
+.inventory_buttons ul::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: #c8c8c8;
+}
+.inventory_buttons ul::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 767px) {
@@ -122,7 +186,6 @@
   .building_svg,
   .inventory_floor_plan_svg {
     height: auto;
-    width: 35%;
   }
 
   .flats_iframe {

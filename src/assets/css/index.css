@@ -36,7 +36,8 @@ body {
   background-position: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url('/universe.jpg');
+  /* background-image: url('/universe.jpg'); */
+  /* background-color: #130D09; */
 }
 
 h1 {
@@ -132,4 +133,22 @@ button:focus-visible {
 }
 .animate-fadeIn {
   animation: fadeIn 2s ease-in-out forwards;
+}
+
+
+
+/* Parallax Background */
+.parallax-container .parallax-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 110%;
+  /* background-image: url('https://your-image-url.com/background.jpg'); */
+  background-image: url('/sky3.jpg');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+  z-index: -1;
 }

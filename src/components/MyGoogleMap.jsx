@@ -37,30 +37,6 @@ const residentialLocations = [
   },
 ];
 
-const blackMapStyle = [
-  { elementType: "geometry", stylers: [{ color: "#212121" }] },
-  { elementType: "labels.icon", stylers: [{ visibility: "off" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#757575" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#212121" }] },
-  { featureType: "administrative", elementType: "geometry", stylers: [{ color: "#757575" }] },
-  { featureType: "administrative.country", elementType: "labels.text.fill", stylers: [{ color: "#9e9e9e" }] },
-  { featureType: "administrative.land_parcel", stylers: [{ visibility: "off" }] },
-  { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#bdbdbd" }] },
-  { featureType: "poi", elementType: "labels.text.fill", stylers: [{ color: "#757575" }] },
-  { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#181818" }] },
-  { featureType: "poi.park", elementType: "labels.text.fill", stylers: [{ color: "#616161" }] },
-  { featureType: "poi.park", elementType: "labels.text.stroke", stylers: [{ color: "#1b1b1b" }] },
-  { featureType: "road", elementType: "geometry.fill", stylers: [{ color: "#2c2c2c" }] },
-  { featureType: "road", elementType: "labels.text.fill", stylers: [{ color: "#8a8a8a" }] },
-  { featureType: "road.arterial", elementType: "geometry", stylers: [{ color: "#373737" }] },
-  { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#3c3c3c" }] },
-  { featureType: "road.highway.controlled_access", elementType: "geometry", stylers: [{ color: "#4e4e4e" }] },
-  { featureType: "road.local", elementType: "labels.text.fill", stylers: [{ color: "#616161" }] },
-  { featureType: "transit", elementType: "labels.text.fill", stylers: [{ color: "#757575" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#000000" }] },
-  { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#3d3d3d" }] },
-];
-
 const WebGLOverlayMap = () => {
   const mapRef = useRef(null);
   const googleMap = useRef(null);
@@ -105,7 +81,6 @@ const WebGLOverlayMap = () => {
           tilt: 45,
           mapId: "93282db3a162e6da",
           disableDefaultUI: true,
-          styles: blackMapStyle, // Apply the black map style here
         });
 
         googleMap.current = map;
@@ -278,21 +253,52 @@ const WebGLOverlayMap = () => {
 
   useEffect(() => {
     const map = googleMap.current;
+    if (!map) return;
 
-    if (map) {
-      const handleZoomChanged = () => {
-        const zoom = map.getZoom();
-        const tilt = zoom > 15 ? 45 : Math.max(0, (zoom - 10) * 11); // Reduce tilt as zoom decreases
-        map.moveCamera({ tilt });
-      };
+    let animationFrameId = null;
 
-      map.addListener("zoom_changed", handleZoomChanged);
+    const animateTilt = (targetTilt) => {
+      const currentTilt = map.getTilt() || 0;
+      const diff = targetTilt - currentTilt;
 
-      return () => {
-        map.removeListener("zoom_changed", handleZoomChanged);
-      };
-    }
-  }, [googleMap]);
+      if (Math.abs(diff) < 0.1) {
+        map.moveCamera({ tilt: targetTilt });
+        return;
+      }
+
+      // Smoothly interpolate tilt by fraction
+      const nextTilt = currentTilt + diff * 0.1; // adjust 0.1 for speed
+      map.moveCamera({ tilt: nextTilt });
+
+      animationFrameId = requestAnimationFrame(() => animateTilt(targetTilt));
+    };
+
+    const updateTilt = () => {
+      const zoom = map.getZoom();
+      
+      // Calculate target tilt continuously based on zoom:
+      // Below 16 => 0, Above 18 => 45, between 16 and 18 => interpolate linearly
+      let targetTilt;
+      if (zoom < 17) {
+        targetTilt = 0;
+      } else if (zoom > 19) {
+        targetTilt = 45;
+      } else {
+        targetTilt = ((zoom - 17) / 2) * 45;
+      }
+      
+      console.log('tilt', targetTilt, 'zoom', zoom)
+      cancelAnimationFrame(animationFrameId);
+      animateTilt(targetTilt);
+    };
+
+    const listener = map.addListener("idle", updateTilt);
+
+    return () => {
+      window.google.maps.event.removeListener(listener);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [googleMap.current]);
 
   const toggleAudio = () => {
     if (audioRef.current) {
