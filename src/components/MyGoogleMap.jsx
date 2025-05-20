@@ -172,6 +172,20 @@ const WebGLOverlayMap = () => {
 
         overlay.setMap(map);
         setIsLoading(false);
+
+        // --- Sync tilt with zoom for desktop only ---
+        if (!/Mobi|Android/i.test(navigator.userAgent)) {
+          map.addListener("zoom_changed", () => {
+            const zoom = map.getZoom();
+            let tilt = Math.round(((zoom - 18) / 2) * 45);
+            tilt = Math.max(0, Math.min(tilt, 45));
+            if (map.getTilt() !== tilt) {
+              map.moveCamera({ tilt });
+            }
+          });
+        }
+        // --- End of desktop block ---
+
         clearInterval(interval);
       }
     }, 100);
@@ -253,63 +267,6 @@ const WebGLOverlayMap = () => {
     return () => window.removeEventListener("mousemove", onMouseMove);
   }, []);
 
-  useEffect(() => {
-    const map = googleMap.current;
-    if (!map) return;
-
-    let animationFrameId = null;
-
-    const animateTilt = (targetTilt) => {
-      const currentTilt = map.getTilt() || 0;
-      const diff = targetTilt - currentTilt;
-
-      if (Math.abs(diff) < 0.1) {
-        map.moveCamera({ tilt: targetTilt });
-        return;
-      }
-
-      // Smoothly interpolate tilt by fraction
-      const nextTilt = currentTilt + diff * 0.05;
-      map.moveCamera({ tilt: nextTilt });
-
-      animationFrameId = requestAnimationFrame(() => animateTilt(targetTilt));
-    };
-
-    let tiltUpdateTimeout = null;
-    const updateTilt = () => {
-      if (tiltUpdateTimeout) clearTimeout(tiltUpdateTimeout);
-
-      tiltUpdateTimeout = setTimeout(() => {
-        const zoom = map.getZoom();
-
-        // Calculate target tilt continuously based on zoom:
-        if (zoom < 18) {
-          zoom = 18;
-          map.setZoom(18);
-        }
-
-        let targetTilt;
-        if (zoom < 17) {
-          targetTilt = 0;
-        } else if (zoom >= 19) {
-          targetTilt = 45;
-        } else {
-          targetTilt = ((zoom - 17) / 2) * 45;
-        }
-        cancelAnimationFrame(animationFrameId);
-        animateTilt(targetTilt);
-      }, 100);
-    };
-
-    const listener = map.addListener("idle", updateTilt);
-
-    return () => {
-      window.google.maps.event.removeListener(listener);
-      cancelAnimationFrame(animationFrameId);
-      if (tiltUpdateTimeout) clearTimeout(tiltUpdateTimeout);
-    };
-  }, [googleMap.current]);
-
   const toggleAudio = () => {
     if (audioRef.current) {
       if (audioRef.current.paused) {
@@ -320,6 +277,54 @@ const WebGLOverlayMap = () => {
         clickAudioRef.current.play();
         setIsPlaying(false);
       }
+    }
+  };
+
+  // Add zoom controls for mobile
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  const [zoomLevel, setZoomLevel] = useState(19);
+
+  useEffect(() => {
+    if (isMobile && googleMap.current) {
+      setZoomLevel(googleMap.current.getZoom());
+      const listener = googleMap.current.addListener("zoom_changed", () => {
+        setZoomLevel(googleMap.current.getZoom());
+      });
+      return () => listener && listener.remove();
+    }
+  }, [isMobile, isLoading]);
+
+  const handleZoomIn = () => {
+    if (googleMap.current) {
+      let newZoom = Math.min(googleMap.current.getZoom() + 1, 20);
+      googleMap.current.setZoom(newZoom);
+      // Set tilt based on new zoom
+      let tilt = Math.round(((newZoom - 18) / 2) * 45);
+      tilt = Math.max(0, Math.min(tilt, 45));
+      googleMap.current.moveCamera({ tilt });
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (googleMap.current) {
+      let newZoom = Math.max(googleMap.current.getZoom() - 1, 18);
+      googleMap.current.setZoom(newZoom);
+      // Set tilt based on new zoom
+      let tilt = Math.round(((newZoom - 18) / 2) * 45);
+      tilt = Math.max(0, Math.min(tilt, 45));
+      googleMap.current.moveCamera({ tilt });
+    }
+  };
+
+  const handleZoomSlider = (e) => {
+    const value = Number(e.target.value);
+    setZoomLevel(value);
+    if (googleMap.current) {
+      googleMap.current.setZoom(value);
+      // Set tilt based on slider zoom
+      let tilt = Math.round(((value - 18) / 2) * 45);
+      tilt = Math.max(0, Math.min(tilt, 45));
+      googleMap.current.moveCamera({ tilt });
     }
   };
 
@@ -399,6 +404,22 @@ const WebGLOverlayMap = () => {
             Next
           </button>
         </div>
+
+        {/* Mobile Zoom Controls */}
+        {isMobile && (
+          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
+            <input
+              type="range"
+              min={18}
+              max={20}
+              step={0.01}
+              value={zoomLevel}
+              onChange={handleZoomSlider}
+              className="w-32 accent-golden"
+              aria-label="Zoom Slider"
+            />
+          </div>
+        )}
       </div>
     </>
   );

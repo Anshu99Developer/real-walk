@@ -8,7 +8,8 @@ import SnowEffect from "./components/SnowEffect";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* <ParallaxBackground /> */}
-    <SnowEffect />   
+    {/* <SnowEffect />    */}
+    <span className="globe-bg"></span>
     <App />
   </StrictMode>
 );

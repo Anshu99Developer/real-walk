@@ -175,11 +175,11 @@ const Inventory = ({ data }) => {
   };
 
   return (
-    <div className="full-container developer-container bg-white">
+    <div className="full-container developer-container bg-white max-md:flex-col">
       <div className="relative w-screen !h-full overflow-hidden home_page_image_container">
         <div className="relative">
           <div
-            className="relative inline-block md:max-w-[650px] max-w-[calc(100%-45px)]"
+            className="relative inline-block w-full md:max-w-[calc(100%-45px)]"
             ref={scrollRef}
           >
             <img
