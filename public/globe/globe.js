@@ -12,6 +12,7 @@
  */
 
 var DAT = DAT || {};
+let autoRotateTarget = { x: 0, y: 0 };
 
 DAT.Globe = function (container, opts) {
   opts = opts || {};
@@ -229,6 +230,23 @@ DAT.Globe = function (container, opts) {
 
     // const videoSphere = new THREE.Mesh(videoSphereGeometry, videoMaterial);
     // scene.add(videoSphere);
+
+    // Mouse Movement
+    container.addEventListener(
+      "mousemove",
+      function (event) {
+        const halfWidth = window.innerWidth / 2;
+        const halfHeight = window.innerHeight / 2;
+
+        const offsetX = (event.clientX - halfWidth) / halfWidth;
+        const offsetY = (event.clientY - halfHeight) / halfHeight;
+
+        // Adjust sensitivity here
+        autoRotateTarget.x = target.x - offsetX * 0.05;
+        autoRotateTarget.y = target.y + offsetY * 0.05;
+      },
+      false
+    );
   }
 
   function addData(data, opts) {
@@ -639,6 +657,20 @@ DAT.Globe = function (container, opts) {
         item.sprite.material.rotation = item.phase;
       });
     }
+
+    // Only update if not dragging (i.e., mouse not down)
+    if (!container.style.cursor.includes("grabbing")) {
+      target.x += (autoRotateTarget.x - target.x) * 0.05;
+      target.y += (autoRotateTarget.y - target.y) * 0.05;
+    }
+
+    rotation.x += (target.x - rotation.x) * 0.01;
+    rotation.y += (target.y - rotation.y) * 0.01;
+
+    camera.position.x = distance * Math.sin(rotation.x) * Math.cos(rotation.y);
+    camera.position.y = distance * Math.sin(rotation.y);
+    camera.position.z = distance * Math.cos(rotation.x) * Math.cos(rotation.y);
+    camera.lookAt(scene.position);
 
     render(scene, camera);
   }

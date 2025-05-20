@@ -11,8 +11,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -37,7 +35,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   /* background-image: url('/universe.jpg'); */
-  /* background-color: #130D09; */
+  background-color: #130D09;
 }
 
 h1 {
@@ -80,7 +78,7 @@ button:focus-visible {
 .tour-iframe {
   width: 100dvw;
 }
-.developer-container{
+.developer-container {
   background-color: #fff;
 }
 
@@ -135,20 +133,42 @@ button:focus-visible {
   animation: fadeIn 2s ease-in-out forwards;
 }
 
-
-
 /* Parallax Background */
-.parallax-container .parallax-background {
+/* .parallax-container .parallax-background {
   position: absolute;
   top: 0;
   left: 0;
   width: 110%;
   height: 110%;
-  /* background-image: url('https://your-image-url.com/background.jpg'); */
-  background-image: url('/sky3.jpg');
-  background-size: cover;
+  background-image: url("/particle.png");
+  background-color: #130d09;
+  background-repeat: repeat;
+  background-size: contain;
   background-position: center;
   transition: transform 0.1s ease-out;
   will-change: transform;
   z-index: -1;
+} */
+
+
+/* .parallax-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 110%;
+  background-color: #130d09;
+  overflow: hidden;
+  z-index: -1;
 }
+
+.float-img {
+  position: absolute;
+  width: 100px;
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+} */

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 const ParallaxBackground = () => {
   const backgroundRef = useRef(null);
@@ -17,19 +17,16 @@ const ParallaxBackground = () => {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
   return (
     <div className="parallax-container">
-      <div
-        ref={backgroundRef}
-        className="parallax-background"
-      ></div>
+      <div ref={backgroundRef} className="parallax-background"></div>
     </div>
   );
 };

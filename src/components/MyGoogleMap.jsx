@@ -77,6 +77,8 @@ const WebGLOverlayMap = () => {
             lng: currentBuilding.lng,
           },
           zoom: 19,
+          minZoom: 18,
+          maxZoom: 20,
           heading: 0,
           tilt: 45,
           mapId: "93282db3a162e6da",
@@ -267,29 +269,36 @@ const WebGLOverlayMap = () => {
       }
 
       // Smoothly interpolate tilt by fraction
-      const nextTilt = currentTilt + diff * 0.1; // adjust 0.1 for speed
+      const nextTilt = currentTilt + diff * 0.05;
       map.moveCamera({ tilt: nextTilt });
 
       animationFrameId = requestAnimationFrame(() => animateTilt(targetTilt));
     };
 
+    let tiltUpdateTimeout = null;
     const updateTilt = () => {
-      const zoom = map.getZoom();
-      
-      // Calculate target tilt continuously based on zoom:
-      // Below 16 => 0, Above 18 => 45, between 16 and 18 => interpolate linearly
-      let targetTilt;
-      if (zoom < 17) {
-        targetTilt = 0;
-      } else if (zoom > 19) {
-        targetTilt = 45;
-      } else {
-        targetTilt = ((zoom - 17) / 2) * 45;
-      }
-      
-      console.log('tilt', targetTilt, 'zoom', zoom)
-      cancelAnimationFrame(animationFrameId);
-      animateTilt(targetTilt);
+      if (tiltUpdateTimeout) clearTimeout(tiltUpdateTimeout);
+
+      tiltUpdateTimeout = setTimeout(() => {
+        const zoom = map.getZoom();
+
+        // Calculate target tilt continuously based on zoom:
+        if (zoom < 18) {
+          zoom = 18;
+          map.setZoom(18);
+        }
+
+        let targetTilt;
+        if (zoom < 17) {
+          targetTilt = 0;
+        } else if (zoom >= 19) {
+          targetTilt = 45;
+        } else {
+          targetTilt = ((zoom - 17) / 2) * 45;
+        }
+        cancelAnimationFrame(animationFrameId);
+        animateTilt(targetTilt);
+      }, 100);
     };
 
     const listener = map.addListener("idle", updateTilt);
@@ -297,6 +306,7 @@ const WebGLOverlayMap = () => {
     return () => {
       window.google.maps.event.removeListener(listener);
       cancelAnimationFrame(animationFrameId);
+      if (tiltUpdateTimeout) clearTimeout(tiltUpdateTimeout);
     };
   }, [googleMap.current]);
 
