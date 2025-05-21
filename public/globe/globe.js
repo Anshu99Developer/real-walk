@@ -80,6 +80,7 @@ DAT.Globe = function (container, opts) {
 
   var camera, scene, renderer, w, h;
   var mesh, atmosphere, point;
+  var outerGlobe;
 
   var overRenderer;
 
@@ -151,6 +152,20 @@ DAT.Globe = function (container, opts) {
     mesh.scale.set(1.2, 1.2, 1.2);
     scene.add(mesh);
 
+    // Add outer transparent globe with wave2.png as texture
+    const outerTexture = new THREE.TextureLoader().load("/globe/wave4.png");
+    const outerMaterial = new THREE.MeshPhongMaterial({
+      map: outerTexture, // Use wave2.png as the texture
+      // color: 0xffffff,
+      transparent: true,
+      opacity: 0.7, // Adjust for desired transparency
+      shininess: 100,
+      side: THREE.FrontSide,
+    });
+    outerGlobe = new THREE.Mesh(geometry, outerMaterial); // <-- Remove 'const'
+    outerGlobe.scale.set(1.05, 1.05, 1.05); // Slightly larger than atmosphere
+    scene.add(outerGlobe);
+
     geometry = new THREE.BoxGeometry(0.75, 0.75, 1);
     geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, -0.5));
 
@@ -174,8 +189,8 @@ DAT.Globe = function (container, opts) {
           const dx = event.clientX - lastMouseMove.x;
           const dy = event.clientY - lastMouseMove.y;
           // Apply a small fraction to the target rotation for subtle effect
-          target.x += dx * 0.0005;
-          target.y += dy * 0.0005;
+          target.x += dx * 0.00005;
+          target.y += dy * 0.00005;
           // Clamp target.y to avoid flipping
           target.y = Math.max(-PI_HALF, Math.min(PI_HALF, target.y));
         }
@@ -636,6 +651,10 @@ DAT.Globe = function (container, opts) {
       });
     }
 
+    if (outerGlobe) {
+      outerGlobe.rotation.y += 0.002; // Adjust speed as desired
+    }
+    
     renderer.render(scene, camera);
   }
   init();
