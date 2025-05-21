@@ -9,8 +9,6 @@ const Home = ({ data }) => {
 
   const isDragging = useRef(false);
   const lastX = useRef(0);
-  const deltaX = useRef(0);
-  const animationFrame = useRef(null);
 
   useEffect(() => {
     // Preload all images
@@ -23,7 +21,6 @@ const Home = ({ data }) => {
     const timer = setTimeout(() => setShowTutorial(false), 5000);
     return () => {
       clearTimeout(timer);
-      cancelAnimationFrame(animationFrame.current);
     };
   }, [images]);
 
@@ -31,36 +28,26 @@ const Home = ({ data }) => {
     if (showTutorial) setShowTutorial(false);
   };
 
-  const updateFrame = () => {
-    const sensitivity = 10; // Increase for smoother motion
-    const dx = deltaX.current;
-
-    if (Math.abs(dx) >= sensitivity) {
-      const direction = dx > 0 ? -1 : 1;
-      setFrameIndex((prev) => (prev + direction + frameCount) % frameCount);
-      deltaX.current = 0;
-    }
-
-    animationFrame.current = requestAnimationFrame(updateFrame);
-  };
+  const sensitivity = 10; // px per frame
 
   const handleStart = (x) => {
     isDragging.current = true;
     lastX.current = x;
     hideTutorial();
-    animationFrame.current = requestAnimationFrame(updateFrame);
   };
 
   const handleMove = (x) => {
     if (!isDragging.current) return;
-    deltaX.current += x - lastX.current;
-    lastX.current = x;
+    const dx = x - lastX.current;
+    if (Math.abs(dx) >= sensitivity) {
+      const direction = dx > 0 ? -1 : 1;
+      setFrameIndex((prev) => (prev + direction + frameCount) % frameCount);
+      lastX.current = x;
+    }
   };
 
   const handleEnd = () => {
     isDragging.current = false;
-    cancelAnimationFrame(animationFrame.current);
-    deltaX.current = 0;
   };
 
   return (
@@ -85,6 +72,7 @@ const Home = ({ data }) => {
           alt={`Frame ${frameIndex}`}
           className="home_page_images rotate_view"
           draggable={false}
+          loading="lazy"
         />
       )}
     </div>

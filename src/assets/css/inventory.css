@@ -9,7 +9,7 @@
 }
 
 .building_image {
-  height: 100vh;
+  height: 100dvh;
   object-fit: contain;
 }
 

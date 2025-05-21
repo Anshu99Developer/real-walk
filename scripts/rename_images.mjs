@@ -3,14 +3,14 @@ import { join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-const folderPath = join(__dirname, '../public/day_night_images');
+const folderPath = join(__dirname, '../public/Lotus');
 
 try {
     const files = await readdir(folderPath);
 
     for (const file of files) {
         const oldPath = join(folderPath, file);
-        const newFileName = `day_night_${file}`;
+        const newFileName = `lotus_${file}`;
         const newPath = join(folderPath, newFileName);
 
         await rename(oldPath, newPath);
@@ -19,3 +19,9 @@ try {
 } catch (err) {
     console.error('Error:', err);
 }
+
+
+
+// to run this
+// -> cd "/home/lucentinnovation/Other Files/Work/Practical Task/real-walk/scripts"
+// // node rename_images.mjs
