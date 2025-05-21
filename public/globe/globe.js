@@ -163,6 +163,41 @@ DAT.Globe = function (container, opts) {
     renderer.domElement.style.position = "absolute";
     container.appendChild(renderer.domElement);
 
+    // Add mousemove event for slight globe movement following mouse direction
+    let lastMouseMove = { x: null, y: null };
+    let mouseMoveActive = false;
+
+    container.addEventListener("mousemove", function (event) {
+      // Only apply if not dragging (i.e., mouse is not down)
+      if (!mouseMoveActive) {
+        if (lastMouseMove.x !== null && lastMouseMove.y !== null) {
+          const dx = event.clientX - lastMouseMove.x;
+          const dy = event.clientY - lastMouseMove.y;
+          // Apply a small fraction to the target rotation for subtle effect
+          target.x += dx * 0.0005;
+          target.y += dy * 0.0005;
+          // Clamp target.y to avoid flipping
+          target.y = Math.max(-PI_HALF, Math.min(PI_HALF, target.y));
+        }
+        lastMouseMove.x = event.clientX;
+        lastMouseMove.y = event.clientY;
+      }
+    });
+
+    container.addEventListener("mousedown", function () {
+      mouseMoveActive = true;
+    });
+    container.addEventListener("mouseup", function () {
+      mouseMoveActive = false;
+      lastMouseMove.x = null;
+      lastMouseMove.y = null;
+    });
+    container.addEventListener("mouseout", function () {
+      mouseMoveActive = false;
+      lastMouseMove.x = null;
+      lastMouseMove.y = null;
+    });
+
     container.addEventListener("mousedown", onMouseDown, false);
 
     // Remove the mouse wheel event listener to disable zooming
@@ -188,7 +223,7 @@ DAT.Globe = function (container, opts) {
       false
     );
 
-    // Add touch event listeners
+    // Add touch event listenersz
     container.addEventListener("touchstart", onTouchStart, false);
     container.addEventListener("touchmove", onTouchMove, false);
     container.addEventListener("touchend", onTouchEnd, false);

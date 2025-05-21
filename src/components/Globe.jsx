@@ -143,7 +143,7 @@ const Globe = () => {
       </header>
       <div
         id="globe-container"
-        className="w-full h-screen z-10 animate-fadeIn"
+        className="w-full h-screen z-10 animate-fadeIn relative"
       ></div>
       <Popup
         isOpen={showPopup?.status}
