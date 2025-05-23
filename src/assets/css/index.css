@@ -41,12 +41,12 @@ body {
   background-color: #130d09;
   position: fixed;
   width: 100%;
-  top:0;
+  top: 0;
   left: 0;
   height: 100dvh;
   z-index: 0;
   opacity: 0.7;
-  z-index:1;
+  z-index: 1;
 }
 
 h1 {
@@ -156,9 +156,16 @@ button:focus-visible {
   background-repeat: no-repeat;
   background-size: cover, auto;
   background-position: center;
-  transition: transform 0.1s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   will-change: transform;
   z-index: -1;
+}
+
+@media screen and (max-width: 767px) {
+  .parallax-container .parallax-background {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* .parallax-background {
@@ -182,7 +189,6 @@ button:focus-visible {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 } */
-
 
 /* Animation BG */
 .animated-bg {
@@ -210,7 +216,7 @@ button:focus-visible {
   }
 }
 
-.animated-follow-bg {
+/* .animated-follow-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -227,7 +233,8 @@ button:focus-visible {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -235,27 +242,51 @@ button:focus-visible {
     opacity: 0.8;
     transform: scale(1.03);
   }
-}
+} */
 
-
-.background {
+.background-gradient {
   max-width: 100dvw;
   margin: 0 auto;
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100dvh;
+  background: linear-gradient(
+    45deg,
+    #130d0966,
+    #130d094d,
+    #130d0940,
+    #130d0966,
+    #130d0933
+  );
+  background-size: 400% 100%;
+  animation: gradient 8s ease-in-out infinite;
+  animation-direction: alternate;
+  z-index: 2;
+  opacity: 0.8;
 }
 
-.radial-gradient {
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* .radial-gradient {
   width: 100%;
   height: 100%;
-  transition: background 3s ease-out;
-  animation: flowHue 10s ease-in-out infinite;
+  transition: background 6s ease-in-out;
+  animation: flowHue 10s linear infinite;
+  animation-direction: alternate;
 }
 
-/* Optional "wave-like" animation */
 @keyframes flowHue {
   0% {
     filter: hue-rotate(0deg) brightness(1);
@@ -266,4 +297,4 @@ button:focus-visible {
   100% {
     filter: hue-rotate(0deg) brightness(1);
   }
-}
+} */

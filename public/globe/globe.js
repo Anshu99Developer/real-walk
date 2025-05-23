@@ -114,6 +114,15 @@ DAT.Globe = function (container, opts) {
 
     scene = new THREE.Scene();
 
+    // Add a light source so MeshPhongMaterial is visible
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
+    scene.add(ambientLight);
+
+    // Optionally, add a directional light for more effect
+    // const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    // directionalLight.position.set(1, 1, 1).normalize();
+    // scene.add(directionalLight);
+
     var geometry =
       window.innerWidth < 992
         ? new THREE.SphereGeometry(230, 40, 50)
@@ -153,12 +162,12 @@ DAT.Globe = function (container, opts) {
     scene.add(mesh);
 
     // Add outer transparent globe with wave2.png as texture
-    const outerTexture = new THREE.TextureLoader().load("/globe/wave4.png");
+    const outerTexture = new THREE.TextureLoader().load("/globe/wave.png");
     const outerMaterial = new THREE.MeshPhongMaterial({
       map: outerTexture, // Use wave2.png as the texture
-      // color: 0xffffff,
+      color: 0xffffff,
       transparent: true,
-      opacity: 0.7, // Adjust for desired transparency
+      opacity: 1, // Adjust for desired transparency
       shininess: 100,
       side: THREE.FrontSide,
     });

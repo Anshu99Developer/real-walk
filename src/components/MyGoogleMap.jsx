@@ -77,7 +77,7 @@ const WebGLOverlayMap = () => {
             lng: currentBuilding.lng,
           },
           zoom: 19,
-          minZoom: 18,
+          minZoom: 15,
           maxZoom: 20,
           heading: 0,
           tilt: 45,
@@ -177,7 +177,7 @@ const WebGLOverlayMap = () => {
         if (!/Mobi|Android/i.test(navigator.userAgent)) {
           map.addListener("zoom_changed", () => {
             const zoom = map.getZoom();
-            let tilt = Math.round(((zoom - 18) / 2) * 45);
+            let tilt = Math.round(((zoom - 15) / 2) * 45);
             tilt = Math.max(0, Math.min(tilt, 45));
             if (map.getTilt() !== tilt) {
               map.moveCamera({ tilt });
@@ -299,7 +299,7 @@ const WebGLOverlayMap = () => {
       let newZoom = Math.min(googleMap.current.getZoom() + 1, 20);
       googleMap.current.setZoom(newZoom);
       // Set tilt based on new zoom
-      let tilt = Math.round(((newZoom - 18) / 2) * 45);
+      let tilt = Math.round(((newZoom - 15) / 2) * 45);
       tilt = Math.max(0, Math.min(tilt, 45));
       googleMap.current.moveCamera({ tilt });
     }
@@ -307,10 +307,10 @@ const WebGLOverlayMap = () => {
 
   const handleZoomOut = () => {
     if (googleMap.current) {
-      let newZoom = Math.max(googleMap.current.getZoom() - 1, 18);
+      let newZoom = Math.max(googleMap.current.getZoom() - 1, 15);
       googleMap.current.setZoom(newZoom);
       // Set tilt based on new zoom
-      let tilt = Math.round(((newZoom - 18) / 2) * 45);
+      let tilt = Math.round(((newZoom - 15) / 2) * 45);
       tilt = Math.max(0, Math.min(tilt, 45));
       googleMap.current.moveCamera({ tilt });
     }
@@ -322,7 +322,7 @@ const WebGLOverlayMap = () => {
     if (googleMap.current) {
       googleMap.current.setZoom(value);
       // Set tilt based on slider zoom
-      let tilt = Math.round(((value - 18) / 2) * 45);
+      let tilt = Math.round(((value - 15) / 2) * 45);
       tilt = Math.max(0, Math.min(tilt, 45));
       googleMap.current.moveCamera({ tilt });
     }
@@ -410,7 +410,7 @@ const WebGLOverlayMap = () => {
           <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
             <input
               type="range"
-              min={18}
+              min={15}
               max={20}
               step={0.01}
               value={zoomLevel}
