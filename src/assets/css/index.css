@@ -216,7 +216,29 @@ button:focus-visible {
   }
 }
 
-/* Cloud flow animation */
+.background-gradient {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  pointer-events: none;
+  /* Layered gradients for cloud/air effect */
+  background:
+    /* wispy clouds */
+    repeating-radial-gradient(ellipse at 60% 40%, rgba(255, 200, 100, 0.08) 0%, rgba(255, 200, 100, 0.02) 60%, transparent 100%),
+    repeating-radial-gradient(ellipse at 30% 70%, rgba(255, 200, 100, 0.07) 0%, rgba(255, 200, 100, 0.01) 60%, transparent 100%),
+    /* main dark gradient */
+    radial-gradient(ellipse at 50% 55%, rgba(44, 32, 18, 0.7) 0%, rgba(19, 13, 9, 0.95) 70%, rgba(10, 7, 4, 1) 100%),
+    /* subtle color flow */
+    linear-gradient(120deg, rgba(255, 200, 100, 0.08) 0%, rgba(19, 13, 9, 0.92) 40%, rgba(255, 200, 100, 0.08) 100%);
+  background-blend-mode: lighten, lighten, normal, lighten;
+  background-size: 180% 180%, 200% 200%, 200% 200%, 200% 200%;
+  animation: cloud-flow-1 17s linear infinite alternate,
+             cloud-flow-2 25s linear infinite alternate-reverse,
+             shader-gradient-anim 9s ease-in-out infinite alternate;
+  opacity: 0.8;
+}
 
 @keyframes cloud-flow-1 {
   0% { background-position: 0% 0%, 0% 0%, 0% 50%, 0% 50%; }
