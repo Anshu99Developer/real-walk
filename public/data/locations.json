@@ -1,0 +1,139 @@
+{
+    "India": [
+      {
+        "name": "Ahmedabad",
+        "center": { "lat": 23.0225, "lng": 72.5714 },
+        "residentialLocations": [
+          {
+            "name": "Antilia Anant",
+            "id": "antilia-anant",
+            "lat": 23.06329379150407,
+            "lng": 72.55172493497427,
+            "address": "123 Main Street, Ahmedabad",
+            "description": "Luxury residential tower with modern amenities."
+          },
+          {
+            "name": "The Nest",
+            "id": "the-nest",
+            "lat": 23.136313400493155,
+            "lng": 72.54445180020085,
+            "address": "456 Park Avenue, Ahmedabad",
+            "description": "Affordable housing project surrounded by greenery."
+          }
+        ]
+      },
+      {
+        "name": "Mumbai",
+        "center": { "lat": 19.076, "lng": 72.8777 },
+        "residentialLocations": [
+          {
+            "name": "Antilia Anant",
+            "id": "antilia-anant",
+            "lat": 23.06329379150407,
+            "lng": 72.55172493497427,
+            "address": "123 Main Street, Ahmedabad",
+            "description": "Luxury residential tower with modern amenities."
+          },
+          {
+            "name": "The Nest",
+            "id": "the-nest",
+            "lat": 23.136313400493155,
+            "lng": 72.54445180020085,
+            "address": "456 Park Avenue, Ahmedabad",
+            "description": "Affordable housing project surrounded by greenery."
+          }
+        ]
+      },
+      {
+        "name": "Delhi",
+        "center": { "lat": 28.6139, "lng": 77.209 },
+        "residentialLocations": [
+          {
+            "name": "Antilia Anant",
+            "id": "antilia-anant",
+            "lat": 23.06329379150407,
+            "lng": 72.55172493497427,
+            "address": "123 Main Street, Ahmedabad",
+            "description": "Luxury residential tower with modern amenities."
+          },
+          {
+            "name": "The Nest",
+            "id": "the-nest",
+            "lat": 23.136313400493155,
+            "lng": 72.54445180020085,
+            "address": "456 Park Avenue, Ahmedabad",
+            "description": "Affordable housing project surrounded by greenery."
+          }
+        ]
+      },
+      {
+        "name": "Hyderabad",
+        "center": { "lat": 17.385, "lng": 78.4867 },
+        "residentialLocations": [
+          {
+            "name": "Antilia Anant",
+            "id": "antilia-anant",
+            "lat": 23.06329379150407,
+            "lng": 72.55172493497427,
+            "address": "123 Main Street, Ahmedabad",
+            "description": "Luxury residential tower with modern amenities."
+          },
+          {
+            "name": "The Nest",
+            "id": "the-nest",
+            "lat": 23.136313400493155,
+            "lng": 72.54445180020085,
+            "address": "456 Park Avenue, Ahmedabad",
+            "description": "Affordable housing project surrounded by greenery."
+          }
+        ]
+      }
+    ],
+    "Dubai": [
+      {
+        "name": "Jumeirah",
+        "center": { "lat": 25.215, "lng": 55.253 },
+        "residentialLocations": [
+          {
+            "name": "Antilia Anant",
+            "id": "antilia-anant",
+            "lat": 23.06329379150407,
+            "lng": 72.55172493497427,
+            "address": "123 Main Street, Ahmedabad",
+            "description": "Luxury residential tower with modern amenities."
+          },
+          {
+            "name": "The Nest",
+            "id": "the-nest",
+            "lat": 23.136313400493155,
+            "lng": 72.54445180020085,
+            "address": "456 Park Avenue, Ahmedabad",
+            "description": "Affordable housing project surrounded by greenery."
+          }
+        ]
+      },
+      {
+        "name": "Hatta",
+        "center": { "lat": 24.795, "lng": 56.116 },
+        "residentialLocations": [
+          {
+            "name": "Antilia Anant",
+            "id": "antilia-anant",
+            "lat": 23.06329379150407,
+            "lng": 72.55172493497427,
+            "address": "123 Main Street, Ahmedabad",
+            "description": "Luxury residential tower with modern amenities."
+          },
+          {
+            "name": "The Nest",
+            "id": "the-nest",
+            "lat": 23.136313400493155,
+            "lng": 72.54445180020085,
+            "address": "456 Park Avenue, Ahmedabad",
+            "description": "Affordable housing project surrounded by greenery."
+          }
+        ]
+      }
+    ]
+  }
+  

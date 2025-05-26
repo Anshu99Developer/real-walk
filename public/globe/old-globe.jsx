@@ -1,3 +1,16 @@
+/**
+ * dat.globe Javascript WebGL Globe Toolkit
+ * https://github.com/dataarts/webgl-globe
+ *
+ * Copyright 2011 Data Arts Team, Google Creative Lab
+ *
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
+
 var DAT = DAT || {};
 DAT.Globe = function (container, opts) {
   opts = opts || {};
@@ -68,10 +81,6 @@ DAT.Globe = function (container, opts) {
   var camera, scene, renderer, w, h;
   var mesh, atmosphere, point;
   var outerGlobe;
-  var glowMesh;
-  var cloudMesh;
-  // Pulsing ring variables
-  var pulsingRing, pulsingRingParams = { time: 0 };
 
   var overRenderer;
 
@@ -109,6 +118,11 @@ DAT.Globe = function (container, opts) {
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
     scene.add(ambientLight);
 
+    // Optionally, add a directional light for more effect
+    // const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    // directionalLight.position.set(1, 1, 1).normalize();
+    // scene.add(directionalLight);
+
     var geometry =
       window.innerWidth < 992
         ? new THREE.SphereGeometry(230, 40, 50)
@@ -126,7 +140,7 @@ DAT.Globe = function (container, opts) {
       vertexShader: shader.vertexShader,
       fragmentShader: shader.fragmentShader,
       transparent: true, // Ensure PNG transparency is respected
-      alphaTest: 0.01, // Discard fully transparent pixels
+      alphaTest: 0.01,   // Discard fully transparent pixels
     });
 
     mesh = new THREE.Mesh(geometry, material);
@@ -162,21 +176,6 @@ DAT.Globe = function (container, opts) {
     outerGlobe = new THREE.Mesh(geometry, outerMaterial);
     outerGlobe.scale.set(0.98, 0.98, 0.98); // Slightly larger than earth, smaller than atmosphere
     scene.add(outerGlobe);
-
-    // --- Add pulsing ring on the inner globe ---
-    const ringRadius = 170; // match inner globe radius
-    const ringGeometry = new THREE.RingGeometry(ringRadius, ringRadius + 6, 64);
-    const ringMaterial = new THREE.MeshBasicMaterial({
-      color: 0xffc864,
-      transparent: true,
-      opacity: 0.7,
-      side: THREE.DoubleSide,
-      depthWrite: false,
-    });
-    pulsingRing = new THREE.Mesh(ringGeometry, ringMaterial);
-    pulsingRing.rotation.x = -Math.PI / 2; // Align ring to globe "equator"
-    pulsingRing.position.set(0, 0, 0);
-    scene.add(pulsingRing);
 
     geometry = new THREE.BoxGeometry(0.75, 0.75, 1);
     geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 0, -0.5));
@@ -265,57 +264,7 @@ DAT.Globe = function (container, opts) {
         camera,
         scene
       );
-      if (intersected && intersected.object.userData.country) {
-      }
     });
-
-    // --- Add animated glow layer ---
-    const glowGeometry = new THREE.SphereGeometry(235, 40, 50);
-    const glowMaterial = new THREE.ShaderMaterial({
-      uniforms: {
-        c: { type: "f", value: 0.5 },
-        p: { type: "f", value: 4.0 },
-        glowColor: { type: "c", value: new THREE.Color(0xffc864) },
-        viewVector: { type: "v3", value: new THREE.Vector3(0, 0, 400) },
-      },
-      vertexShader: `
-        uniform vec3 viewVector;
-        varying float intensity;
-        void main() {
-          vec3 vNormal = normalize(normalMatrix * normal);
-          vec3 vNormel = normalize(normalMatrix * viewVector - modelViewMatrix * vec4(position, 1.0)).xyz;
-          intensity = pow(0.6 - dot(vNormal, vNormel), 4.0);
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-      fragmentShader: `
-        uniform vec3 glowColor;
-        varying float intensity;
-        void main() {
-          gl_FragColor = vec4(glowColor, intensity * 0.6);
-        }
-      `,
-      side: THREE.BackSide,
-      blending: THREE.AdditiveBlending,
-      transparent: true,
-    });
-    glowMesh = new THREE.Mesh(glowGeometry, glowMaterial);
-    glowMesh.scale.set(1.25, 1.25, 1.25);
-    scene.add(glowMesh);
-
-    // --- Add animated cloud layer ---
-    const cloudTexture = new THREE.TextureLoader().load(imgDir + "cloud.png"); // clouds.png must exist
-    const cloudGeometry = new THREE.SphereGeometry(240, 60, 80);
-    const cloudMaterial = new THREE.MeshPhongMaterial({
-      map: cloudTexture,
-      color: 0xffc864, // Set base color to #ffc864
-      transparent: true,
-      opacity: 0.3, // You can adjust for more/less intensity
-      depthWrite: false,
-      side: THREE.DoubleSide,
-    });
-    cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
-    scene.add(cloudMesh);
   }
 
   function addData(data, opts) {
@@ -702,7 +651,7 @@ DAT.Globe = function (container, opts) {
     }
 
     camera.lookAt(mesh.position);
-
+       
     renderer.render(scene, camera);
   }
   init();
@@ -712,26 +661,14 @@ DAT.Globe = function (container, opts) {
     requestAnimationFrame(animate);
     // Animate sprites
     if (this._animatedSprites) {
-      this._animatedSprites.forEach((item) => {
+      this._animatedSprites.forEach((item, idx) => {
+        // update phase
         item.phase += item.speed * 0.02;
+        // spin the sprite's texture
         item.sprite.material.rotation = item.phase;
       });
     }
-    // Animate clouds
-    if (cloudMesh) cloudMesh.rotation.y += 0.003;
-    // Animate glow
-    if (glowMesh) glowMesh.material.uniforms.viewVector.value = camera.position;
 
-    // Animate pulsing ring
-    if (pulsingRing) {
-      pulsingRingParams.time += 0.03;
-      // Pulse scale between 1 and 1.25, opacity between 0.7 and 0.1
-      const pulse = (Math.sin(pulsingRingParams.time) + 1) / 2; // 0..1
-      pulsingRing.scale.setScalar(1 + pulse * 0.25);
-      pulsingRing.material.opacity = 0.7 - pulse * 0.6;
-    }
-
-    // Remove: waveLines.forEach(...)
     render(scene, camera);
   }
 

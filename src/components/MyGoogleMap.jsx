@@ -5,38 +5,6 @@ import { MuteAudioIcon, UnMuteAudioIcon } from "../assets/Icons";
 import ambientSound from "/ambient.mp3";
 import clickSound from "/click-sound.mp3";
 
-const cityConfig = {
-  Ahmedabad: { center: { lat: 23.0225, lng: 72.5714 } },
-  Mumbai: { center: { lat: 19.076, lng: 72.8777 } },
-  Delhi: { center: { lat: 28.6139, lng: 77.209 } },
-  Hyderabad: { center: { lat: 17.385, lng: 78.4867 } },
-  Jumeirah: { center: { lat: 25.215, lng: 55.253 } },
-  Hatta: { center: { lat: 24.795, lng: 56.116 } },
-};
-
-const residentialLocations = [
-  {
-    name: "Antilia Anant",
-    id: "antilia-anant",
-    lat: 23.06329379150407,
-    lng: 72.55172493497427,
-    address: "123 Main Street, Ahmedabad",
-    description: "Luxury residential tower with modern amenities.",
-    area: "5000 sq.ft",
-    nearby: ["Riverfront", "Metro Station"],
-  },
-  {
-    name: "The Nest",
-    id: "the-nest",
-    lat: 23.136313400493155,
-    lng: 72.54445180020085,
-    address: "456 Park Avenue, Ahmedabad",
-    description: "Affordable housing project surrounded by greenery.",
-    area: "1200 sq.ft",
-    nearby: ["Shopping Mall", "City Park"],
-  },
-];
-
 const WebGLOverlayMap = () => {
   const mapRef = useRef(null);
   const googleMap = useRef(null);
@@ -52,17 +20,50 @@ const WebGLOverlayMap = () => {
   const clickAudioRef = useRef(null);
 
   const cubePositionRef = useRef({
-    lat: residentialLocations[0].lat,
-    lng: residentialLocations[0].lng,
+    lat: 23.06329379150407,
+    lng: 72.55172493497427,
     altitude: 50,
   });
 
   const { city: cityParam } = useParams();
-  const city = cityConfig[cityParam] ? cityParam : "Ahmedabad";
+  const [locationsData, setLocationsData] = useState(null);
+  const [city, setCity] = useState(null);
+  const [residentialLocations, setResidentialLocations] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const currentBuilding = residentialLocations[currentIndex];
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch locations.json and set city/residentialLocations
+  useEffect(() => {
+    fetch("/data/locations.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setLocationsData(data);
+        let foundCity = null;
+        let foundLocations = [];
+        // Find the city in all countries
+        for (const country in data) {
+          const cityArr = data[country];
+          const match = cityArr.find(
+            (c) => c.name.toLowerCase() === (cityParam || "").toLowerCase()
+          );
+          if (match) {
+            foundCity = match;
+            foundLocations = match.residentialLocations || [];
+            break;
+          }
+        }
+        // Default to Ahmedabad if not found
+        if (!foundCity) {
+          const indiaCities = data["India"] || [];
+          foundCity = indiaCities.find((c) => c.name === "Ahmedabad");
+          foundLocations = foundCity ? foundCity.residentialLocations : [];
+        }
+        setCity(foundCity);
+        setResidentialLocations(foundLocations);
+        setCurrentIndex(0);
+      });
+  }, [cityParam]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,8 +74,8 @@ const WebGLOverlayMap = () => {
       ) {
         const map = new window.google.maps.Map(mapRef.current, {
           center: {
-            lat: currentBuilding.lat,
-            lng: currentBuilding.lng,
+            lat: cubePositionRef.current.lat,
+            lng: cubePositionRef.current.lng,
           },
           zoom: 19,
           minZoom: 15,
@@ -89,9 +90,9 @@ const WebGLOverlayMap = () => {
 
         // Create a marker
         const marker = new window.google.maps.Marker({
-          position: { lat: currentBuilding.lat, lng: currentBuilding.lng },
+          position: { lat: cubePositionRef.current.lat, lng: cubePositionRef.current.lng },
           map: map,
-          title: currentBuilding.name,
+          title: "Current Location",
           icon: {
             path: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z",
             fillColor: "#ffc864",
@@ -224,36 +225,33 @@ const WebGLOverlayMap = () => {
     };
   }, []);
 
+  // Update cubePositionRef and marker when residentialLocations or currentIndex changes
   useEffect(() => {
-    const map = googleMap.current;
-    const overlay = overlayRef.current;
-    const marker = markerRef.current;
+    if (!city || residentialLocations.length === 0) return;
+    // Use residentialLocations[currentIndex] instead of hardcoded array
     const building = residentialLocations[currentIndex];
+    if (!building) return;
+    cubePositionRef.current = {
+      lat: building.lat,
+      lng: building.lng,
+      altitude: 50,
+    };
 
-    if (map && overlay && marker) {
-      cubePositionRef.current = {
-        lat: building.lat,
-        lng: building.lng,
-        altitude: 50,
-      };
-
-      map.panTo({ lat: building.lat, lng: building.lng });
-
-      marker.setPosition({ lat: building.lat, lng: building.lng });
-      marker.setTitle(building.name);
-
-      map.moveCamera({
+    if (googleMap.current && markerRef.current) {
+      googleMap.current.panTo({ lat: building.lat, lng: building.lng });
+      markerRef.current.setPosition({ lat: building.lat, lng: building.lng });
+      markerRef.current.setTitle(building.name);
+      googleMap.current.moveCamera({
         zoom: 19,
         heading: 0,
         tilt: 45,
       });
-
       setTimeout(() => {
-        map.moveCamera({ tilt: 45, zoom: 19 });
-        overlay.requestRedraw();
+        googleMap.current.moveCamera({ tilt: 45, zoom: 19 });
+        overlayRef.current && overlayRef.current.requestRedraw();
       }, 1000);
     }
-  }, [currentIndex]);
+  }, [currentIndex, city, residentialLocations]);
 
   useEffect(() => {
     const onMouseMove = (event) => {
@@ -328,6 +326,17 @@ const WebGLOverlayMap = () => {
     }
   };
 
+  // Only render if city and residentialLocations are loaded
+  if (!city || residentialLocations.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <span className="text-lg text-raisinBlack">Loading...</span>
+      </div>
+    );
+  }
+
+  const currentBuilding = residentialLocations[currentIndex];
+
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-full">
@@ -378,7 +387,7 @@ const WebGLOverlayMap = () => {
           </p>
           <Link
             className="lg:text-sm text-xs bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:bg-raisinBlack hover:border-golden hover:text-golden block mt-4 text-center"
-            to={`/${currentBuilding?.id}`}
+            to={`/developers/${currentBuilding?.id}`}
           >
             Checkout view
           </Link>

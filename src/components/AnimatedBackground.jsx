@@ -56,9 +56,9 @@ export default function AnimatedBackground() {
 
   return (
     <div className="background-gradient">
-      {[...Array(6)].map((_, i) => (
+      {/* {[...Array(6)].map((_, i) => (
         <div className="radial-gradient" key={i}></div>
-      ))}
+      ))} */}
     </div>
   );
 }

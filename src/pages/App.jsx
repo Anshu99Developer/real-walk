@@ -135,7 +135,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Globe />} />
           <Route path="/city/:city" element={<MyGoogleMap />} />
-          <Route path="/:developer/*" element={<DeveloperRoutes />} />
+          <Route path="/developers/:developer/*" element={<DeveloperRoutes />} />
         </Routes>
       </Router>
     </>

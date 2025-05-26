@@ -1,26 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-const residentialLocations = [
-  {
-    name: "Antilia Anant",
-    id: "antilia-anant",
-    lat: 23.06329379150407,
-    lng: 72.55172493497427,
-  },
-];
-const Location = () => {
+const Location = ({ data }) => {
   const mapRef = useRef(null);
   const googleMap = useRef(null);
   const markerRef = useRef(null);
-
-  const cubePositionRef = useRef({
-    lat: residentialLocations[0].lat,
-    lng: residentialLocations[0].lng,
-    altitude: 50,
-  });
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const currentBuilding = residentialLocations[currentIndex];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,8 +14,8 @@ const Location = () => {
       ) {
         const map = new window.google.maps.Map(mapRef.current, {
           center: {
-            lat: currentBuilding.lat,
-            lng: currentBuilding.lng,
+            lat: data?.lat,
+            lng: data?.lng,
           },
           zoom: 19,
           heading: 0,
@@ -45,9 +28,9 @@ const Location = () => {
 
         // Create a marker
         const marker = new window.google.maps.Marker({
-          position: { lat: currentBuilding.lat, lng: currentBuilding.lng },
+          position: { lat: data?.lat, lng: data?.lng },
           map: map,
-          title: currentBuilding.name,
+          title: data?.name,
         });
         markerRef.current = marker;
 
@@ -61,15 +44,9 @@ const Location = () => {
   useEffect(() => {
     const map = googleMap.current;
     const marker = markerRef.current;
-    const building = residentialLocations[currentIndex];
+    const building = data;
 
     if (map && overlay && marker) {
-      cubePositionRef.current = {
-        lat: building.lat,
-        lng: building.lng,
-        altitude: 50,
-      };
-
       map.panTo({ lat: building.lat, lng: building.lng });
 
       marker.setPosition({ lat: building.lat, lng: building.lng });
@@ -86,7 +63,11 @@ const Location = () => {
         overlay.requestRedraw();
       }, 1000);
     }
-  }, [currentIndex]);
+  }, [data]);
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="developer-container fixed top-0 left-0 w-full h-full">
       <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />

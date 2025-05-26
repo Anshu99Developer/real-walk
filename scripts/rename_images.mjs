@@ -3,7 +3,7 @@ import { join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
-const folderPath = join(__dirname, '../public/Lotus');
+const folderPath = join(__dirname, '../public/lotus');
 
 try {
     const files = await readdir(folderPath);

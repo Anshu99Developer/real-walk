@@ -4,15 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Popup from "./Popup";
 import Loader from "./ui/Loader";
 
-const listedCities = {
-  India: ["Ahmedabad", "Mumbai", "Delhi", "Hyderabad"],
-  Dubai: ["Jumeirah", "Hatta"],
-};
-
 const Globe = () => {
   const [showPopup, setShowPopup] = useState({ status: false, data: {} });
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [listedCities, setListedCities] = useState({});
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 4000);
@@ -105,6 +101,20 @@ const Globe = () => {
     };
   }, []);
 
+  // Fetch listedCities from locations.json
+  useEffect(() => {
+    fetch("/data/locations.json")
+      .then((res) => res.json())
+      .then((data) => {
+        // Convert to { Country: [city names] }
+        const cities = {};
+        Object.keys(data).forEach((country) => {
+          cities[country] = data[country].map((city) => city.name);
+        });
+        setListedCities(cities);
+      });
+  }, []);
+
   const getLocationsByRegion = (region) => {
     if (region) {
       return (
@@ -133,7 +143,7 @@ const Globe = () => {
 
   return (
     <>
-      <header className="p-4 bg-transparent fixed w-full top-0 left-0 z-10 animate-fadeIn">
+      <header className="p-4 bg-transparent fixed w-full top-0 left-0 z-50 animate-fadeIn">
         <div className="flex justify-between items-center max-w-5xl mx-auto">
           <img src="/main-logo.png" alt="Logo" className="h-10" />
           <button className="px-4 py-2 bg-transparent hover:bg-golden border border-golden text-white rounded-lg transition-all">

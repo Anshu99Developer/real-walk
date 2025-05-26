@@ -1,4 +1,8 @@
 {
+  "name": "Antilia Anant",
+  "id": "antilia-anant",
+  "lat": 23.06329379150407,
+  "lng": 72.55172493497427,
   "home": {
     "images": [
       "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/home_image_00.jpg?v=1746084670",
@@ -1325,5 +1329,11 @@
         }
       ]
     }
-  ]
+  ],
+  "location": {
+    "name": "Antilia Anant",
+    "id": "antilia-anant",
+    "lat": 23.06329379150407,
+    "lng": 72.55172493497427
+  }
 }

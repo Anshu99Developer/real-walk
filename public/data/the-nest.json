@@ -1,4 +1,8 @@
 {
+  "name": "The Nest",
+  "id": "the-nest",
+  "lat": 23.136313400493155,
+  "lng": 72.54445180020085,
   "home": {
     "images": [
       "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/lotus_00.webp",
