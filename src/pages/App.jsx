@@ -81,7 +81,7 @@ function DeveloperRoutes() {
         path="/views"
         element={
           <MenuLayout>
-            <Views data={developerData?.views} />
+            <Views data={developerData?.droneViews} />
           </MenuLayout>
         }
       />
