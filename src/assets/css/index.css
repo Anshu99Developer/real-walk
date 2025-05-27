@@ -234,9 +234,9 @@ button:focus-visible {
     linear-gradient(120deg, rgba(255, 200, 100, 0.08) 0%, rgba(19, 13, 9, 0.92) 40%, rgba(255, 200, 100, 0.08) 100%);
   background-blend-mode: lighten, lighten, normal, lighten;
   background-size: 180% 180%, 200% 200%, 200% 200%, 200% 200%;
-  animation: cloud-flow-1 17s linear infinite alternate,
-             cloud-flow-2 25s linear infinite alternate-reverse,
-             shader-gradient-anim 9s ease-in-out infinite alternate;
+  animation: cloud-flow-1 14s linear infinite alternate,
+             cloud-flow-2 22s linear infinite alternate-reverse,
+             shader-gradient-anim 6s ease-in-out infinite alternate;
   opacity: 0.8;
 }
 

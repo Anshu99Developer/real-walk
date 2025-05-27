@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { MuteAudioIcon, UnMuteAudioIcon } from "../assets/Icons";
 import ambientSound from "/ambient.mp3";
 import clickSound from "/click-sound.mp3";
+import { baseUrl } from "../utils/helper";
 
 const WebGLOverlayMap = () => {
   const mapRef = useRef(null);
@@ -35,7 +36,7 @@ const WebGLOverlayMap = () => {
 
   // Fetch locations.json and set city/residentialLocations
   useEffect(() => {
-    fetch("/data/locations.json")
+    fetch(`${baseUrl}/locations.json`)
       .then((res) => res.json())
       .then((data) => {
         setLocationsData(data);

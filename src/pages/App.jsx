@@ -19,6 +19,7 @@ import FloorPlans from "./FloorPlans";
 import Inventory from "./Inventory";
 import Loader from "../components/ui/Loader";
 import Location from "./Location";
+import { baseUrl } from "../utils/helper";
 
 function DeveloperRoutes() {
   const [developerData, setDeveloperData] = useState(null);
@@ -30,7 +31,7 @@ function DeveloperRoutes() {
   const getData = async (developer) => {
     try {
       setLoading(true);
-      const response = await fetch(`/data/${developer}.json`);
+      const response = await fetch(`${baseUrl}/${developer}.json`);
       const data = await response.json();
       setDeveloperData(data);
     } catch (error) {

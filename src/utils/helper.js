@@ -1,0 +1,1 @@
+export const baseUrl = import.meta.env.VITE_BASE_URL || 'https://cdn.shopify.com/s/files/1/0749/3573/0392/files';
