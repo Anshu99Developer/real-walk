@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { MuteAudioIcon, UnMuteAudioIcon } from "../assets/Icons";
 import ambientSound from "/ambient.mp3";
 import clickSound from "/click-sound.mp3";
-import { baseUrl } from "../utils/helper";
+import { baseUrlAWS } from "../utils/helper";
 
 const WebGLOverlayMap = () => {
   const mapRef = useRef(null);
@@ -31,12 +31,15 @@ const WebGLOverlayMap = () => {
   const [city, setCity] = useState(null);
   const [residentialLocations, setResidentialLocations] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [viewWebVr, setViewWebVr] = useState(false);
+  const [viewWebVrIframe, setViewWebVrIframe] = useState(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-
   // Fetch locations.json and set city/residentialLocations
   useEffect(() => {
-    fetch(`${baseUrl}/locations.json`)
+    console.log("dsssssssssssssssssss", baseUrlAWS)
+    fetch(`https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/JSON/locations.json`)
+      // fetch(`/data/locations.json`)
       .then((res) => res.json())
       .then((data) => {
         setLocationsData(data);
@@ -48,6 +51,8 @@ const WebGLOverlayMap = () => {
           const match = cityArr.find(
             (c) => c.name.toLowerCase() === (cityParam || "").toLowerCase()
           );
+          console.log("sjskjklsd match", match, data);
+
           if (match) {
             foundCity = match;
             foundLocations = match.residentialLocations || [];
@@ -60,11 +65,14 @@ const WebGLOverlayMap = () => {
           foundCity = indiaCities.find((c) => c.name === "Ahmedabad");
           foundLocations = foundCity ? foundCity.residentialLocations : [];
         }
+
         setCity(foundCity);
         setResidentialLocations(foundLocations);
         setCurrentIndex(0);
       });
   }, [cityParam]);
+  console.log("sjskjklsd city", city);
+  const markersRef = useRef([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -79,7 +87,7 @@ const WebGLOverlayMap = () => {
             lng: cubePositionRef.current.lng,
           },
           zoom: 19,
-          minZoom: 15,
+          minZoom: 11,
           maxZoom: 20,
           heading: 0,
           tilt: 45,
@@ -90,21 +98,33 @@ const WebGLOverlayMap = () => {
         googleMap.current = map;
 
         // Create a marker
-        const marker = new window.google.maps.Marker({
-          position: { lat: cubePositionRef.current.lat, lng: cubePositionRef.current.lng },
-          map: map,
-          title: "Current Location",
-          icon: {
-            path: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z",
-            fillColor: "#ffc864",
-            fillOpacity: 1,
-            scale: 1.3,
-            strokeWeight: 10,
-            strokeColor: "#222222",
-            anchor: new google.maps.Point(12, 24),
-          },
+        // Clear existing markers if any
+        markersRef.current.forEach((marker) => marker.setMap(null));
+        markersRef.current = [];
+        // Create a marker for each residential location
+        residentialLocations.forEach((building, index) => {
+          console.log()
+          const marker = new window.google.maps.Marker({
+            position: { lat: building.lat, lng: building.lng },
+            map: map,
+            title: building.name,
+            icon: {
+              path: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z",
+              fillColor: "#ffc864",
+              fillOpacity: 1,
+              scale: 1.3,
+              strokeWeight: 10,
+              strokeColor: "#222222",
+              anchor: new google.maps.Point(12, 24),
+            },
+          });
+
+          marker.addListener("click", () => {
+            setCurrentIndex(index); // This allows the info box to update when clicking a pin
+          });
+
+          markersRef.current.push(marker);
         });
-        markerRef.current = marker;
 
         const overlay = new window.google.maps.WebGLOverlayView();
         overlayRef.current = overlay;
@@ -193,7 +213,7 @@ const WebGLOverlayMap = () => {
     }, 100);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [residentialLocations]);
 
   useEffect(() => {
     const audio = new Audio(ambientSound);
@@ -214,7 +234,7 @@ const WebGLOverlayMap = () => {
         .then(() => {
           setIsPlaying(true);
         })
-        .catch(() => {});
+        .catch(() => { });
     };
 
     document.addEventListener("onload", playAudio, { once: true });
@@ -340,11 +360,22 @@ const WebGLOverlayMap = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-full">
-        <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />
+      {
+        viewWebVr ?
+          <div className="">
+            <iframe
+              src={"https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_1bhk_05/index.html"}
+              height={"100vh"}
+              width={"100vW"}
+              className="fixed top-0 left-0 w-full h-full border-0 z-[9999]"
+              title="Flat WebVR"
+            />
+          </div> :
+          <div className="fixed top-0 left-0 w-full h-full">
+            <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />
 
-        {/* Audio Button */}
-        <div className="bg-raisinBlack absolute top-0 right-0 border-2 border-raisinBlack">
+            {/* Audio Button */}
+            {/* <div className="bg-raisinBlack absolute top-0 right-0 border-2 border-raisinBlack">
           <button
             onClick={toggleAudio}
             className="p-3 focus:outline-none outline-none transition-all rounded-none lg:hover:bg-white text-text-raisinBlack lg:hover:text-raisinBlack"
@@ -355,54 +386,64 @@ const WebGLOverlayMap = () => {
               <UnMuteAudioIcon width={25} height={25} />
             )}
           </button>
-        </div>
+        </div> */}
 
-        {/* Info Dialog Box */}
-        <div className="absolute top-4 left-4 bg-raisinBlack p-4 rounded-lg shadow-lg lg:w-72 w-[250px]">
-          <h2 className="lg:text-lg text-base font-bold pb-2 border-b border-borderColor text-white">
-            {currentBuilding.name}
-          </h2>
-          <p className="lg:text-sm text-xs text-white pt-2">
-            {currentBuilding.address && (
-              <>
-                <strong>Address:</strong> {currentBuilding.address} <br />
-              </>
-            )}
-            {currentBuilding.area && (
-              <>
-                <strong>Area:</strong> {currentBuilding.area} <br />
-              </>
-            )}
-            {currentBuilding.description && (
-              <>
-                <strong>Description:</strong> {currentBuilding.description}{" "}
-                <br />
-              </>
-            )}
-            {currentBuilding.nearby && (
-              <>
-                <strong>Nearby:</strong> {currentBuilding.nearby.join(", ")}{" "}
-                <br />
-              </>
-            )}
-          </p>
-          <Link
+            {/* Info Dialog Box */}
+            <div className="-translate-x-1/2 absolute bg-raisinBlack bottom-10 items-center left-1/2 lg:w-72 p-4 rounded-lg shadow-lg w-[250px]">
+              <h2 className="lg:text-lg text-base font-bold pb-2 border-b border-borderColor text-white flex justify-between">
+                <span>{currentBuilding.name}</span>
+                <span><img src={`https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files` + currentBuilding.logo} style={{ width: "100px" }} /></span>
+              </h2>
+              <p className="lg:text-sm text-xs text-white pt-2">
+                {currentBuilding.project_name && (
+                  <>
+                    <strong>Project Name:</strong> {currentBuilding.project_name} <br />
+                  </>
+                )}
+                {currentBuilding.address && (
+                  <>
+                    <strong>Address:</strong> {currentBuilding.address} <br />
+                  </>
+                )}
+                {currentBuilding.area && (
+                  <>
+                    <strong>Area:</strong> {currentBuilding.area} <br />
+                  </>
+                )}
+                {currentBuilding.description && (
+                  <>
+                    <strong>Description:</strong> {currentBuilding.description}{" "}
+                    <br />
+                  </>
+                )}
+                {currentBuilding.nearby && (
+                  <>
+                    <strong>Nearby:</strong> {currentBuilding.nearby.join(", ")}{" "}
+                    <br />
+                  </>
+                )}
+              </p>
+              <button onClick={() => { setViewWebVr(true); currentBuilding?.link && setViewWebVrIframe(currentBuilding.link) }}
+                className="w-full bg-golden block border border-transparent font-semibold hover:bg-raisinBlack hover:border-golden hover:text-golden lg:text-sm mt-4 px-4 py-2 rounded-lg text-center text-raisinBlack text-xs transition-all">
+                Checkout view
+              </button>
+              {/* <Link
             className="lg:text-sm text-xs bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:bg-raisinBlack hover:border-golden hover:text-golden block mt-4 text-center"
             to={`/developers/${currentBuilding?.id}`}
           >
             Checkout view
-          </Link>
-        </div>
+          </Link> */}
+            </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-row items-center">
-          <Link
-            className="lg:text-base text-sm bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:scale-105"
-            to="/"
-          >
-            Back to world
-          </Link>
-        </div>
-        <div className="absolute bottom-10 right-5 flex flex-row items-center">
+            <div className="absolute flex flex-row items-center left-2 top-2">
+              <Link
+                className="lg:text-base text-sm bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:scale-105"
+                to="/"
+              >
+                Back to world
+              </Link>
+            </div>
+            {/* <div className="absolute bottom-10 right-5 flex flex-row items-center">
           <button
             onClick={() =>
               setCurrentIndex(
@@ -413,24 +454,25 @@ const WebGLOverlayMap = () => {
           >
             Next
           </button>
-        </div>
+        </div> */}
 
-        {/* Mobile Zoom Controls */}
-        {isMobile && (
-          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
-            <input
-              type="range"
-              min={15}
-              max={20}
-              step={0.01}
-              value={zoomLevel}
-              onChange={handleZoomSlider}
-              className="w-32 accent-golden"
-              aria-label="Zoom Slider"
-            />
+            {/* Mobile Zoom Controls */}
+            {isMobile && (
+              <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
+                <input
+                  type="range"
+                  min={15}
+                  max={20}
+                  step={0.01}
+                  value={zoomLevel}
+                  onChange={handleZoomSlider}
+                  className="w-32 accent-golden"
+                  aria-label="Zoom Slider"
+                />
+              </div>
+            )}
           </div>
-        )}
-      </div>
+      }
     </>
   );
 };

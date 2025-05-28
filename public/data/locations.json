@@ -1,139 +1,563 @@
 {
-    "India": [
-      {
-        "name": "Ahmedabad",
-        "center": { "lat": 23.0225, "lng": 72.5714 },
-        "residentialLocations": [
-          {
-            "name": "Antilia Anant",
-            "id": "antilia-anant",
-            "lat": 23.06329379150407,
-            "lng": 72.55172493497427,
-            "address": "123 Main Street, Ahmedabad",
-            "description": "Luxury residential tower with modern amenities."
-          },
-          {
-            "name": "The Nest",
-            "id": "the-nest",
-            "lat": 23.136313400493155,
-            "lng": 72.54445180020085,
-            "address": "456 Park Avenue, Ahmedabad",
-            "description": "Affordable housing project surrounded by greenery."
-          }
-        ]
+  "India": [
+    {
+      "name": "Ahmedabad",
+      "center": {
+        "lat": 23.0225,
+        "lng": 72.5714
       },
-      {
-        "name": "Mumbai",
-        "center": { "lat": 19.076, "lng": 72.8777 },
-        "residentialLocations": [
-          {
-            "name": "Antilia Anant",
-            "id": "antilia-anant",
-            "lat": 23.06329379150407,
-            "lng": 72.55172493497427,
-            "address": "123 Main Street, Ahmedabad",
-            "description": "Luxury residential tower with modern amenities."
-          },
-          {
-            "name": "The Nest",
-            "id": "the-nest",
-            "lat": 23.136313400493155,
-            "lng": 72.54445180020085,
-            "address": "456 Park Avenue, Ahmedabad",
-            "description": "Affordable housing project surrounded by greenery."
-          }
-        ]
+      "residentialLocations": [
+        {
+          "name": "Antilia Anant",
+          "id": "antilia-anant",
+          "lat": 23.06329379150407,
+          "lng": 72.55172493497427,
+          "address": "123 Main Street, Ahmedabad",
+          "description": "Luxury residential tower with modern amenities."
+        },
+        {
+          "name": "The Nest",
+          "id": "the-nest",
+          "lat": 23.136313400493155,
+          "lng": 72.54445180020085,
+          "address": "456 Park Avenue, Ahmedabad",
+          "description": "Affordable housing project surrounded by greenery."
+        }
+      ]
+    },
+    {
+      "name": "Mumbai",
+      "center": {
+        "lat": 19.134839863779643,
+        "lng": 72.88370578844561
       },
-      {
-        "name": "Delhi",
-        "center": { "lat": 28.6139, "lng": 77.209 },
-        "residentialLocations": [
-          {
-            "name": "Antilia Anant",
-            "id": "antilia-anant",
-            "lat": 23.06329379150407,
-            "lng": 72.55172493497427,
-            "address": "123 Main Street, Ahmedabad",
-            "description": "Luxury residential tower with modern amenities."
-          },
-          {
-            "name": "The Nest",
-            "id": "the-nest",
-            "lat": 23.136313400493155,
-            "lng": 72.54445180020085,
-            "address": "456 Park Avenue, Ahmedabad",
-            "description": "Affordable housing project surrounded by greenery."
-          }
-        ]
+      "residentialLocations": [
+        {
+          "name": "Mesacon",
+          "project_name": "Mesacon Green",
+          "id": "antilia-anant",
+          "lat": 19.116250759106524,
+          "lng": 72.84152760316005,
+          "logo": "/Images/Client_Logos/Mumbai/mesacon_jewel.png",
+          "address": "Barfiwala Flyover, Ganga Vihar, Andheri (W)"
+        },
+        {
+          "name": "Mesacon",
+          "project_name": "Mesacon Crown",
+          "id": "mesacon-crown",
+          "lat": 19.115820527034987,
+          "lng": 72.84301747116425,
+          "logo": "/Images/Client_Logos/Mumbai/mesacon_jewel.png",
+          "address": "S.V. Road, Ganga Vihar, Andheri (W)"
+        },
+        {
+          "name": "Jet realty",
+          "project_name": "Samriddhi",
+          "id": "samriddhi",
+          "lat": 19.194252853842077,
+          "lng": 72.84907390674637,
+          "logo": "/Images/Client_Logos/Mumbai/jet_realty_logo.png",
+          "address": "Shree Riddhi Vinayak Ganesh Mandir, Malad (W)"
+        },
+        {
+          "name": "Jet realty",
+          "project_name": "Anand Bhavan",
+          "id": "Anand-Bhavan",
+          "lat": 19.107190844038545,
+          "lng": 72.84649956607049,
+          "logo": "/Images/Client_Logos/Mumbai/jet_realty_logo.png",
+          "address": "Bajaj Road, Navpada, Vile Parle (W)"
+        },
+        {
+          "name": "Dipti Group",
+          "project_name": "Villa Remedian",
+          "id": "Villa-Remedian",
+          "lat": 19.247120352225895,
+          "lng": 72.87032955525899,
+          "logo": "/Images/Client_Logos/Mumbai/dipti_logo.png",
+          "address": "Walking Bridge, Near Bhagwati Hospital, Borivali (W)"
+        },
+        {
+          "name": "GBL",
+          "project_name": "Pilani Heritage",
+          "id": "Pilani-Heritage",
+          "lat": 19.106444045098616,
+          "lng": 72.86687552955792,
+          "logo": "/Images/Client_Logos/Mumbai/gbl.png",
+          "address": "Dalvi Plaza, Kanti Nagar, J B Nagar, Andheri (E)"
+        },
+        {
+          "name": "Greenstone",
+          "project_name": "Aplite",
+          "id": "Aplite",
+          "lat": 18.94580970000273,
+          "lng": 72.83477416507273,
+          "logo": "/Images/Client_Logos/Mumbai/apilite.png",
+          "address": "Greenstone Heritage, Crawford Market, Fort"
+        },
+        {
+          "name": "Shakti",
+          "project_name": "Ayodhya",
+          "id": "Ayodhya",
+          "lat": 19.27210220097872,
+          "lng": 73.07990027312884,
+          "logo": "/Images/Client_Logos/Mumbai/dipti_logo.png",
+          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi"
+        },
+        {
+          "name": "Nagpal",
+          "project_name": "Hill View",
+          "id": "Hill-View",
+          "lat": 19.067318305259157,
+          "lng": 72.83145433623697,
+          "logo": "/Images/Client_Logos/Mumbai/nagpal.png",
+          "address": "La Emerade Building, 14th Rd, Santacruz (W)"
+        },
+        {
+          "name": "Mozaic Homes",
+          "project_name": "Bagenoor",
+          "id": "Bagenoor",
+          "lat": 19.17989883321624,
+          "lng": 72.86271957122138,
+          "logo": "/Images/Client_Logos/Mumbai/mozaic_homes_logo.png",
+          "address": "Pathan Wadi, Malad (E)"
+        },
+        {
+          "name": "Shakti",
+          "project_name": "Avantika",
+          "id": "Avantika",
+          "lat": 19.272107264784076,
+          "lng": 73.07990027312884,
+          "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
+          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi"
+        },
+        {
+          "name": "Shakti",
+          "project_name": "Dwarka",
+          "id": "Dwarka",
+          "lat": 19.272107264784076,
+          "lng": 73.07990027312884,
+          "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
+          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi"
+        },
+        {
+          "name": "Shakti",
+          "project_name": "Sgnature",
+          "id": "Sgnature",
+          "lat": 19.277073682500916,
+          "lng": 73.05069306207952,
+          "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
+          "address": "Siyara Signature, SP Rd, Kamatghar, Bhiwandi"
+        },
+        {
+          "name": "Jet Build",
+          "project_name": "Triveni",
+          "id": "Triveni",
+          "lat": 19.221337879943473,
+          "lng": 72.83434819262735,
+          "logo": "/Images/Client_Logos/Mumbai/jet_build.png",
+          "address": "Opp. Haryana Bhavan, Sector 4, Kandivali (W)"
+        },
+        {
+          "name": "Paradigm",
+          "project_name": "71 MIdtown",
+          "id": "71-MIdtown",
+          "lat": 19.054701036378635,
+          "lng": 72.88709008881474,
+          "logo": "/Images/Client_Logos/Mumbai/paradigm_realty.png",
+          "address": "Gymkhana, Near Trishul Bunglows, Chembur"
+        },
+        {
+          "name": "Shakti",
+          "project_name": "Siyara Heights",
+          "id": "Siyara-Heights",
+          "lat": 19.257194799507516,
+          "lng": 73.14854277116424,
+          "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
+          "address": "M Corp, Barave Rd, Tawri Pada, Bhoirwadi, Kalyan"
+        },
+        {
+          "name": "Mitani",
+          "project_name": "Sky9",
+          "id": "Sky9",
+          "lat": 18.956153768783597,
+          "lng": 72.82322641534303,
+          "logo": "/Images/Client_Logos/Mumbai/mitani_sky9.png",
+          "address": "VP Rd, Kakadwadi Marg, Girgaon, Charni Road"
+        },
+        {
+          "name": "Mitani",
+          "project_name": "Sharda Serene",
+          "id": "Sharda-Serene",
+          "lat": 19.24731809958055,
+          "lng": 73.1752600185031,
+          "logo": "/Images/Client_Logos/Mumbai/mitani_sky9.png",
+          "address": "Beside D-mart Rd, Shahad, Ulhasnagar, Kalyan"
+        },
+        {
+          "name": "Shakti",
+          "project_name": "Siyara Fortune",
+          "id": "Sharda-Serene",
+          "lat": 19.283363738737677,
+          "lng": 73.04900159451084,
+          "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
+          "address": "Old Mumbai Agra Rd, Balaji Nagar, Bhiwandi"
+        },
+        {
+          "name": "Mukta",
+          "project_name": "My Heaven",
+          "id": "My-Heaven",
+          "lat": 19.163332326732885,
+          "lng": 73.07559675767152,
+          "logo": "/Images/Client_Logos/Mumbai/mukta.png",
+          "address": "Nilje Gaon, Kalyan"
+        },
+        {
+          "name": "Chandak",
+          "project_name": "Sarvam",
+          "id": "Sarvam",
+          "lat": 19.10953403400473,
+          "lng": 72.86806169081024,
+          "logo": "/Images/Client_Logos/Mumbai/Chandak_Group.png",
+          "address": "Sarvam, Near Jain Derasar, J B Nagar, Andheri (E)"
+        },
+        {
+          "name": "Shakti",
+          "project_name": "Viva",
+          "id": "Viva",
+          "lat": 19.268725600853273,
+          "lng": 73.05539874910573,
+          "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
+          "address": "Near Hanuman Mandir, Kamatghar Road, Bhiwandi"
+        },
+        {
+          "name": "Dipti",
+          "project_name": "Prachi",
+          "id": "Prachi",
+          "lat": 19.032388703233682,
+          "lng": 72.84142132274427,
+          "logo": "/Images/Client_Logos/Mumbai/dipti_logo.png",
+          "address": "Plot No. 1,Shivaji Park Road No. 2, Dadar (W)"
+        },
+        {
+          "name": "Dipti",
+          "project_name": "Leela Prasad",
+          "id": "Leela-Prasad",
+          "lat": 19.192226181084145,
+          "lng": 72.97305222883575,
+          "logo": "/Images/Client_Logos/Mumbai/dipti_logo.png",
+          "address": "Shraddha, Sahayog Mandir Path, Ghantali, Thane (W)"
+        },
+        {
+          "name": "M4 Gorup",
+          "project_name": "Ocean View",
+          "id": "Ocean-View",
+          "lat": 18.964703454738952,
+          "lng": 72.8400455576715,
+          "logo": "/Images/Client_Logos/Mumbai/m4.png",
+          "address": "28, D Koyande Rd, Ekta Nagar, Mazgaon"
+        },
+        {
+          "name": "Nagpal",
+          "project_name": "Summer Queen",
+          "id": "Summer-Queen",
+          "lat": 19.064627678483085,
+          "lng": 72.83142211193278,
+          "logo": "/Images/Client_Logos/Mumbai/nagpal.png",
+          "address": "15th Road, Bandra (W)"
+        },
+        {
+          "name": "Jai Tirupati",
+          "project_name": "Tirupati Avenue",
+          "id": "Tirupati Avenue",
+          "lat": 19.291255087303078,
+          "lng": 72.86256788249467,
+          "logo": "/Images/Client_Logos/Mumbai/tirupati.png",
+          "address": "Mira Bhayander Link Rd, Geeta Nagar, Mira Road (E)"
+        },
+        {
+          "name": "Gurukrupa",
+          "project_name": "Riddhi Siddhi",
+          "id": "Riddhi-Siddhi",
+          "lat": 19.143253816632,
+          "lng": 72.83168198650728,
+          "logo": "/Images/Client_Logos/Mumbai/gurukrupa_logo.png",
+          "address": "New Link Rd, near Lotus Petrol Pump, Andheri (W)"
+        },
+        {
+          "name": "Gurukrupa",
+          "project_name": "Alaknanada",
+          "id": "Alaknanada",
+          "lat": 19.115849468196306,
+          "lng": 72.83345825767152,
+          "logo": "/Images/Client_Logos/Mumbai/gurukrupa_logo.png",
+          "address": "Cross Road No. 10, Gulmohar Road, Juhu"
+        },
+        {
+          "name": "Gurukrupa",
+          "project_name": "Reclamation",
+          "id": "Reclamation",
+          "lat": 19.052888539630153,
+          "lng": 72.83136087301455,
+          "logo": "/Images/Client_Logos/Mumbai/gurukrupa_logo.png",
+          "address": "1, General Ak Vaidya Marg, Ranwar, Bandra (W)"
+        },
+        {
+          "name": "Jay Krishna",
+          "project_name": "Jay Krishna",
+          "id": "Jay-Krishna",
+          "lat": 19.151186976728482,
+          "lng": 72.93486018650727,
+          "logo": "/Images/Client_Logos/Mumbai/jay_krishna_logo.png",
+          "address": "Jangal Mangal Rd, Bhandup West"
+        },
+        {
+          "name": "Mangal Group",
+          "project_name": "Signature",
+          "id": "Signature",
+          "lat": 19.105366784904998,
+          "lng": 72.84824607116425,
+          "logo": "/Images/Client_Logos/Mumbai/mangal_build_home.png",
+          "address": "Subhash Rd, Vishnu Prasad Society, Vile Parle (E)"
+        },
+        {
+          "name": "Paintora",
+          "project_name": "Varda Vinayak Tower",
+          "id": "Varda-Vinayak-Tower",
+          "lat": 19.238523593813603,
+          "lng": 72.84808072883575,
+          "logo": "/Images/Client_Logos/Mumbai/paintora_logo.png",
+          "address": "DN Mhatre Rd, Om Shanti Chowk, Borivali (W)"
+        },
+        {
+          "name": "Shraddha Lifespces",
+          "project_name": "Sarddha",
+          "id": "Sarddha",
+          "lat": 19.02385260378737,
+          "lng": 72.85421858072854,
+          "logo": "/Images/Client_Logos/Mumbai/shraddha_lifespaces_logo.png",
+          "address": "556, Adenwala Rd, Matunga East"
+        },
+        {
+          "name": "Disha Group",
+          "project_name": "Disha Ville Parle",
+          "id": "Disha-Ville-Parle",
+          "lat": 19.21764212044869,
+          "lng": 72.85195859760913,
+          "logo": "/Images/Client_Logos/Mumbai/disha_realtors_logo.png",
+          "address": "Swami Vivekananda Rd, Shastri Nagar, Borivali (W)"
+        },
+        {
+          "name": "Disha Group",
+          "project_name": "Ananta Heights",
+          "id": "Ananta-Heights",
+          "lat": 19.10049279267082,
+          "lng": 72.84692057116423,
+          "logo": "/Images/Client_Logos/Mumbai/disha_realtors_logo.png",
+          "address": "Ram Mandir Rd, Opp.Tilak Mandir Road, Vile Parle (W)"
+        },
+        {
+          "name": "Mirchandani",
+          "project_name": "Goldstone",
+          "id": "Goldstone",
+          "lat": 19.059897913252943,
+          "lng": 72.83173438650728,
+          "logo": "/Images/Client_Logos/Mumbai/mirchandani.png",
+          "address": "36, Turner Rd, Bandra (W)"
+        },
+        {
+          "name": "Times Realty",
+          "project_name": "Queen Lowns",
+          "id": "Queen-Lowns",
+          "lat": 19.097629382145563,
+          "lng": 72.84021872883574,
+          "logo": "/Images/Client_Logos/Mumbai/times_realty.png",
+          "address": "Rachana Building, Vallabhbhai Patel Road, Vile Parle (W)"
+        },
+        {
+          "name": "Chandak",
+          "project_name": "Kripanagar",
+          "id": "Kripanagar",
+          "lat": 19.11015430592709,
+          "lng": 72.84104006399562,
+          "logo": "/Images/Client_Logos/Mumbai/Chandak_Group.png",
+          "address": "Swami Vivekananda Rd, Opp. Jain Derasar, Vile Parle (W)"
+        },
+        {
+          "name": "Mandor Homes",
+          "project_name": "Mandor Bliss",
+          "id": "Mandor-Bliss",
+          "lat": 19.096401620079707,
+          "lng": 72.84898379641369,
+          "logo": "/Images/Client_Logos/Mumbai/Mandor_bliss.png",
+          "address": "Nariman Rd, Navpada, Vile Parle (W)"
+        },
+        {
+          "name": "Such Group",
+          "project_name": "Blue Heaven",
+          "id": "Blue-Heaven",
+          "lat": 19.049445554108686,
+          "lng": 72.8251594698545,
+          "logo": "/Images/Client_Logos/Mumbai/sach_developer.png",
+          "address": "Blue Heaven Society, Mount Mary, Bandra (W)"
+        },
+        {
+          "name": "Paradigm",
+          "project_name": "Superstar",
+          "id": "Superstar",
+          "lat": 19.065847015405843,
+          "lng": 72.82495740615325,
+          "logo": "/Images/Client_Logos/Mumbai/paradigm_realty.png",
+          "address": "Sherly Rajan Rd, Railway Colony, Shirley, Bandra (W)"
+        },
+        {
+          "name": "Jai Tirupati Group",
+          "project_name": "Tirupati Imperial",
+          "id": "Tirupati-Imperial",
+          "lat": 19.297766821348365,
+          "lng": 72.87014925991558,
+          "logo": "/Images/Client_Logos/Mumbai/tirupati.png",
+          "address": "Stall No.1, Ramdev Park Rd, Mira Road (E)"
+        },
+        {
+          "name": "Mirchandani",
+          "project_name": "Triton",
+          "id": "Triton",
+          "lat": 19.077711268526834,
+          "lng": 72.83006298465696,
+          "logo": "/Images/Client_Logos/Mumbai/mirchandani.png",
+          "address": "Indrajit Society, Vithaldas Nagar, Santacruz (W)"
+        },
+        {
+          "name": "Paradigm",
+          "project_name": "Anantara",
+          "id": "Anantara",
+          "lat": 19.222861405124707,
+          "lng": 72.84281315767151,
+          "logo": "/Images/Client_Logos/Mumbai/paradigm_realty.png",
+          "address": "Next to Shimpoli Ground, Shimpoli, Borivali (W)"
+        },
+        {
+          "name": "Lotus",
+          "project_name": "Amalfi",
+          "id": "Anantara",
+          "lat": 19.13395044773438,
+          "lng": 72.81132501719333,
+          "logo": "/Images/Client_Logos/Mumbai/lotus_developers_logo.png",
+          "address": "Sagar Sameer, 57, JP Rd, Versova, Andheri (W)"
+        },
+        {
+          "name": "Shri Sai Akar",
+          "project_name": "Ruby CHSL",
+          "id": "Ruby-CHSL",
+          "lat": 19.22730155928469,
+          "lng": 72.82210867637099,
+          "logo": "/Images/Client_Logos/Mumbai/aakar-logo.png",
+          "address": "SagRSC Rd Number 37, Gorai 2, Borivali (W)"
+        }
+      ]
+    },
+    {
+      "name": "Delhi",
+      "center": {
+        "lat": 28.6139,
+        "lng": 77.209
       },
-      {
-        "name": "Hyderabad",
-        "center": { "lat": 17.385, "lng": 78.4867 },
-        "residentialLocations": [
-          {
-            "name": "Antilia Anant",
-            "id": "antilia-anant",
-            "lat": 23.06329379150407,
-            "lng": 72.55172493497427,
-            "address": "123 Main Street, Ahmedabad",
-            "description": "Luxury residential tower with modern amenities."
-          },
-          {
-            "name": "The Nest",
-            "id": "the-nest",
-            "lat": 23.136313400493155,
-            "lng": 72.54445180020085,
-            "address": "456 Park Avenue, Ahmedabad",
-            "description": "Affordable housing project surrounded by greenery."
-          }
-        ]
-      }
-    ],
-    "Dubai": [
-      {
-        "name": "Jumeirah",
-        "center": { "lat": 25.215, "lng": 55.253 },
-        "residentialLocations": [
-          {
-            "name": "Antilia Anant",
-            "id": "antilia-anant",
-            "lat": 23.06329379150407,
-            "lng": 72.55172493497427,
-            "address": "123 Main Street, Ahmedabad",
-            "description": "Luxury residential tower with modern amenities."
-          },
-          {
-            "name": "The Nest",
-            "id": "the-nest",
-            "lat": 23.136313400493155,
-            "lng": 72.54445180020085,
-            "address": "456 Park Avenue, Ahmedabad",
-            "description": "Affordable housing project surrounded by greenery."
-          }
-        ]
+      "residentialLocations": [
+        {
+          "name": "Antilia Anant",
+          "id": "antilia-anant",
+          "lat": 23.06329379150407,
+          "lng": 72.55172493497427,
+          "address": "123 Main Street, Ahmedabad",
+          "description": "Luxury residential tower with modern amenities."
+        },
+        {
+          "name": "The Nest",
+          "id": "the-nest",
+          "lat": 23.136313400493155,
+          "lng": 72.54445180020085,
+          "address": "456 Park Avenue, Ahmedabad",
+          "description": "Affordable housing project surrounded by greenery."
+        }
+      ]
+    },
+    {
+      "name": "Hyderabad",
+      "center": {
+        "lat": 17.385,
+        "lng": 78.4867
       },
-      {
-        "name": "Hatta",
-        "center": { "lat": 24.795, "lng": 56.116 },
-        "residentialLocations": [
-          {
-            "name": "Antilia Anant",
-            "id": "antilia-anant",
-            "lat": 23.06329379150407,
-            "lng": 72.55172493497427,
-            "address": "123 Main Street, Ahmedabad",
-            "description": "Luxury residential tower with modern amenities."
-          },
-          {
-            "name": "The Nest",
-            "id": "the-nest",
-            "lat": 23.136313400493155,
-            "lng": 72.54445180020085,
-            "address": "456 Park Avenue, Ahmedabad",
-            "description": "Affordable housing project surrounded by greenery."
-          }
-        ]
-      }
-    ]
-  }
-  
+      "residentialLocations": [
+        {
+          "name": "Antilia Anant",
+          "id": "antilia-anant",
+          "lat": 23.06329379150407,
+          "lng": 72.55172493497427,
+          "address": "123 Main Street, Ahmedabad",
+          "description": "Luxury residential tower with modern amenities."
+        },
+        {
+          "name": "The Nest",
+          "id": "the-nest",
+          "lat": 23.136313400493155,
+          "lng": 72.54445180020085,
+          "address": "456 Park Avenue, Ahmedabad",
+          "description": "Affordable housing project surrounded by greenery."
+        }
+      ]
+    }
+  ],
+  "Dubai": [
+    {
+      "name": "Jumeirah",
+      "center": {
+        "lat": 25.215,
+        "lng": 55.253
+      },
+      "residentialLocations": [
+        {
+          "name": "Antilia Anant",
+          "id": "antilia-anant",
+          "lat": 23.06329379150407,
+          "lng": 72.55172493497427,
+          "address": "123 Main Street, Ahmedabad",
+          "description": "Luxury residential tower with modern amenities."
+        },
+        {
+          "name": "The Nest",
+          "id": "the-nest",
+          "lat": 23.136313400493155,
+          "lng": 72.54445180020085,
+          "address": "456 Park Avenue, Ahmedabad",
+          "description": "Affordable housing project surrounded by greenery."
+        }
+      ]
+    },
+    {
+      "name": "Hatta",
+      "center": {
+        "lat": 24.795,
+        "lng": 56.116
+      },
+      "residentialLocations": [
+        {
+          "name": "Antilia Anant",
+          "id": "antilia-anant",
+          "lat": 23.06329379150407,
+          "lng": 72.55172493497427,
+          "address": "123 Main Street, Ahmedabad",
+          "description": "Luxury residential tower with modern amenities."
+        },
+        {
+          "name": "The Nest",
+          "id": "the-nest",
+          "lat": 23.136313400493155,
+          "lng": 72.54445180020085,
+          "address": "456 Park Avenue, Ahmedabad",
+          "description": "Affordable housing project surrounded by greenery."
+        }
+      ]
+    }
+  ]
+}
