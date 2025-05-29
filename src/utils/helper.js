@@ -1,2 +1,2 @@
 export const baseUrl = import.meta.env.VITE_BASE_URL || 'https://cdn.shopify.com/s/files/1/0749/3573/0392/files';
-export const baseUrlAWS = import.meta.env.VITE_BASE_URL_AWS || 'https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files';
+export const baseUrlAWS = import.meta.env.VITE_BASE_URL_AWS || 'https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/JSON';

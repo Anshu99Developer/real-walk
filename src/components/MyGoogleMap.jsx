@@ -38,8 +38,7 @@ const WebGLOverlayMap = () => {
   // Fetch locations.json and set city/residentialLocations
   useEffect(() => {
     console.log("dsssssssssssssssssss", baseUrlAWS)
-    fetch(`https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/JSON/locations.json`)
-      // fetch(`/data/locations.json`)
+    fetch(`${baseUrlAWS}/locations.json`)
       .then((res) => res.json())
       .then((data) => {
         setLocationsData(data);

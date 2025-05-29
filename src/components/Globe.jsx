@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { useNavigate } from "react-router-dom";
 import Popup from "./Popup";
 import Loader from "./ui/Loader";
-import { baseUrl } from "../utils/helper";
+import { baseUrl, baseUrlAWS } from "../utils/helper";
 
 const Globe = () => {
   const [showPopup, setShowPopup] = useState({ status: false, data: {} });
@@ -104,7 +104,7 @@ const Globe = () => {
 
   // Fetch listedCities from locations.json
   useEffect(() => {
-    fetch(`${baseUrl}/locations.json`)
+    fetch(`${baseUrlAWS}/locations.json`)
       .then((res) => res.json())
       .then((data) => {
         // Convert to { Country: [city names] }
