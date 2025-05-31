@@ -1,0 +1,323 @@
+.splesh-screen-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.background-image-container {
+    position: relative;
+}
+
+.background-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.splesh-screen-absolute-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+}
+
+.presenting-image {
+    position: absolute;
+    top: 7%;
+    text-align: center;
+    margin: auto;
+}
+
+.projectlogo-image {
+    top: 20%;
+    position: absolute;
+    width: 21%;
+}
+
+.tagLine-image {
+    position: absolute;
+    top: 61%;
+    width: 14%;
+}
+
+
+.tagLine-image {
+    position: absolute;
+    top: 61%;
+    width: 10%;
+}
+
+.groupLogo-image {
+    width: 11%;
+    position: absolute;
+    top: 71%;
+}
+
+.silogo-image {
+    position: absolute;
+    top: 90%;
+}
+
+.explore-real-walk {
+    position: absolute;
+    z-index: 9;
+    top: 94%;
+}
+
+.explore-real-walk button {
+    background-color: transparent;
+    /* border: 2px solid rgba(58, 84, 231, 0.733); */
+    border: 2px solid white;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 2px 3px 4px 1px #00000085;
+}
+
+.presenting-image,
+.projectlogo-image,
+.tagLine-image,
+.groupLogo-image,
+.silogo-image {
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.presenting-image {
+    animation: fadeInUpSplash 1s ease-out 1s forwards;
+}
+
+.projectlogo-image {
+    animation: fadeScale 1s ease-out 2.5s forwards;
+}
+
+.tagLine-image {
+    animation: fadeFromSide 1s ease-out 4s forwards;
+}
+
+.groupLogo-image {
+    animation: fadeScale 1s ease-out 5.5s forwards;
+}
+
+.silogo-image {
+    animation: fadeFromLeftSide 1s ease-out 6.5s forwards;
+}
+
+
+.black-overlay {
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100vh;
+    height: 100vh;
+    animation: blackOverlay 1s ease-out 6.5s forwards;
+
+}
+
+.splesh-screen-right-container {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.splesh-screen-right-container.tilal {
+    width: 100%;
+}
+
+.tila-loader-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.tilal .projectlogo-image {
+    top: 19%;
+    width: 15%;
+}
+
+.tilal .tagLine-image {
+    top: 50%;
+    width: 3%;
+}
+
+.tilal .groupLogo-image {
+    width: 15%;
+    position: absolute;
+    top: 65%;
+}
+
+.tilal .explore-real-walk {
+    top: 89%;
+}
+
+
+@keyframes fadeInUpSplash {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeFromLeftSide {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+        z-index: 9;
+    }
+
+    to {
+        opacity: 1;
+        z-index: 999;
+        transform: translateX(0);
+    }
+}
+
+@keyframes blackOverlay {
+    from {
+        height: 100vh;
+        width: 100vw;
+        background-color: transparent;
+    }
+
+    to {
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+@keyframes fadeFromSide {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.25);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 1441px) {
+    .splesh-screen-right-container {
+        width: 65%;
+    }
+
+    .presenting-image {
+        width: 11%;
+    }
+
+    .projectlogo-image {
+        width: 18%;
+        top: 18%;
+    }
+
+    .tagLine-image {
+        top: 57%;
+    }
+
+    .groupLogo-image {
+        width: 11%;
+        top: 71%;
+    }
+
+    .explore-real-walk {
+        top: 91%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .splesh-screen-right-container {
+        width: 65%;
+    }
+
+    .explore-real-walk {
+        top: 91%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .splesh-screen-absolute-container {
+        align-items: center;
+    }
+
+    .presenting-image {
+        top: 7%;
+        right: unset;
+        width: 25%;
+    }
+
+    .projectlogo-image {
+        top: 22%;
+        width: 50%;
+        right: unset;
+    }
+
+    .tagLine-image {
+        top: 51%;
+        width: 47%;
+        right: unset;
+    }
+
+    .groupLogo-image {
+        top: 70%;
+        width: 35%;
+        right: unset;
+    }
+
+    .explore-real-walk {
+        top: 90%;
+        right: unset;
+    }
+
+    .tilal .presenting-image {
+        top: 16%;
+        width: 28%;
+    }
+
+    .tilal .projectlogo-image {
+        top: 30%;
+        width: 50%;
+    }
+
+    .tilal .tagLine-image {
+        top: 55%;
+        width: 10%;
+    }
+
+    .tilal .groupLogo-image {
+        top: 70%;
+        width: 35%;
+    }
+}

@@ -59,9 +59,8 @@ const Amenities = ({ data }) => {
             <li key={index} className="w-[calc(50%-4px)]">
               <button
                 onClick={() => changeFloor(item.title)}
-                className={`text-xs h-full ${
-                  data?.length > 0 ? "!w-full" : ""
-                } ${selectedFloor === item.title ? "active" : ""}`}
+                className={`text-xs h-full ${data?.length > 0 ? "!w-full" : ""
+                  } ${selectedFloor === item.title ? "active" : ""}`}
               >
                 {item.title}
               </button>

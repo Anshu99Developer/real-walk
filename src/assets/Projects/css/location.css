@@ -1,0 +1,166 @@
+/* Main Container */
+.location_main_container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Background Image */
+.location_image_bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures image covers container without distortion */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* Sends background behind SVG */
+}
+
+/* SVG Overlay */
+.location_svg_overlay {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.animated-path {
+    stroke: #ffff00;
+    stroke-width: 2;
+    stroke-linecap: square;
+    stroke-miterlimit: 4.2;
+}
+
+/* distance details */
+.distance_details_card_conianter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 20;
+}
+
+.distance_details_card {
+    width: 350px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    /* Adjust this value if needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+    /* Ensure it's above other elements */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+/* When active, trigger the animation */
+.distance_details_card.show {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.distance_details_image {
+    max-width: 95px;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+.distance_details_nav_icon {
+    max-width: 24px;
+}
+
+.text-details {
+    padding: 16px;
+}
+
+.text-details p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    font-weight: 700;
+    font-size: 16px;
+    color: rgb(155, 155, 155);
+    display: flex;
+    justify-content: left;
+    align-items: baseline;
+}
+
+.distance_details_km {
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 767px) {
+    .location_main_container {
+        overflow: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .location_image_bg {
+        overflow: scroll;
+        width: unset;
+        height: 100%;
+        overflow: scroll;
+        object-fit: unset;
+    }
+
+    .location_svg_overlay {
+        width: unset;
+        height: 100%;
+        max-height: unset;
+        max-width: unset;
+    }
+
+    .distance_details_image {
+        max-width: 80px;
+    }
+
+    .text-details {
+        padding: 11px;
+    }
+
+    .text-details p {
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .distance_details_card {
+        bottom: 80px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .distance_details_card {
+        width: 300px;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}

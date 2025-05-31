@@ -1,0 +1,197 @@
+.country_list_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 20;
+}
+
+.country_list_cards {
+    display: flex;
+    width: auto;
+    padding: 5px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 30;
+    align-items: center;
+    max-width: 97%;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.country_list_cards.show {
+    opacity: 1;
+}
+
+.country_list_card {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.country-image {
+    width: 50px;
+    height: 50px;
+}
+
+.country_text_cointainer {
+    padding-left: 10px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.country_name {
+    color: white;
+    display: block;
+    font-size: 15px;
+}
+
+.country_project_count {
+    color: rgb(161 161 170);
+    font-size: 14px;
+}
+
+.country_explore_btn {
+    width: 100%;
+    background-color: #d85301bd;
+    color: white;
+    border: 0;
+    padding: 8px 5px;
+    border-radius: 8px;
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.country_list_card.active {
+    transform: scale(1.05);
+}
+
+.country_list_card.active .country_text_cointainer {
+    display: block;
+}
+
+.country_list_card.active .country_explore_btn {
+    display: block;
+}
+
+.city .country_text_cointainer {
+    display: block;
+}
+
+.city .country_explore_btn {
+    display: block;
+}
+
+.back-btn-container {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.back-btn {
+    background-color: rgba(0, 0, 0, 0.397);
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px 8px;
+    box-shadow: 1px 0px 13px 2px #1bccf8c9;
+}
+
+.back-btn img {
+    max-width: 30px;
+}
+
+.back-btn-container.show {
+    opacity: 1;
+}
+
+.city_map_container {
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.city_map {
+    scale: 0.5;
+}
+
+@media screen and (max-width: 767px) {
+    .country_list_cards {
+        bottom: 80px;
+    }
+
+    .country-image {
+        width: 36px;
+        height: 36px;
+    }
+
+    .ml-20 {
+        margin-left: 10px;
+    }
+
+    .country_name {
+        white-space: nowrap;
+        font-size: 14px;
+    }
+
+    .country_project_count {
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .country_explore_btn {
+        padding: 6px 5px;
+        font-size: 14px;
+    }
+
+    .back-btn-container {
+        top: 25px;
+        left: 25px;
+    }
+
+    .back-btn img {
+        max-width: 24px;
+    }
+}
+
+/* world 2 */
+
+.rotate_aniation {
+    opacity: 0;
+    animation: spin 1s linear;
+    /* Runs forever */
+    animation-fill-mode: forwards;
+    /* Keeps final state */
+    transform-origin: center center;
+}
+
+.rotate_aniation.run {
+    opacity: 1;
+}
+
+@keyframes spin {
+    0% {
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(360deg);
+    }
+}

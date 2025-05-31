@@ -16,9 +16,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 #root {
   flex: 1;
 }
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -66,6 +68,7 @@ button {
   transition: border-color 0.25s;
   outline: none;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -77,9 +80,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
@@ -89,6 +94,7 @@ button:focus-visible {
 .tour-iframe {
   width: 100dvw;
 }
+
 .developer-container {
   background-color: #fff;
 }
@@ -97,6 +103,7 @@ button:focus-visible {
   body {
     background-position: left;
   }
+
   .developer-container {
     width: 100dvw;
     height: calc(100% - 78px) !important;
@@ -106,10 +113,12 @@ button:focus-visible {
     height: calc(100dvh - 90px) !important;
   }
 }
+
 @media screen and (min-width: 768px) {
   .developer-container {
     max-width: calc(100% - 120px);
   }
+
   .tour-iframe {
     height: 100dvh;
   }
@@ -119,27 +128,34 @@ button:focus-visible {
   0% {
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
 }
+
 .animate-fadeInOut {
   animation: fadeInOut 5s ease-in-out forwards;
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
+
 .animate-fadeIn {
   animation: fadeIn 2s ease-in-out forwards;
 }
@@ -195,22 +211,23 @@ button:focus-visible {
   position: fixed;
   inset: 0;
   z-index: -2;
-  background: linear-gradient(
-    -45deg,
-    rgba(255, 200, 100, 0.05),
-    rgba(255, 200, 100, 0.15),
-    rgba(255, 200, 100, 0.05)
-  );
+  background: linear-gradient(-45deg,
+      rgba(255, 200, 100, 0.05),
+      rgba(255, 200, 100, 0.15),
+      rgba(255, 200, 100, 0.05));
   background-size: 400% 400%;
   animation: wave 15s ease infinite;
 }
+
 @keyframes wave {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -235,22 +252,39 @@ button:focus-visible {
   background-blend-mode: lighten, lighten, normal, lighten;
   background-size: 180% 180%, 200% 200%, 200% 200%, 200% 200%;
   animation: cloud-flow-1 14s linear infinite alternate,
-             cloud-flow-2 22s linear infinite alternate-reverse,
-             shader-gradient-anim 6s ease-in-out infinite alternate;
+    cloud-flow-2 22s linear infinite alternate-reverse,
+    shader-gradient-anim 6s ease-in-out infinite alternate;
   opacity: 0.8;
 }
 
 @keyframes cloud-flow-1 {
-  0% { background-position: 0% 0%, 0% 0%, 0% 50%, 0% 50%; }
-  100% { background-position: 40% 60%, 0% 0%, 100% 50%, 100% 50%; }
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 50%, 0% 50%;
+  }
+
+  100% {
+    background-position: 40% 60%, 0% 0%, 100% 50%, 100% 50%;
+  }
 }
+
 @keyframes cloud-flow-2 {
-  0% { background-position: 0% 0%, 0% 0%, 0% 50%, 0% 50%; }
-  100% { background-position: 0% 0%, 60% 40%, 100% 50%, 100% 50%; }
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 50%, 0% 50%;
+  }
+
+  100% {
+    background-position: 0% 0%, 60% 40%, 100% 50%, 100% 50%;
+  }
 }
+
 @keyframes shader-gradient-anim {
-  0% { background-position: 0% 50%, 0% 50%, 0% 50%, 0% 50%; }
-  100% { background-position: 100% 50%, 100% 50%, 100% 50%, 100% 50%; }
+  0% {
+    background-position: 0% 50%, 0% 50%, 0% 50%, 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%, 100% 50%, 100% 50%, 100% 50%;
+  }
 }
 
 /* Optional: for full-viewport shader-like overlay */
@@ -268,7 +302,7 @@ button:focus-visible {
   background-blend-mode: lighten, normal, lighten;
   background-size: 200% 200%, 200% 200%, 200% 200%;
   animation: cloud-flow-2 30s linear infinite alternate-reverse,
-             shader-gradient-anim 14s ease-in-out infinite alternate;
+    shader-gradient-anim 14s ease-in-out infinite alternate;
   opacity: 0.5;
 }
 

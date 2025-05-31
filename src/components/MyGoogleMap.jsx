@@ -38,7 +38,7 @@ const WebGLOverlayMap = () => {
   // Fetch locations.json and set city/residentialLocations
   useEffect(() => {
     console.log("dsssssssssssssssssss", baseUrlAWS)
-    fetch(`${baseUrlAWS}/locations.json`)
+    fetch(`${baseUrlAWS}/JSON/locations.json`)
       .then((res) => res.json())
       .then((data) => {
         setLocationsData(data);
@@ -359,22 +359,23 @@ const WebGLOverlayMap = () => {
 
   return (
     <>
-      {
-        viewWebVr ?
-          <div className="">
-            <iframe
-              src={"https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_1bhk_05/index.html"}
-              height={"100vh"}
-              width={"100vW"}
-              className="fixed top-0 left-0 w-full h-full border-0 z-[9999]"
-              title="Flat WebVR"
-            />
-          </div> :
-          <div className="fixed top-0 left-0 w-full h-full">
-            <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />
+      <div className="relative z-50">
+        {
+          viewWebVr ?
+            <div className="">
+              <iframe
+                src={"https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_1bhk_05/index.html"}
+                height={"100vh"}
+                width={"100vW"}
+                className="fixed top-0 left-0 w-full h-full border-0 z-[9999]"
+                title="Flat WebVR"
+              />
+            </div> :
+            <div className="fixed top-0 left-0 w-full h-full">
+              <div ref={mapRef} style={{ width: "100%", height: "100dvh" }} />
 
-            {/* Audio Button */}
-            {/* <div className="bg-raisinBlack absolute top-0 right-0 border-2 border-raisinBlack">
+              {/* Audio Button */}
+              {/* <div className="bg-raisinBlack absolute top-0 right-0 border-2 border-raisinBlack">
           <button
             onClick={toggleAudio}
             className="p-3 focus:outline-none outline-none transition-all rounded-none lg:hover:bg-white text-text-raisinBlack lg:hover:text-raisinBlack"
@@ -387,62 +388,62 @@ const WebGLOverlayMap = () => {
           </button>
         </div> */}
 
-            {/* Info Dialog Box */}
-            <div className="-translate-x-1/2 absolute bg-raisinBlack bottom-10 items-center left-1/2 lg:w-72 p-4 rounded-lg shadow-lg w-[250px]">
-              <h2 className="lg:text-lg text-base font-bold pb-2 border-b border-borderColor text-white flex justify-between">
-                <span>{currentBuilding.name}</span>
-                <span><img src={`https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files` + currentBuilding.logo} style={{ width: "100px" }} /></span>
-              </h2>
-              <p className="lg:text-sm text-xs text-white pt-2">
-                {currentBuilding.project_name && (
-                  <>
-                    <strong>Project Name:</strong> {currentBuilding.project_name} <br />
-                  </>
-                )}
-                {currentBuilding.address && (
-                  <>
-                    <strong>Address:</strong> {currentBuilding.address} <br />
-                  </>
-                )}
-                {currentBuilding.area && (
-                  <>
-                    <strong>Area:</strong> {currentBuilding.area} <br />
-                  </>
-                )}
-                {currentBuilding.description && (
-                  <>
-                    <strong>Description:</strong> {currentBuilding.description}{" "}
-                    <br />
-                  </>
-                )}
-                {currentBuilding.nearby && (
-                  <>
-                    <strong>Nearby:</strong> {currentBuilding.nearby.join(", ")}{" "}
-                    <br />
-                  </>
-                )}
-              </p>
-              <button onClick={() => { setViewWebVr(true); currentBuilding?.link && setViewWebVrIframe(currentBuilding.link) }}
-                className="w-full bg-golden block border border-transparent font-semibold hover:bg-raisinBlack hover:border-golden hover:text-golden lg:text-sm mt-4 px-4 py-2 rounded-lg text-center text-raisinBlack text-xs transition-all">
-                Checkout view
-              </button>
-              {/* <Link
+              {/* Info Dialog Box */}
+              <div className="-translate-x-1/2 absolute bg-raisinBlack bottom-10 items-center left-1/2 lg:w-72 p-4 rounded-lg shadow-lg w-[250px]">
+                <h2 className="lg:text-lg text-base font-bold pb-2 border-b border-borderColor text-white flex justify-between">
+                  <span>{currentBuilding.name}</span>
+                  <span><img src={`https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files` + currentBuilding.logo} style={{ width: "100px" }} /></span>
+                </h2>
+                <p className="lg:text-sm text-xs text-white pt-2">
+                  {currentBuilding.project_name && (
+                    <>
+                      <strong>Project Name:</strong> {currentBuilding.project_name} <br />
+                    </>
+                  )}
+                  {currentBuilding.address && (
+                    <>
+                      <strong>Address:</strong> {currentBuilding.address} <br />
+                    </>
+                  )}
+                  {currentBuilding.area && (
+                    <>
+                      <strong>Area:</strong> {currentBuilding.area} <br />
+                    </>
+                  )}
+                  {currentBuilding.description && (
+                    <>
+                      <strong>Description:</strong> {currentBuilding.description}{" "}
+                      <br />
+                    </>
+                  )}
+                  {currentBuilding.nearby && (
+                    <>
+                      <strong>Nearby:</strong> {currentBuilding.nearby.join(", ")}{" "}
+                      <br />
+                    </>
+                  )}
+                </p>
+                <button onClick={() => { setViewWebVr(true); currentBuilding?.link && setViewWebVrIframe(currentBuilding.link) }}
+                  className="w-full bg-golden block border border-transparent font-semibold hover:bg-raisinBlack hover:border-golden hover:text-golden lg:text-sm mt-4 px-4 py-2 rounded-lg text-center text-raisinBlack text-xs transition-all">
+                  Checkout view
+                </button>
+                {/* <Link
             className="lg:text-sm text-xs bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:bg-raisinBlack hover:border-golden hover:text-golden block mt-4 text-center"
             to={`/developers/${currentBuilding?.id}`}
           >
             Checkout view
           </Link> */}
-            </div>
+              </div>
 
-            <div className="absolute flex flex-row items-center left-2 top-2">
-              <Link
-                className="lg:text-base text-sm bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:scale-105"
-                to="/"
-              >
-                Back to world
-              </Link>
-            </div>
-            {/* <div className="absolute bottom-10 right-5 flex flex-row items-center">
+              <div className="absolute flex flex-row items-center left-2 top-2">
+                <Link
+                  className="lg:text-base text-sm bg-golden text-raisinBlack border border-transparent px-4 py-2 rounded-lg font-semibold transition-all hover:scale-105"
+                  to="/"
+                >
+                  Back to world
+                </Link>
+              </div>
+              {/* <div className="absolute bottom-10 right-5 flex flex-row items-center">
           <button
             onClick={() =>
               setCurrentIndex(
@@ -455,23 +456,24 @@ const WebGLOverlayMap = () => {
           </button>
         </div> */}
 
-            {/* Mobile Zoom Controls */}
-            {isMobile && (
-              <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
-                <input
-                  type="range"
-                  min={15}
-                  max={20}
-                  step={0.01}
-                  value={zoomLevel}
-                  onChange={handleZoomSlider}
-                  className="w-32 accent-golden"
-                  aria-label="Zoom Slider"
-                />
-              </div>
-            )}
-          </div>
-      }
+              {/* Mobile Zoom Controls */}
+              {/* {isMobile && (
+                <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex flex-col items-center z-50">
+                  <input
+                    type="range"
+                    min={15}
+                    max={20}
+                    step={0.01}
+                    value={zoomLevel}
+                    onChange={handleZoomSlider}
+                    className="w-32 accent-golden"
+                    aria-label="Zoom Slider"
+                  />
+                </div>
+              )} */}
+            </div>
+        }
+      </div>
     </>
   );
 };

@@ -7,11 +7,9 @@ import App from "./pages/App";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ParallaxBackground s />
+    {/* <ParallaxBackground s /> */}
     {/* <SnowEffect />    */}
-    <AnimatedBackground />
-    <span className="globe-bg"></span>
-    <div className="relative z-50">
+    <div className="">
       <App />
     </div>
   </StrictMode>

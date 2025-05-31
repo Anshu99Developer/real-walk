@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Popup from "./Popup";
 import Loader from "./ui/Loader";
 import { baseUrl, baseUrlAWS } from "../utils/helper";
+import AnimatedBackground from "./AnimatedBackground";
 
 const Globe = () => {
   const [showPopup, setShowPopup] = useState({ status: false, data: {} });
@@ -104,7 +105,7 @@ const Globe = () => {
 
   // Fetch listedCities from locations.json
   useEffect(() => {
-    fetch(`${baseUrlAWS}/locations.json`)
+    fetch(`${baseUrlAWS}/JSON/locations.json`)
       .then((res) => res.json())
       .then((data) => {
         // Convert to { Country: [city names] }
@@ -119,7 +120,7 @@ const Globe = () => {
   const getLocationsByRegion = (region) => {
     if (region) {
       return (
-        <ul className="border border-raisinBlack">
+        <ul className="border border-raisinBlack px-0">
           {listedCities[region]?.map((city) => {
             return (
               <li
@@ -144,27 +145,31 @@ const Globe = () => {
 
   return (
     <>
-      <header className="p-4 bg-transparent fixed w-full top-0 left-0 z-50 animate-fadeIn">
-        <div className="flex justify-between items-center max-w-5xl mx-auto">
-          <img src="/main-logo.png" alt="Logo" className="h-10" />
-          <button className="px-4 py-2 bg-transparent hover:bg-golden border border-golden text-white rounded-lg transition-all">
-            Contact Us
-          </button>
-        </div>
-      </header>
-      <div
-        id="globe-container"
-        className="w-full h-screen z-10 animate-fadeIn relative"
-      ></div>
-      <Popup
-        isOpen={showPopup?.status}
-        onClose={() =>
-          setShowPopup((prev) => ({ ...prev, status: false, data: {} }))
-        }
-        title={`Cities from ${showPopup?.data?.title}`}
-      >
-        {getLocationsByRegion(showPopup?.data?.title)}
-      </Popup>
+      <div className="relative z-50">
+        <AnimatedBackground />
+        <span className="globe-bg"></span>
+        <header className="p-4 bg-transparent fixed w-full top-0 left-0 z-50 animate-fadeIn">
+          <div className="flex justify-between items-center max-w-5xl mx-auto">
+            <img src="/main-logo.png" alt="Logo" className="h-10" />
+            <button className="px-4 py-2 bg-transparent hover:bg-golden border border-golden text-white rounded-lg transition-all">
+              Contact Us
+            </button>
+          </div>
+        </header>
+        <div
+          id="globe-container"
+          className="w-full h-screen z-10 animate-fadeIn relative"
+        ></div>
+        <Popup
+          isOpen={showPopup?.status}
+          onClose={() =>
+            setShowPopup((prev) => ({ ...prev, status: false, data: {} }))
+          }
+          title={`Cities from ${showPopup?.data?.title}`}
+        >
+          {getLocationsByRegion(showPopup?.data?.title)}
+        </Popup>
+      </div>
     </>
   );
 };

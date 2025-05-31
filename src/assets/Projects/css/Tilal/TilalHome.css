@@ -1,0 +1,40 @@
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.video-container {
+    position: relative;
+}
+
+.home_video_360 {
+    max-width: none;
+    height: auto;
+    vertical-align: middle;
+}
+
+.home_video_360_slider_container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    text-align: center;
+    z-index: 10;
+    background: rgba(50, 76, 114, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 480px) {
+    .home_video_360_slider_container {
+        width: 95%;
+    }
+
+    .home_video_360_slider_input {
+        width: 95%;
+    }
+}

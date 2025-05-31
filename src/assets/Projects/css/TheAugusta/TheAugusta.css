@@ -1,0 +1,156 @@
+.house_plan_wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* for smoother mobile scroll */
+}
+
+.house_plan_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto
+}
+
+.the_augusta_house_plan_image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.the_augusta_house_plan_svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.house_path {
+    transition: 0.3s;
+    /* fill: rgba(128, 140, 248, 0.541); */
+    fill: rgb(96 249 218 / 36%);
+    stroke: rgba(128, 140, 248, 0.541);
+}
+
+.house_path.bhk3 {
+    transition: 0.3s;
+    fill: rgb(117 148 211 / 56%);
+    stroke: rgba(128, 140, 248, 0.541);
+}
+
+.house_path:hover {
+    fill: rgba(134, 134, 134, 0.208);
+    stroke: rgb(223 74 74 / 56%);
+}
+
+.house_selected {
+    fill: rgb(223 74 74 / 56%) !important;
+    stroke: rgb(223 74 74 / 56%) !important;
+}
+
+.explore_button_container {
+    width: 225px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 30;
+    align-items: center;
+    max-width: 97%;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.explore_btn {
+    width: 100%;
+    background-color: #d85301bd;
+    color: white;
+    border: 0;
+    padding: 8px 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.nav_button_container .back_btn {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
+
+.nav_button_container .back_btn img {
+    width: 30px;
+}
+
+.villa_preview_image {
+    max-width: 210px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.villa_number_text {
+    color: white;
+}
+
+.house_plan_scrollable {
+    width: fit-content;
+    height: fit-content;
+}
+
+.fullScreen_icon {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    background-color: rgba(0, 0, 0, 0.514);
+    padding: 5px;
+    border-radius: 1px;
+    opacity: 0.2;
+}
+
+@media screen and (max-width: 991px) {
+    .house_plan_wrapper {
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+    }
+
+    .house_plan_container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+    }
+
+    /* .the_augusta_house_plan_image {
+        width: 1200px;
+        height: auto;
+        object-fit: unset;
+        display: block;
+    }
+
+    .the_augusta_house_plan_svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1200px;
+        height: auto;
+        pointer-events: auto;
+    } */
+
+    .nav_button_container .back_btn {
+        top: 25px;
+        left: 25px;
+    }
+
+}

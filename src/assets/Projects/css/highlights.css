@@ -1,0 +1,18 @@
+.w-90 {
+    width: 90vh;
+}
+
+.w-90 {
+    height: 90vh;
+}
+
+.mw-80 {
+    max-width: 80% !important;
+}
+
+@media screen and (max-width: 767px) {
+    .mw-80 {
+        max-width: 100% !important;
+    }
+
+}
