@@ -46,7 +46,7 @@
     transform: translateY(-50%);
     max-width: 120px;
     width: 100%;
-    height:auto;
+    height: auto;
   }
 
   .sideBar_container_grid {
@@ -65,6 +65,7 @@
     background: rgba(255, 200, 100, 1);
     border-radius: 5px;
   }
+
   .btn_container:not(:first-child) {
     border-top: 1px solid #333;
   }
@@ -81,6 +82,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
 }
+
 .btn_container:hover {
   background-color: rgba(255, 200, 100, 0.3);
 }
@@ -173,8 +175,7 @@
   }
 }
 
-@media (max-width: 991px) {
-}
+@media (max-width: 991px) {}
 
 /* Mobile: Sidebar at the Bottom in Horizontal Layout */
 @media screen and (max-width: 767px) {
@@ -184,6 +185,7 @@
     width: 100%;
     position: absolute;
     z-index: 9;
+    transform: translate(-0%);
   }
 
   .sideBar_container_grid {
@@ -215,8 +217,7 @@
   }
 }
 
-@media (max-width: 575px) {
-}
+@media (max-width: 575px) {}
 
 /* 🔵 Small Mobile Screens (<480px) */
 @media screen and (max-width: 767px) {
