@@ -185,7 +185,7 @@ const Inventory = ({ data }) => {
             <img
               src={wingMedia}
               alt="building"
-              className="building_image block h-auto"
+              className="building_image block"
             />
             <div className="absolute left-0 top-0 w-full md:h-full z-10">
               {selectedWing?.floorList?.length > 0 && (
@@ -221,9 +221,8 @@ const Inventory = ({ data }) => {
               {selectedWing?.floorList?.map((path, index) => (
                 <div
                   ref={(el) => (floorLabelRefs.current[index] = el)}
-                  className={`floor-label-item ${
-                    index === activePathIndex ? "active" : ""
-                  }`}
+                  className={`floor-label-item ${index === activePathIndex ? "active" : ""
+                    }`}
                   onClick={() => setActivePathIndex(index)}
                   key={index}
                 >
@@ -234,7 +233,7 @@ const Inventory = ({ data }) => {
           </div>
         </div>
       </div>
-
+      {console.log("isTypicalPlan", isTypicalPlan)}
       {isTypicalPlan?.status && (
         <CustomModal
           onClose={() => {
@@ -279,9 +278,8 @@ const Inventory = ({ data }) => {
             <li key={index} className="md:!w-full !w-fit">
               <button
                 onClick={() => changeWing(item)}
-                className={`text-xs h-full whitespace-nowrap line-clamp-1 ${
-                  data?.length > 0 ? "w-full" : ""
-                } ${selectedWing?.title === item.title ? "active" : ""}`}
+                className={`text-xs h-full whitespace-nowrap line-clamp-1 ${data?.length > 0 ? "w-full" : ""
+                  } ${selectedWing?.title === item.title ? "active" : ""}`}
               >
                 {item.title}
               </button>

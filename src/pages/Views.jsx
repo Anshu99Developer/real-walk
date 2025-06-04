@@ -2,7 +2,7 @@ import { Viewer, ImagePanorama } from "panolens";
 import { useEffect, useRef, useState } from "react";
 import "../assets/css/views.css";
 
-const Views = ({data}) => {
+const Views = ({ data }) => {
   const panoramaRef = useRef(null);
   const viewerRef = useRef(null);
   const [currentImage, setCurrentImage] = useState(0);

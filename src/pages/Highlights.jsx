@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/slider.css";
+import "../assets/Projects/css/slider.css";
 // import backgroundVideo from "../assets/videos/Tirupati_BG.mp4";
 
 const Highlights = ({ data }) => {

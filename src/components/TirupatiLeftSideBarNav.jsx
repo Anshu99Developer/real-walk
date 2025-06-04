@@ -7,7 +7,7 @@ import amenitiesImg from '../assets/Projects/images/amenities.png';
 import floorplanImg from '../assets/Projects/images/floor_plan.png';
 import apartmentImg from '../assets/Projects/images/inventory.png';
 import day_nightImg from '../assets/Projects/images/day_night.png';
-import '../assets/Projects/css/leftSideBarNav.css';
+import '../assets/css/leftSideBarNav.css';
 import locationIcon from '../assets/Projects/images/icons/location.png';
 import DayNightModeIcon from '../assets/Projects/images/icons/DayNightMode.png';
 import FloorPlanIcon from '../assets/Projects/images/icons/FloorPlan.png';
@@ -30,7 +30,7 @@ import { useEffect, useRef, useState } from 'react';
 
 
 
-const LeftSideBarNav = () => {
+const TirupatiLeftSideBarNav = () => {
     const navigate = useNavigate();
     const location = useLocation(); // Get current path
     const { developer } = useParams();
@@ -55,15 +55,15 @@ const LeftSideBarNav = () => {
     }, [activePath]);
 
     const menuItems = [
-        { path: `/developers/${developer}`, img: homeImg, alt: "home", icon: HomeIconWhite, iconHover: HomeIcon, text: "Home", id: "home" },
-        { path: `/developers/${developer}/day-night`, img: day_nightImg, alt: "Day/Night", icon: DayNightModeIconWhite, iconHover: DayNightModeIcon, text: "Day/Evening", id: "day_evening" },
-        { path: `/developers/${developer}/360-tour`, img: apartmentImg, alt: "360 tour", icon: VirtualTourWhite, iconHover: VirtualTourBlack, text: "360° Tour", id: "360_tour" },
-        { path: `/developers/${developer}/highlights`, img: hightlightsImg, alt: "highlights", icon: HighlightIconWhite, iconHover: HighlightIcon, text: "Hightlights", id: "hightlights" },
-        { path: `/developers/${developer}/views`, img: viewsImg, alt: "views", icon: DroneViewIconWhite, iconHover: DroneViewIcon, text: "Drone", id: "drone" },
-        { path: `/developers/${developer}/location`, img: locationImg, alt: "location", icon: locationIconWhite, iconHover: locationIcon, text: "Location", id: "location" },
-        { path: `/developers/${developer}/amenities`, img: amenitiesImg, alt: "amenities", icon: AmenitiesIconWhite, iconHover: AmenitiesIcon, text: "Amenities", id: "amenities" },
-        { path: `/developers/${developer}/floorplans`, img: floorplanImg, alt: "floor_plan", icon: FloorPlanIconWhite, iconHover: FloorPlanIcon, text: "Floor Plan", id: "floor_plan" },
-        { path: `/developers/${developer}/inventory`, img: apartmentImg, alt: "inventory", icon: InventoryIconWhite, iconHover: InventoryIcon, text: "Inventory", id: "inventory" },
+        { path: `/tirupati-namaah/`, img: homeImg, alt: "home", icon: HomeIconWhite, iconHover: HomeIcon, text: "Home", id: "home" },
+        { path: `/tirupati-namaah/day-night`, img: day_nightImg, alt: "Day/Night", icon: DayNightModeIconWhite, iconHover: DayNightModeIcon, text: "Day/Evening", id: "day_evening" },
+        { path: `/tirupati-namaah/360-tour`, img: apartmentImg, alt: "360 tour", icon: VirtualTourWhite, iconHover: VirtualTourBlack, text: "360° Tour", id: "360_tour" },
+        { path: `/tirupati-namaah/highlights`, img: hightlightsImg, alt: "highlights", icon: HighlightIconWhite, iconHover: HighlightIcon, text: "Hightlights", id: "hightlights" },
+        { path: `/tirupati-namaah/views`, img: viewsImg, alt: "views", icon: DroneViewIconWhite, iconHover: DroneViewIcon, text: "Drone", id: "drone" },
+        { path: `/tirupati-namaah/location`, img: locationImg, alt: "location", icon: locationIconWhite, iconHover: locationIcon, text: "Location", id: "location" },
+        { path: `/tirupati-namaah/amenities`, img: amenitiesImg, alt: "amenities", icon: AmenitiesIconWhite, iconHover: AmenitiesIcon, text: "Amenities", id: "amenities" },
+        { path: `/tirupati-namaah/floorplans`, img: floorplanImg, alt: "floor_plan", icon: FloorPlanIconWhite, iconHover: FloorPlanIcon, text: "Floor Plan", id: "floor_plan" },
+        { path: `/tirupati-namaah/inventory`, img: apartmentImg, alt: "inventory", icon: InventoryIconWhite, iconHover: InventoryIcon, text: "Inventory", id: "inventory" },
     ];
 
     const handleMenuClick = (id, path) => {
@@ -102,4 +102,4 @@ const LeftSideBarNav = () => {
     );
 };
 
-export default LeftSideBarNav;
+export default TirupatiLeftSideBarNav;

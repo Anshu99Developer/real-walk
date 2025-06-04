@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../assets/css/home.css";
+import "../assets/Projects/css/home.css";
 
 const DayNight = ({ data }) => {
   const images = data?.images || [];

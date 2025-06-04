@@ -19,7 +19,7 @@ import FloorPlans from "./FloorPlans";
 import Inventory from "./Inventory";
 import Loader from "../components/ui/Loader";
 import Location from "./Location";
-import { baseUrl } from "../utils/helper";
+import { baseUrl, baseUrlAWS } from "../utils/helper";
 
 // ProjectsData
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -37,6 +37,9 @@ import GamaraOuter360NightHigh from './Gamara/GamaraOuter360NightHigh';
 import GamaraOuter360NightLow from './Gamara/GamaraOuter360NightLow';
 import MarinaBay3BHK from './MarinaBay/MarinaBay3BHK';
 import MarinaBay4BHK from './MarinaBay/MarinaBay4BHK';
+import MenuLayoutWithLoader from "../components/MenuLayoutWithLoader";
+import Apartment from "./Apartment";
+import TirupatiMenuLayout from "../components/TirupatiMenuLayout";
 
 
 function DeveloperRoutes() {
@@ -166,6 +169,130 @@ function DeveloperRoutes() {
   );
 }
 
+function TirupatiDeveloperRoutes() {
+  const [developerData, setDeveloperData] = useState(null);
+  const [loading, setLoading] = useState(true); // loader state
+  const [routeLoading, setRouteLoading] = useState(false);
+  const location = useLocation(); // detect route changes
+
+  const param = useParams();
+
+  const getData = async (developer) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${baseUrlAWS}/JSON/tirupati-namaah.json`);
+      const data = await response.json();
+      setDeveloperData(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false); // end loading
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (loading || !developerData) {
+    return <Loader />;
+  }
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <Home data={developerData?.home} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/day-night"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <DayNight data={developerData?.day_night} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/360-tour"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <Tour360 data={developerData?.tour360} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/views"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <Views data={developerData?.droneViews} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/highlights"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <Highlights data={developerData?.highlight} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/amenities"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <Amenities data={developerData?.amenities} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/location"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <Location data={developerData?.location} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/floorplans"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <FloorPlans data={developerData?.floorPlans} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/inventory"
+        element={
+          <div className="relative z-50">
+            <TirupatiMenuLayout>
+              <Inventory data={developerData?.inventory} />
+            </TirupatiMenuLayout>
+          </div>
+        }
+      />
+    </Routes>
+  );
+}
 function App() {
   const [splashDone, setSplashDone] = useState(false); // for loading screen layout
   return (
@@ -175,6 +302,9 @@ function App() {
           <Route path="/" element={<Globe />} />
           <Route path="/city/:city" element={<MyGoogleMap />} />
           <Route path="/developers/:developer/*" element={<DeveloperRoutes />} />
+
+          <Route path="/tirupati-namaah/*" element={<TirupatiDeveloperRoutes />} />
+
 
           {/* ProjectData */}
           <Route path="/tilal/v1" element={<TilalHome />} />
