@@ -39,7 +39,8 @@
           "lat": 19.116250759106524,
           "lng": 72.84152760316005,
           "logo": "/Images/Client_Logos/Mumbai/mesacon_jewel.png",
-          "address": "Barfiwala Flyover, Ganga Vihar, Andheri (W)"
+          "address": "Barfiwala Flyover, Ganga Vihar, Andheri (W)",
+          "link": "https://www.surbhiinfotech.com/virtual-reality/realestate/portfolio/gunatit/antilia_anant/3bhk"
         },
         {
           "name": "Mesacon",
@@ -48,7 +49,8 @@
           "lat": 19.115820527034987,
           "lng": 72.84301747116425,
           "logo": "/Images/Client_Logos/Mumbai/mesacon_jewel.png",
-          "address": "S.V. Road, Ganga Vihar, Andheri (W)"
+          "address": "S.V. Road, Ganga Vihar, Andheri (W)",
+          "link": "https://www.surbhiinfotech.com/virtual-reality/realestate/portfolio/mesacongroup/mesacon-crown/shalimar/3bhk"
         },
         {
           "name": "Jet realty",
@@ -57,7 +59,8 @@
           "lat": 19.194252853842077,
           "lng": 72.84907390674637,
           "logo": "/Images/Client_Logos/Mumbai/jet_realty_logo.png",
-          "address": "Shree Riddhi Vinayak Ganesh Mandir, Malad (W)"
+          "address": "Shree Riddhi Vinayak Ganesh Mandir, Malad (W)",
+          "link": "https://www.surbhiinfotech.com/virtual-reality/realestate/portfolio/jet-realty/samriddhi/2bhk"
         },
         {
           "name": "Jet realty",
@@ -66,7 +69,8 @@
           "lat": 19.107190844038545,
           "lng": 72.84649956607049,
           "logo": "/Images/Client_Logos/Mumbai/jet_realty_logo.png",
-          "address": "Bajaj Road, Navpada, Vile Parle (W)"
+          "address": "Bajaj Road, Navpada, Vile Parle (W)",
+          "link": "https://www.surbhiinfotech.com/virtual-reality/realestate/portfolio/jet-realty/anand-bhavan/b/953sqft"
         },
         {
           "name": "Dipti Group",
@@ -75,7 +79,8 @@
           "lat": 19.247120352225895,
           "lng": 72.87032955525899,
           "logo": "/Images/Client_Logos/Mumbai/dipti_logo.png",
-          "address": "Walking Bridge, Near Bhagwati Hospital, Borivali (W)"
+          "address": "Walking Bridge, Near Bhagwati Hospital, Borivali (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/VillaRemedian/3bhk_type2/index.html#nobasis"
         },
         {
           "name": "GBL",
@@ -84,7 +89,8 @@
           "lat": 19.106444045098616,
           "lng": 72.86687552955792,
           "logo": "/Images/Client_Logos/Mumbai/gbl.png",
-          "address": "Dalvi Plaza, Kanti Nagar, J B Nagar, Andheri (E)"
+          "address": "Dalvi Plaza, Kanti Nagar, J B Nagar, Andheri (E)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/gbl/gbl_3_bhk_04/index.html#nobasis"
         },
         {
           "name": "Greenstone",
@@ -93,7 +99,8 @@
           "lat": 18.94580970000273,
           "lng": 72.83477416507273,
           "logo": "/Images/Client_Logos/Mumbai/apilite.png",
-          "address": "Greenstone Heritage, Crawford Market, Fort"
+          "address": "Greenstone Heritage, Crawford Market, Fort",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/aplite/greenstone-i/apilite_2bhk_2-35/index.html"
         },
         {
           "name": "Shakti",
@@ -102,7 +109,8 @@
           "lat": 19.27210220097872,
           "lng": 73.07990027312884,
           "logo": "/Images/Client_Logos/Mumbai/dipti_logo.png",
-          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi"
+          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Ayodhya/Siyara+Dham/siyaram_dham_b_type_2_bhk/index.html#nobasis"
         },
         {
           "name": "Nagpal",
@@ -111,7 +119,8 @@
           "lat": 19.067318305259157,
           "lng": 72.83145433623697,
           "logo": "/Images/Client_Logos/Mumbai/nagpal.png",
-          "address": "La Emerade Building, 14th Rd, Santacruz (W)"
+          "address": "La Emerade Building, 14th Rd, Santacruz (W)",
+          "link": "https://www.surbhiinfotech.com/virtual-reality/realestate/portfolio/nagpal-developers/hill-view/3bhk"
         },
         {
           "name": "Mozaic Homes",
@@ -120,7 +129,8 @@
           "lat": 19.17989883321624,
           "lng": 72.86271957122138,
           "logo": "/Images/Client_Logos/Mumbai/mozaic_homes_logo.png",
-          "address": "Pathan Wadi, Malad (E)"
+          "address": "Pathan Wadi, Malad (E)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Mozaic+Homes/mozaic_2bhk_02/index.html"
         },
         {
           "name": "Shakti",
@@ -129,7 +139,8 @@
           "lat": 19.272107264784076,
           "lng": 73.07990027312884,
           "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
-          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi"
+          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Shakti/Avantika/avantila_2bhk_flat-5/index.html"
         },
         {
           "name": "Shakti",
@@ -138,16 +149,18 @@
           "lat": 19.272107264784076,
           "lng": 73.07990027312884,
           "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
-          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi"
+          "address": "Siyara dham, Murbad Rd, Themghar, Bhiwandi",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Shakti/Dwarka/dwarka_flat_4/index.html"
         },
         {
           "name": "Shakti",
-          "project_name": "Sgnature",
-          "id": "Sgnature",
+          "project_name": "Signature",
+          "id": "Signature",
           "lat": 19.277073682500916,
           "lng": 73.05069306207952,
           "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
-          "address": "Siyara Signature, SP Rd, Kamatghar, Bhiwandi"
+          "address": "Siyara Signature, SP Rd, Kamatghar, Bhiwandi",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Shakti/Signature/signature_2bhk_01_floor_3/index.html"
         },
         {
           "name": "Jet Build",
@@ -156,7 +169,8 @@
           "lat": 19.221337879943473,
           "lng": 72.83434819262735,
           "logo": "/Images/Client_Logos/Mumbai/jet_build.png",
-          "address": "Opp. Haryana Bhavan, Sector 4, Kandivali (W)"
+          "address": "Opp. Haryana Bhavan, Sector 4, Kandivali (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jet_Build/Triveni/jet_build_triveni_2bhk_flat-02/index.html"
         },
         {
           "name": "Paradigm",
@@ -165,7 +179,8 @@
           "lat": 19.054701036378635,
           "lng": 72.88709008881474,
           "logo": "/Images/Client_Logos/Mumbai/paradigm_realty.png",
-          "address": "Gymkhana, Near Trishul Bunglows, Chembur"
+          "address": "Gymkhana, Near Trishul Bunglows, Chembur",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Paradigm+Realty/71_Midtown/paradigm_realty_2bhk/index.html"
         },
         {
           "name": "Shakti",
@@ -174,7 +189,8 @@
           "lat": 19.257194799507516,
           "lng": 73.14854277116424,
           "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
-          "address": "M Corp, Barave Rd, Tawri Pada, Bhoirwadi, Kalyan"
+          "address": "M Corp, Barave Rd, Tawri Pada, Bhoirwadi, Kalyan",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Shakti/Siyara_Heights/siyara_heights_a_2bhk/index.html"
         },
         {
           "name": "Mitani",
@@ -183,7 +199,8 @@
           "lat": 18.956153768783597,
           "lng": 72.82322641534303,
           "logo": "/Images/Client_Logos/Mumbai/mitani_sky9.png",
-          "address": "VP Rd, Kakadwadi Marg, Girgaon, Charni Road"
+          "address": "VP Rd, Kakadwadi Marg, Girgaon, Charni Road",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Mitani/mitani_group_3bhk/index.html"
         },
         {
           "name": "Mitani",
@@ -192,7 +209,8 @@
           "lat": 19.24731809958055,
           "lng": 73.1752600185031,
           "logo": "/Images/Client_Logos/Mumbai/mitani_sky9.png",
-          "address": "Beside D-mart Rd, Shahad, Ulhasnagar, Kalyan"
+          "address": "Beside D-mart Rd, Shahad, Ulhasnagar, Kalyan",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/sharda-serene/sharda_serene_2bhk_660_sq_ft/index.html"
         },
         {
           "name": "Shakti",
@@ -201,7 +219,8 @@
           "lat": 19.283363738737677,
           "lng": 73.04900159451084,
           "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
-          "address": "Old Mumbai Agra Rd, Balaji Nagar, Bhiwandi"
+          "address": "Old Mumbai Agra Rd, Balaji Nagar, Bhiwandi",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Shakti/Siyara_Fortune/siyara_fortune_2_bhk_type_f/index.html"
         },
         {
           "name": "Mukta",
@@ -210,7 +229,8 @@
           "lat": 19.163332326732885,
           "lng": 73.07559675767152,
           "logo": "/Images/Client_Logos/Mumbai/mukta.png",
-          "address": "Nilje Gaon, Kalyan"
+          "address": "Nilje Gaon, Kalyan",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Mukta/My_Heaven/my_heaven_3_bhk/index.html"
         },
         {
           "name": "Chandak",
@@ -219,7 +239,8 @@
           "lat": 19.10953403400473,
           "lng": 72.86806169081024,
           "logo": "/Images/Client_Logos/Mumbai/Chandak_Group.png",
-          "address": "Sarvam, Near Jain Derasar, J B Nagar, Andheri (E)"
+          "address": "Sarvam, Near Jain Derasar, J B Nagar, Andheri (E)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Chandak_Group/3bhk/index.html"
         },
         {
           "name": "Shakti",
@@ -228,7 +249,8 @@
           "lat": 19.268725600853273,
           "lng": 73.05539874910573,
           "logo": "/Images/Client_Logos/Mumbai/shakti_group.png",
-          "address": "Near Hanuman Mandir, Kamatghar Road, Bhiwandi"
+          "address": "Near Hanuman Mandir, Kamatghar Road, Bhiwandi",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Shakti/Siyara_Viva/siyara_viva_2_bhk_type_a_547_sqft/index.html"
         },
         {
           "name": "Dipti",
@@ -237,7 +259,8 @@
           "lat": 19.032388703233682,
           "lng": 72.84142132274427,
           "logo": "/Images/Client_Logos/Mumbai/dipti_logo.png",
-          "address": "Plot No. 1,Shivaji Park Road No. 2, Dadar (W)"
+          "address": "Plot No. 1,Shivaji Park Road No. 2, Dadar (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/dipti/prachi/dipti_prachi_2_bhk/index.html"
         },
         {
           "name": "Dipti",
@@ -246,7 +269,8 @@
           "lat": 19.192226181084145,
           "lng": 72.97305222883575,
           "logo": "/Images/Client_Logos/Mumbai/dipti_logo.png",
-          "address": "Shraddha, Sahayog Mandir Path, Ghantali, Thane (W)"
+          "address": "Shraddha, Sahayog Mandir Path, Ghantali, Thane (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Pataskar_Developer/Leela_Prasad/leela_prasad_2bhk/index.html"
         },
         {
           "name": "M4 Gorup",
@@ -255,7 +279,8 @@
           "lat": 18.964703454738952,
           "lng": 72.8400455576715,
           "logo": "/Images/Client_Logos/Mumbai/m4.png",
-          "address": "28, D Koyande Rd, Ekta Nagar, Mazgaon"
+          "address": "28, D Koyande Rd, Ekta Nagar, Mazgaon",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/M4/m4_group_3bhk/index.html"
         },
         {
           "name": "Nagpal",
@@ -264,7 +289,8 @@
           "lat": 19.064627678483085,
           "lng": 72.83142211193278,
           "logo": "/Images/Client_Logos/Mumbai/nagpal.png",
-          "address": "15th Road, Bandra (W)"
+          "address": "15th Road, Bandra (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Nagpal+Developers/nagpal_bandra_2_bhk/index.html"
         },
         {
           "name": "Jai Tirupati",
@@ -273,7 +299,8 @@
           "lat": 19.291255087303078,
           "lng": 72.86256788249467,
           "logo": "/Images/Client_Logos/Mumbai/tirupati.png",
-          "address": "Mira Bhayander Link Rd, Geeta Nagar, Mira Road (E)"
+          "address": "Mira Bhayander Link Rd, Geeta Nagar, Mira Road (E)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_2bhk_02/index.html"
         },
         {
           "name": "Gurukrupa",
@@ -282,7 +309,8 @@
           "lat": 19.143253816632,
           "lng": 72.83168198650728,
           "logo": "/Images/Client_Logos/Mumbai/gurukrupa_logo.png",
-          "address": "New Link Rd, near Lotus Petrol Pump, Andheri (W)"
+          "address": "New Link Rd, near Lotus Petrol Pump, Andheri (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Gurukrupa/Riddhi_Siddhi/riddhi_siddhi_3_bhk_894_sq_ft/index.html"
         },
         {
           "name": "Gurukrupa",
@@ -291,7 +319,8 @@
           "lat": 19.115849468196306,
           "lng": 72.83345825767152,
           "logo": "/Images/Client_Logos/Mumbai/gurukrupa_logo.png",
-          "address": "Cross Road No. 10, Gulmohar Road, Juhu"
+          "address": "Cross Road No. 10, Gulmohar Road, Juhu",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Gurukrupa/Alaknanda/gurukrupa_alaknanda_3bhk/index.html"
         },
         {
           "name": "Gurukrupa",
@@ -300,7 +329,8 @@
           "lat": 19.052888539630153,
           "lng": 72.83136087301455,
           "logo": "/Images/Client_Logos/Mumbai/gurukrupa_logo.png",
-          "address": "1, General Ak Vaidya Marg, Ranwar, Bandra (W)"
+          "address": "1, General Ak Vaidya Marg, Ranwar, Bandra (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Gurukrupa/Reclamation/gurukrupa_reclamation_4_bhk/index.html"
         },
         {
           "name": "Jay Krishna",
@@ -309,7 +339,8 @@
           "lat": 19.151186976728482,
           "lng": 72.93486018650727,
           "logo": "/Images/Client_Logos/Mumbai/jay_krishna_logo.png",
-          "address": "Jangal Mangal Rd, Bhandup West"
+          "address": "Jangal Mangal Rd, Bhandup West",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jay_Krishna/jay_krishna_2bhk_flat_04/index.html"
         },
         {
           "name": "Mangal Group",
@@ -318,7 +349,8 @@
           "lat": 19.105366784904998,
           "lng": 72.84824607116425,
           "logo": "/Images/Client_Logos/Mumbai/mangal_build_home.png",
-          "address": "Subhash Rd, Vishnu Prasad Society, Vile Parle (E)"
+          "address": "Subhash Rd, Vishnu Prasad Society, Vile Parle (E)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Mangal_Build_Home/mangal_d_3bhk_flat_no_2/index.html"
         },
         {
           "name": "Paintora",
@@ -327,7 +359,8 @@
           "lat": 19.238523593813603,
           "lng": 72.84808072883575,
           "logo": "/Images/Client_Logos/Mumbai/paintora_logo.png",
-          "address": "DN Mhatre Rd, Om Shanti Chowk, Borivali (W)"
+          "address": "DN Mhatre Rd, Om Shanti Chowk, Borivali (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Varadavinayak/paintora_3_bhk/index.html"
         },
         {
           "name": "Shraddha Lifespces",
@@ -336,7 +369,8 @@
           "lat": 19.02385260378737,
           "lng": 72.85421858072854,
           "logo": "/Images/Client_Logos/Mumbai/shraddha_lifespaces_logo.png",
-          "address": "556, Adenwala Rd, Matunga East"
+          "address": "556, Adenwala Rd, Matunga East",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Sarddha/sraddha_3bhk/index.html"
         },
         {
           "name": "Disha Group",
@@ -345,7 +379,8 @@
           "lat": 19.21764212044869,
           "lng": 72.85195859760913,
           "logo": "/Images/Client_Logos/Mumbai/disha_realtors_logo.png",
-          "address": "Swami Vivekananda Rd, Shastri Nagar, Borivali (W)"
+          "address": "Swami Vivekananda Rd, Shastri Nagar, Borivali (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Disha_Group/borivali_3bhk_type_1/index.html"
         },
         {
           "name": "Disha Group",
@@ -354,7 +389,8 @@
           "lat": 19.10049279267082,
           "lng": 72.84692057116423,
           "logo": "/Images/Client_Logos/Mumbai/disha_realtors_logo.png",
-          "address": "Ram Mandir Rd, Opp.Tilak Mandir Road, Vile Parle (W)"
+          "address": "Ram Mandir Rd, Opp.Tilak Mandir Road, Vile Parle (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Disha_Group/Ananta_Heights/disha_group_vile_parle_3bhk_1260_sqft/index.html"
         },
         {
           "name": "Mirchandani",
@@ -363,7 +399,8 @@
           "lat": 19.059897913252943,
           "lng": 72.83173438650728,
           "logo": "/Images/Client_Logos/Mumbai/mirchandani.png",
-          "address": "36, Turner Rd, Bandra (W)"
+          "address": "36, Turner Rd, Bandra (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Mirchandani/Goldstone/mirchandani_goldstone_3_bhk/index.html"
         },
         {
           "name": "Times Realty",
@@ -372,7 +409,8 @@
           "lat": 19.097629382145563,
           "lng": 72.84021872883574,
           "logo": "/Images/Client_Logos/Mumbai/times_realty.png",
-          "address": "Rachana Building, Vallabhbhai Patel Road, Vile Parle (W)"
+          "address": "Rachana Building, Vallabhbhai Patel Road, Vile Parle (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Times_Reality/queens_lawn/queens_lawn_1237_sqft/index.html"
         },
         {
           "name": "Chandak",
@@ -381,7 +419,8 @@
           "lat": 19.11015430592709,
           "lng": 72.84104006399562,
           "logo": "/Images/Client_Logos/Mumbai/Chandak_Group.png",
-          "address": "Swami Vivekananda Rd, Opp. Jain Derasar, Vile Parle (W)"
+          "address": "Swami Vivekananda Rd, Opp. Jain Derasar, Vile Parle (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Chandak_Group/chandak_vansham_3bhk_1085_sqft/index.html"
         },
         {
           "name": "Mandor Homes",
@@ -390,7 +429,8 @@
           "lat": 19.096401620079707,
           "lng": 72.84898379641369,
           "logo": "/Images/Client_Logos/Mumbai/Mandor_bliss.png",
-          "address": "Nariman Rd, Navpada, Vile Parle (W)"
+          "address": "Nariman Rd, Navpada, Vile Parle (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Mahant_Group/ganesh_bliss_2_bhk_type_a/index.html"
         },
         {
           "name": "Such Group",
@@ -399,7 +439,8 @@
           "lat": 19.049445554108686,
           "lng": 72.8251594698545,
           "logo": "/Images/Client_Logos/Mumbai/sach_developer.png",
-          "address": "Blue Heaven Society, Mount Mary, Bandra (W)"
+          "address": "Blue Heaven Society, Mount Mary, Bandra (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Sach_Developers/Blue_Heaven/blue_heaven_3bhk_1109_sqft/index.html"
         },
         {
           "name": "Paradigm",
@@ -408,7 +449,8 @@
           "lat": 19.065847015405843,
           "lng": 72.82495740615325,
           "logo": "/Images/Client_Logos/Mumbai/paradigm_realty.png",
-          "address": "Sherly Rajan Rd, Railway Colony, Shirley, Bandra (W)"
+          "address": "Sherly Rajan Rd, Railway Colony, Shirley, Bandra (W)",
+          "link": ""
         },
         {
           "name": "Jai Tirupati Group",
@@ -417,7 +459,8 @@
           "lat": 19.297766821348365,
           "lng": 72.87014925991558,
           "logo": "/Images/Client_Logos/Mumbai/tirupati.png",
-          "address": "Stall No.1, Ramdev Park Rd, Mira Road (E)"
+          "address": "Stall No.1, Ramdev Park Rd, Mira Road (E)",
+          "link": ""
         },
         {
           "name": "Mirchandani",
@@ -426,7 +469,8 @@
           "lat": 19.077711268526834,
           "lng": 72.83006298465696,
           "logo": "/Images/Client_Logos/Mumbai/mirchandani.png",
-          "address": "Indrajit Society, Vithaldas Nagar, Santacruz (W)"
+          "address": "Indrajit Society, Vithaldas Nagar, Santacruz (W)",
+          "link": ""
         },
         {
           "name": "Paradigm",
@@ -435,7 +479,8 @@
           "lat": 19.222861405124707,
           "lng": 72.84281315767151,
           "logo": "/Images/Client_Logos/Mumbai/paradigm_realty.png",
-          "address": "Next to Shimpoli Ground, Shimpoli, Borivali (W)"
+          "address": "Next to Shimpoli Ground, Shimpoli, Borivali (W)",
+          "link": ""
         },
         {
           "name": "Lotus",
@@ -444,7 +489,8 @@
           "lat": 19.13395044773438,
           "lng": 72.81132501719333,
           "logo": "/Images/Client_Logos/Mumbai/lotus_developers_logo.png",
-          "address": "Sagar Sameer, 57, JP Rd, Versova, Andheri (W)"
+          "address": "Sagar Sameer, 57, JP Rd, Versova, Andheri (W)",
+          "link": ""
         },
         {
           "name": "Shri Sai Akar",
@@ -453,7 +499,8 @@
           "lat": 19.22730155928469,
           "lng": 72.82210867637099,
           "logo": "/Images/Client_Logos/Mumbai/aakar-logo.png",
-          "address": "SagRSC Rd Number 37, Gorai 2, Borivali (W)"
+          "address": "SagRSC Rd Number 37, Gorai 2, Borivali (W)",
+          "link": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Shri_Sai_Akar/shri_sai_akar_flat_no_1_3bhk/index.html"
         }
       ]
     },

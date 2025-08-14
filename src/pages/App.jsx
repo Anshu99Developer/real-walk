@@ -324,6 +324,8 @@ function App() {
 
           <Route path="/marina-bay/3bhk" element={<MarinaBay3BHK />} />
           <Route path="/marina-bay/4bhk" element={<MarinaBay4BHK />} />
+
+
         </Routes>
       </Router>
     </>

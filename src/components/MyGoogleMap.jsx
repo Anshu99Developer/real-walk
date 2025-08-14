@@ -356,7 +356,6 @@ const WebGLOverlayMap = () => {
   }
 
   const currentBuilding = residentialLocations[currentIndex];
-
   return (
     <>
       <div className="relative z-50">
@@ -364,7 +363,7 @@ const WebGLOverlayMap = () => {
           viewWebVr ?
             <div className="">
               <iframe
-                src={"https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Jai_Tirupati/tirupati_avenue/tirupati_avenue_1bhk_05/index.html"}
+                src={viewWebVrIframe}
                 height={"100vh"}
                 width={"100vW"}
                 className="fixed top-0 left-0 w-full h-full border-0 z-[9999]"
