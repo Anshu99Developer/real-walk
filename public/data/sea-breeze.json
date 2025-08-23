@@ -1,0 +1,335 @@
+{
+  "name": "Sea Breeze",
+  "id": "sea-breeze",
+  "lat": 19.083687908421187,
+  "lng": 72.8401806764217,
+  "home": {
+    "images": [
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/00.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/01.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/02.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/03.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/04.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/05.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/06.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/07.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/08.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/09.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/10.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/11.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/12.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/13.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/14.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/15.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/16.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/17.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/18.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/19.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/20.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/21.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/22.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/23.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/24.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/25.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/26.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/27.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/28.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/29.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/30.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/31.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/32.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/33.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/34.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/35.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/36.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/37.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/38.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/39.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/40.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/41.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/42.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/43.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/44.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/45.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/46.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/47.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/48.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/49.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/50.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/51.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/52.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/53.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/54.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/55.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/56.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/57.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/58.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/59.webp",
+      "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/home-images/60.webp"
+    ]
+  },
+  "day_night": {
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_00.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_01.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_02.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_03.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_04.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_05.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_06.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_07.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_08.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_09.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_10.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_11.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_12.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_13.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_14.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_15.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_16.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_17.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_18.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_19.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_20.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_21.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_22.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_23.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_24.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_25.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_26.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_27.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_28.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_29.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_30.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_31.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_32.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_33.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_34.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_35.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_36.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_37.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_38.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_39.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_40.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_41.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_42.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_43.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_44.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_45.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_46.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_47.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_48.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_49.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_50.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_51.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_52.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_53.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_54.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_55.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_56.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_57.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_58.jpg",
+      "https://cdn.shopify.com/s/files/1/0749/3573/0392/files/day_night_59.jpg"
+    ]
+  },
+  "tour360": {
+    "video": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/3D_Vista/Sea_Breeze/index.htm"
+  },
+  "highlight": {
+    "video": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/videos/Sea_Breeze.mp4"
+  },
+  "droneViews": [
+    {
+      "title": "15th Floor",
+      "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/real-walk/drone_15.jpg"
+    },
+    {
+      "title": "25th Floor",
+      "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/real-walk/drone_25.jpg"
+    },
+    {
+      "title": "35th Floor",
+      "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/real-walk/drone_35.jpg"
+    }
+  ],
+  "amenities": [
+    {
+      "title": "Sky Garden",
+      "media": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/amenities/Terrace.png"
+    },
+    {
+      "title": "Fitness Area",
+      "media": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/amenities/Gym.png"
+    }
+  ],
+  "floorPlans": [
+    {
+      "title": "Typical Floor Plan",
+      "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png"
+    },
+    {
+      "title": "Combine",
+      "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/combine.png"
+    },
+    {
+      "title": "Flat 01",
+      "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/flat_01.png"
+    },
+    {
+      "title": "Flat 02",
+      "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/flat_02.png"
+    },
+    {
+      "title": "3BHK",
+      "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/3bhk.png"
+    }
+  ],
+  "inventory": [
+    {
+      "title": "A Wing",
+      "totalFloor": 9,
+      "buildingImage": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/buildingV2.jpg",
+      "floorList": [
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436489,-111.48954 -0.325562,-69.20602 0.313676,0.0155 0.01189,-2.30374 383.458755,87.833905 0.0382,0.19431 0.28732,0.0145 -0.32556,62.935097 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 9,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html"
+          }
+        },
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436489,-110.96037 -0.325562,79.954823 0.313676,0.0155 0.01189,-2.30374 383.458755,69.313075 0.0382,0.19431 0.28732,0.0145 -0.32556,-67.704919 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 8,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html"
+          }
+        },
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436489,-32.79027 -0.325562,75.192318 0.313676,0.0155 0.01189,-2.30374 383.458755,61.904742 0.0382,6.54431 0.28732,0.0145 -0.32556,-71.409086 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 7,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html"
+          }
+        },
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436489,40.732945 -0.325562,70.958985 0.313676,0.0155 0.01189,-2.30374 383.458755,52.90891 0.0382,6.54431 0.28732,0.0145 -0.32556,-66.11742 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 6,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html"
+          }
+        },
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436489,110.2296 -0.325562,70.95898 0.313676,0.0155 0.01189,-2.30374 383.458755,43.91308 0.0382,6.54431 0.28732,0.0145 -0.32556,-66.11742 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 5,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html"
+          }
+        },
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436489,206.76271 -0.325562,70.95898 0.313676,0.0155 0.01189,-2.30374 369.700425,29.62558 0.0382,6.54431 0.28732,0.0145 -0.32556,-66.11742 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 4,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html"
+          }
+        },
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436489,276.40703 -0.325562,70.95898 0.313676,0.0155 0.01189,-2.30374 369.700425,22.21725 0.0382,6.54431 0.28732,0.0145 -0.32556,-67.70492 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 3,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html"
+          }
+        },
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436489,346.70224 -0.325562,70.95898 0.313676,0.0155 0.01189,-2.30374 369.700425,14.27975 0.0382,6.54431 0.28732,0.0145 -0.32556,-67.70492 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 2,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html"
+          }
+        },
+        {
+          "opacity": 0.5,
+          "fill": "#FFCC24",
+          "d": "m -25.436657,416.96042 369.700697,14.27969 0.32547,56.02591 -370.351604,-6.83424 z",
+          "image": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/Floor_Plans/typical.png",
+          "floor": 1,
+          "overlay": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Real_Walk_Files/Images/sea-breeze/inventory/typical-plan.svg",
+          "links": {
+            "left1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "left2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_4bhk/index.html",
+            "center1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_6bhk/index.html",
+            "right1": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html",
+            "right2": "https://surbhi-infotech.s3.ap-south-1.amazonaws.com/Alliance_City/alliance_city_3bhk/index.html"
+          }
+        }
+      ]
+    }
+  ],
+  "location": {
+    "name": "Sea Breeze",
+    "id": "sea-breeze",
+    "lat": 19.083687908421187,
+    "lng": 72.8401806764217
+  }
+}

@@ -40,6 +40,7 @@ import MarinaBay4BHK from './MarinaBay/MarinaBay4BHK';
 import MenuLayoutWithLoader from "../components/MenuLayoutWithLoader";
 import Apartment from "./Apartment";
 import TirupatiMenuLayout from "../components/TirupatiMenuLayout";
+import SeaBreezeMenuLayout from "../components/SeaBreezeMenuLayout";
 
 
 function DeveloperRoutes() {
@@ -293,6 +294,132 @@ function TirupatiDeveloperRoutes() {
     </Routes>
   );
 }
+
+function SeaBreezeRoutes() {
+  const [developerData, setDeveloperData] = useState(null);
+  const [loading, setLoading] = useState(true); // loader state
+  const [routeLoading, setRouteLoading] = useState(false);
+  const location = useLocation(); // detect route changes
+
+  const param = useParams();
+
+  const getData = async (developer) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${baseUrlAWS}/JSON/sea-breeze.json`);
+      const data = await response.json();
+      setDeveloperData(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false); // end loading
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (loading || !developerData) {
+    return <Loader />;
+  }
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <Home data={developerData?.home} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/day-night"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <DayNight data={developerData?.day_night} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/360-tour"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <Tour360 data={developerData?.tour360} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/views"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <Views data={developerData?.droneViews} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/highlights"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <Highlights data={developerData?.highlight} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/amenities"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <Amenities data={developerData?.amenities} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/location"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <Location data={developerData?.location} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/floorplans"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <FloorPlans data={developerData?.floorPlans} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+      <Route
+        path="/inventory"
+        element={
+          <div className="relative z-50">
+            <SeaBreezeMenuLayout>
+              <Inventory data={developerData?.inventory} />
+            </SeaBreezeMenuLayout>
+          </div>
+        }
+      />
+    </Routes>
+  );
+}
+
 function App() {
   const [splashDone, setSplashDone] = useState(false); // for loading screen layout
   return (
@@ -325,6 +452,7 @@ function App() {
           <Route path="/marina-bay/3bhk" element={<MarinaBay3BHK />} />
           <Route path="/marina-bay/4bhk" element={<MarinaBay4BHK />} />
 
+          <Route path="/sea-breeze/*" element={<SeaBreezeRoutes />} />
 
         </Routes>
       </Router>
